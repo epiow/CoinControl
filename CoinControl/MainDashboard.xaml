@@ -1,0 +1,38 @@
+﻿<Window x:Class="CoinControl.MainDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main Dashboard" Height="450" Width="800">
+    <Grid>
+        <!-- Side Navigation Menu -->
+        <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Home" Foreground="White" Margin="10,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
+                </StackPanel>
+            </Button>
+            <!-- Add more buttons for additional menu items -->
+        </StackPanel>
+
+        <!-- Main Content Area -->
+        <Grid Margin="200,0,0,0">
+            <TextBlock Text="Welcome to CoinControl" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
+            <!-- Content of the main dashboard goes here -->
+            <!-- You can use Grid or other layout panels to arrange your content -->
+        </Grid>
+    </Grid>
+</Window>

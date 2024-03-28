@@ -37,6 +37,9 @@ namespace CoinControl
             if (ValidateUser(username, password))
             {
                 MessageBox.Show("Login successful!");
+                MainDashboard mainDashboard = new MainDashboard();
+                mainDashboard.Show();
+                this.Close();
             }
             else
             {
