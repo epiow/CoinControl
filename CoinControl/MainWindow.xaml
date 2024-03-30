@@ -18,7 +18,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <PasswordBox x:Name="txtPassword" Grid.Row="3" Margin="436,246,118,-58" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <PasswordBox x:Name="txtPassword" Grid.Row="3" Margin="436,246,118,-58" Height="34" VerticalContentAlignment="Center" PasswordChanged="PassChanged" Padding="2,0,0,0"/>
 
         <Button Content="Login" Click="btnLogin_Click" Grid.Row="3" Margin="390,315,255,-125" RenderTransformOrigin="0.5,0.5" Height="31.96">
             <Button.RenderTransform>
@@ -41,6 +41,8 @@
             </Button.RenderTransform>
         </Button>
         <Label Content="WELCOME" Margin="372,49,0,0" Grid.Row="3" Width="412" FontFamily="MV Boli" FontSize="72" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtUsername" Grid.Row="3" Margin="436,199,118,5" Height="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtUsername" Grid.Row="3" Margin="436,199,118,5" Height="34" VerticalContentAlignment="Center" TextChanged="txtUsername_TextChanged" Padding="2,0,0,0"/>
+        <Label x:Name="txtUser" Content="Enter Username" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,203,118,9" Grid.Row="3"/>
+        <Label x:Name="txtPass" Content="Enter Password" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,258,127,-46" Grid.Row="3"/>
     </Grid>
 </Window>

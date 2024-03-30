@@ -115,5 +115,27 @@ namespace CoinControl
                 }
             }
         }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtUsername.Text != ""){
+                txtUser.Visibility = Visibility.Hidden;
+            }
+            else{
+                txtUser.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PassChanged(object sender, RoutedEventArgs e)
+        {
+            if (txtPassword.Password.Length > 0)
+            {
+                txtPass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPass.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
