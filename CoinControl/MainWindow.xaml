@@ -8,9 +8,9 @@
         Title="Login" Height="450" Width="800">
 
     <Grid Height="434">
-        <!--  <Grid.Background>
-            <ImageBrush ImageSource="images/mainbg.png"/> 
-        </Grid.Background>-->
+        <Grid.Background>
+            <ImageBrush ImageSource="/img/mainbg.png"/>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -18,14 +18,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <PasswordBox x:Name="txtPassword" Grid.Row="3" Margin="438,217,105,-47" Height="41.96" Padding="11,0,0,0" VerticalContentAlignment="Center" PasswordChanged="PassChanged"/>
 
-        <TextBlock Text="Username" Grid.Row="3" Margin="506,92,214,107"/>
-        <TextBox x:Name="txtUsername" Grid.Row="3" Margin="506,113,94,0" Height="18" VerticalAlignment="Top"/>
-
-        <TextBlock Text="Password" Grid.Row="3" Margin="506,157,205,41"/>
-        <PasswordBox x:Name="txtPassword" Grid.Row="3" Margin="506,178,94,24"/>
-
-        <Button Content="Login" Click="btnLogin_Click" Grid.Row="3" Margin="528,223,117,-33" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Sign In" Click="btnLogin_Click" Grid.Row="3" Margin="373,304,250,-123" RenderTransformOrigin="0.5,0.5" Height="35" Width="175">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -35,7 +30,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button Content="Create an Account" Click="createAcc_Click" Margin="527,271,118,-83" Grid.Row="3">
+        <Button Content="Sign Up" Click="createAcc_Click" Margin="565,301,60,-124" Grid.Row="3" Height="35">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -45,6 +40,9 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Content="CoinControl" HorizontalAlignment="Left" Margin="458,35,0,68" Grid.Row="3" Width="332" FontFamily="MV Boli"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" Margin="400,39,0,0" Grid.Row="3" Width="364" FontFamily="Nirmala UI" FontSize="72" VerticalAlignment="Top" FontStretch="UltraCondensed" FontWeight="UltraBlack"/>
+        <TextBox x:Name="txtUsername" Grid.Row="3" Margin="438,148,105,22" Height="42" TextChanged="txtUsername_TextChanged" VerticalContentAlignment="Center" Padding="11,0,0,0"/>
+        <Label x:Name="txtUser" Content="Enter Username" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="447,156,-447,30" Grid.Row="3"/>
+        <Label x:Name="txtPass" Content="Enter Password" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="447,225,-447,-39" Grid.Row="3"/>
     </Grid>
 </Window>

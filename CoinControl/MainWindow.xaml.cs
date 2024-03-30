@@ -95,6 +95,7 @@ namespace CoinControl
 
         private bool ValidateUser(string username, string password)
         {
+
             using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
@@ -115,5 +116,38 @@ namespace CoinControl
                 }
             }
         }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtUsername.Text != ""){
+                txtUser.Visibility = Visibility.Hidden;
+            }
+            else{
+                txtUser.Visibility = Visibility.Visible;
+            }
+        }
+
+        void PassChanged(Object sender, RoutedEventArgs args)
+        {
+            if (txtPassword.Password.Length > 0)
+            {
+                txtPass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPass.Visibility = Visibility.Visible;
+            }
+        }
+        /*private void txtPassword_PasswordChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtPassword.Password.Length > 0)
+            {
+                txtPass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPass.Visibility = Visibility.Visible;
+            }
+        }*/
     }
 }
