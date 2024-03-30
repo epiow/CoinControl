@@ -29,19 +29,22 @@
                     <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Logout" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
             <!-- Add more buttons for additional menu items -->
         </StackPanel>
-
+            
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <Grid Margin="200,0,0,0">
                 <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
 
                 <!-- DataGrid to display expenses -->
-                <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="-177,52,20,20"
-          FontSize="14" FontWeight="Normal"
-          RowHeaderWidth="0" AlternatingRowBackground="#F2F2F2"
-          HorizontalGridLinesBrush="#EAEAEA" VerticalGridLinesBrush="#EAEAEA"/>
+                <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="-177,52,20,20"/>
 
             </Grid>
 

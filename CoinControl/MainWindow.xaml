@@ -10,7 +10,7 @@
     <Grid Height="434">
        <!-- <Grid.Background>
             <ImageBrush ImageSource="images\mainbg.png"/> 
-        </Grid.Background> -->
+        </Grid.Background> --> 
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

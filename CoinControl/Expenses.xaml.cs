@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,15 +13,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CoinControl;
 
 namespace CoinControl
 {
     public partial class Expenses : Window
     {
+        private readonly ExpenseContext _context = new ExpenseContext();
         public Expenses()
         {
             InitializeComponent();
-            Loaded += Expenses_Loaded; // Attach the Loaded event handler
+            LoadExpenses();
+        }
+
+        private void LoadExpenses()
+        {
+            var expenses = _context.Expense.ToList();
+            expensesDataGrid.ItemsSource = expenses;
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -32,8 +41,7 @@ namespace CoinControl
 
         private void NavigateToExpenses(object sender, RoutedEventArgs e)
         {
-            // No need to create another instance of Expenses
-            // Since we are already in the Expenses window
+            // No action needed here since the user is already on the Expenses page
         }
 
         private void NavigateToSavings(object sender, RoutedEventArgs e)
@@ -50,49 +58,13 @@ namespace CoinControl
             Close();
         }
 
-        // Event handler for the window Loaded event
-        private void Expenses_Loaded(object sender, RoutedEventArgs e)
+        private void LogoutButton(object sender, RoutedEventArgs e)
         {
-            // Call the ShowUserExpenses method with the user's ID
-            ShowUserExpenses(3); // Replace 1 with the actual user ID
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
 
-        // Define the ShowUserExpenses method
-        private void ShowUserExpenses(int userId)
-        {
-            string connectionString = "Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True";
-            string query = "SELECT * FROM Expense WHERE [User_ID] = @User_ID";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@User_ID", userId);
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    expensesDataGrid.Items.Clear();
-
-                    while (reader.Read())
-                    {
-                        //retrieve expense details
-                        long expenseId = reader.GetInt64(reader.GetOrdinal("Payment_ID"));
-                        string description = reader.GetString(reader.GetOrdinal("Note"));
-                        decimal amount = reader.GetDecimal(reader.GetOrdinal("Amount"));
-
-                        //add expense details to the data grid
-                        expensesDataGrid.Items.Add(new { ExpenseId = expenseId, Description = description, Amount = amount });
-                    }
-
-
-                    reader.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error fetching expenses: " + ex.Message);
-                }
-            }
-        }
     }
 }
