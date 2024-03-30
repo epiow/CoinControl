@@ -10,7 +10,7 @@ namespace CoinControl
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //change nalang here yung data source based sa server na ginagamit nyo locally
-            optionsBuilder.UseSqlServer("Data Source=epiow\\sqlexpress01;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True");
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
