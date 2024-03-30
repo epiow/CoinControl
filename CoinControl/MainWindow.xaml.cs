@@ -34,9 +34,12 @@ namespace CoinControl
                 return;
             }
 
-            if (ValidateUser(username, password))
+            User authenticatedUser = ValidateUser(username, password);
+
+            if (authenticatedUser != null)
             {
                 MessageBox.Show("Login successful!");
+                AuthenticationManager.LoggedInUserId =(int)authenticatedUser.User_ID;
                 MainDashboard mainDashboard = new MainDashboard();
                 mainDashboard.Show();
                 this.Close();
@@ -92,26 +95,36 @@ namespace CoinControl
             }
         }
 
-
-        private bool ValidateUser(string username, string password)
+        private User ValidateUser(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
                     connection.Open();
-                    string query = "SELECT COUNT(1) FROM [User] WHERE Name=@Name AND Password=@Password";
+                    string query = "SELECT User_ID, COUNT(1) FROM [User] WHERE Name=@Name AND Password=@Password GROUP BY User_ID";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Name", username);
                     command.Parameters.AddWithValue("@Password", password);
-                    int count = Convert.ToInt32(command.ExecuteScalar());
 
-                    return count == 1;
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        long userId = reader.GetInt64(0);
+                        int count = reader.GetInt32(1);
+
+                        if (count == 1)
+                        {
+                            return new User { User_ID = userId };
+                        }
+                    }
+
+                    return null;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
-                    return false;
+                    return null;
                 }
             }
         }
