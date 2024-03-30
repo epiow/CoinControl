@@ -74,7 +74,7 @@ namespace CoinControl
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -97,7 +97,7 @@ namespace CoinControl
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -126,6 +126,28 @@ namespace CoinControl
                     MessageBox.Show("Error: " + ex.Message);
                     return null;
                 }
+            }
+        }
+
+        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtUsername.Text != ""){
+                txtUser.Visibility = Visibility.Hidden;
+            }
+            else{
+                txtUser.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void PassChanged(object sender, RoutedEventArgs e)
+        {
+            if (txtPassword.Password.Length > 0)
+            {
+                txtPass.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                txtPass.Visibility = Visibility.Visible;
             }
         }
     }
