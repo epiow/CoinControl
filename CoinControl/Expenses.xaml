@@ -34,7 +34,17 @@
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
+            <Grid Margin="200,0,0,0">
+                <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
+
+                <!-- DataGrid to display expenses -->
+                <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="-177,52,20,20"
+          FontSize="14" FontWeight="Normal"
+          RowHeaderWidth="0" AlternatingRowBackground="#F2F2F2"
+          HorizontalGridLinesBrush="#EAEAEA" VerticalGridLinesBrush="#EAEAEA"/>
+
+            </Grid>
+
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>
