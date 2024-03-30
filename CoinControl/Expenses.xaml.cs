@@ -28,7 +28,8 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
-            var expenses = _context.Expense.ToList();
+            int loggedInUserId = AuthenticationManager.LoggedInUserId;
+            var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
         }
 
