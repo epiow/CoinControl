@@ -34,7 +34,7 @@
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <TextBlock Text="SAVINGS" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
+            <TextBlock Text="Savings" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>

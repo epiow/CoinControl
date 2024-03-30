@@ -8,9 +8,9 @@
         Title="Login" Height="450" Width="800">
 
     <Grid Height="434">
-        <!--  <Grid.Background>
-            <ImageBrush ImageSource="images/mainbg.png"/> 
-        </Grid.Background>-->
+       <!-- <Grid.Background>
+            <ImageBrush ImageSource="images\mainbg.png"/> 
+        </Grid.Background> --> 
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
