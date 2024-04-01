@@ -14,12 +14,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CoinControl;
+using System.Printing;
 
 namespace CoinControl
 {
     public partial class Expenses : Window
     {
-        private readonly ExpenseContext _context = new ExpenseContext();
+        private readonly DatabaseContext _context = new DatabaseContext();
+        int loggedInUserId = AuthenticationManager.LoggedInUserId;
         public Expenses()
         {
             InitializeComponent();
@@ -28,7 +30,6 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
-            int loggedInUserId = AuthenticationManager.LoggedInUserId;
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
         }
@@ -66,6 +67,35 @@ namespace CoinControl
             Close();
         }
 
+        private void DeleteTran_Btn(object sender, RoutedEventArgs e)
+        {
+            ExpenseDB selectedExpense = expensesDataGrid.SelectedItem as ExpenseDB;
+            if (selectedExpense != null)
+            {
+                _context.Expense.Remove(selectedExpense);
+                try
+                {
+                    _context.SaveChanges();
+
+                    // Refresh the DataGrid after the deletion
+                    LoadExpenses();
+
+                    MessageBox.Show("Expense deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting expense: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an expense to delete.");
+            }
+        }
+        private void AddTran_Btn(object sender, RoutedEventArgs e)
+        {
+
+        }
 
     }
 }

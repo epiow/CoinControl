@@ -46,9 +46,12 @@ namespace CoinControl
 
         private void NavigateToReports(object sender, RoutedEventArgs e)
         {
-            Reports reports = new Reports();
-            reports.Show();
-            this.Close();
+        }
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
     }
 }

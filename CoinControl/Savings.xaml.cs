@@ -39,9 +39,6 @@ namespace CoinControl
         private void NavigateToSavings(object sender, RoutedEventArgs e)
         {
 
-            Savings savings = new Savings();
-            savings.Show();
-            this.Close();
         }
 
         private void NavigateToReports(object sender, RoutedEventArgs e)
@@ -49,6 +46,12 @@ namespace CoinControl
             Reports reports = new Reports();
             reports.Show();
             this.Close();
+        }
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
     }
 }

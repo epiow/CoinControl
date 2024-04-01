@@ -49,6 +49,11 @@ namespace CoinControl
             this.Close();
         }
 
-
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
+        }
     }
 }
