@@ -12,10 +12,8 @@ namespace CoinControl
     }
     public class User
     {
-            public long User_ID { get; set; }
-            public string Name { get; set; }
-            public string Password { get; set; }
-     }
-
-  
+        public long User_ID { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+    }
 }
