@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Savings" Height="450" Width="800"
+        Title="Income" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
 <Grid>
         <!-- Side Navigation Menu -->
@@ -15,9 +15,9 @@
                     <TextBlock Text="Home" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Income" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
@@ -40,8 +40,8 @@
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Language="en-ph" Text="SAVINGS"/></TextBlock>
-            <DataGrid x:Name="savingsDataGrid" AutoGenerateColumns="True" Margin="22,52,20,20" SelectionChanged="savingsDataGrid_SelectionChanged"/>
+            <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
+
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>

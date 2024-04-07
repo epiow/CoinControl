@@ -17,7 +17,7 @@
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
@@ -25,9 +25,9 @@
                     <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Reports" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">

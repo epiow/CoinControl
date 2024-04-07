@@ -30,11 +30,11 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
-            /*
+
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
-            */
-            var expenses = _context.Expense
+            
+            /*var expenses = _context.Expense
             .Where(e => e.User_ID == loggedInUserId)
             .Select(e => new
             {
@@ -45,6 +45,7 @@ namespace CoinControl
             .ToList();
 
                     expensesDataGrid.ItemsSource = expenses;
+            */
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -109,6 +110,5 @@ namespace CoinControl
         private void AddTran_Btn(object sender, RoutedEventArgs e)
         {
         }
-
     }
 }
