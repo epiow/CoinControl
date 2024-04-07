@@ -29,21 +29,19 @@ namespace CoinControl
         }
 
         private void LoadExpenses()
-        {
-<<<<<<< HEAD
-            
+        {   
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
 
             /*
             var expenses = _context.Expense
-=======
+
 
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
             
-            /*var expenses = _context.Expense
->>>>>>> e0ba33ce8c8faa396cad91d6cbb08cc2bcb0701e
+            var expenses = _context.Expense
+
             .Where(e => e.User_ID == loggedInUserId)
             .Select(e => new
             {
@@ -52,15 +50,8 @@ namespace CoinControl
                 Amount = e.Amount
             })
             .ToList();
-<<<<<<< HEAD
-           
-            expensesDataGrid.ItemsSource = expenses;
-             */
-=======
-
-                    expensesDataGrid.ItemsSource = expenses;
             */
->>>>>>> e0ba33ce8c8faa396cad91d6cbb08cc2bcb0701e
+
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -126,13 +117,5 @@ namespace CoinControl
             }
         }
 
-<<<<<<< HEAD
-
-
-=======
-        private void AddTran_Btn(object sender, RoutedEventArgs e)
-        {
-        }
->>>>>>> e0ba33ce8c8faa396cad91d6cbb08cc2bcb0701e
     }
 }

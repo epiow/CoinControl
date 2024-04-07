@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Income" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
-<Grid>
+    <Grid>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
@@ -40,13 +40,8 @@
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-<<<<<<< HEAD
-            <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Language="en-ph" Text="SAVINGS"/></TextBlock>
-            <DataGrid x:Name="savingsDataGrid" AutoGenerateColumns="True" Margin="22,52,20,20"/>
-=======
             <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
 
->>>>>>> e0ba33ce8c8faa396cad91d6cbb08cc2bcb0701e
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>
