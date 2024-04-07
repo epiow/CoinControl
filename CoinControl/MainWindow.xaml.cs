@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace CoinControl
             if (authenticatedUser != null)
             {
                 MessageBox.Show("Login successful!");
-                AuthenticationManager.LoggedInUserId =(int)authenticatedUser.User_ID;
+                AuthenticationManager.LoggedInUserId = (int)authenticatedUser.User_ID;
                 MainDashboard mainDashboard = new MainDashboard();
                 mainDashboard.Show();
                 this.Close();
@@ -74,7 +74,7 @@ namespace CoinControl
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -97,7 +97,7 @@ namespace CoinControl
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -131,10 +131,12 @@ namespace CoinControl
 
         private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtUsername.Text != ""){
+            if (txtUsername.Text != "")
+            {
                 txtUser.Visibility = Visibility.Hidden;
             }
-            else{
+            else
+            {
                 txtUser.Visibility = Visibility.Visible;
             }
         }
