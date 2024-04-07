@@ -42,7 +42,7 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <Grid Margin="200,0,0,0">
-                <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
+                <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="-177,20,20,20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
                 <!-- DataGrid to display expenses -->
                 <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="-177,52,20,20"/>
