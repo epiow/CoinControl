@@ -6,14 +6,14 @@
     <Grid>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Home" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Home" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">

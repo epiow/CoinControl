@@ -19,6 +19,8 @@ namespace CoinControl
     /// </summary>
     public partial class Savings : Window
     {
+        private readonly DatabaseContext _context = new DatabaseContext();
+        int loggedInUserId = AuthenticationManager.LoggedInUserId;
         public Savings()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace CoinControl
         }
         private void NavigateToSavings(object sender, RoutedEventArgs e)
         {
-
+            //lmao
         }
 
         private void NavigateToReports(object sender, RoutedEventArgs e)

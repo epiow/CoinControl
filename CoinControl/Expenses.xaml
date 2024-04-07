@@ -17,12 +17,12 @@
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Expenses" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
@@ -38,16 +38,14 @@
 
             <!-- Add more buttons for additional menu items -->
         </StackPanel>
-            
+
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <Grid Margin="200,0,0,0">
-                <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="-177,20,20,20" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
 
-                <!-- DataGrid to display expenses -->
-                <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="-177,52,20,86"/>
+            <!-- DataGrid to display expenses -->
+            <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="20,52,20,86"/>
 
-            </Grid>
             <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
                 <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
             </Button>
