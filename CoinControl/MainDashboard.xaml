@@ -26,6 +26,11 @@
                     <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Logout" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
             <!-- Add more buttons for additional menu items -->
         </StackPanel>
 

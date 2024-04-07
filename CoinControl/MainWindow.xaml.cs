@@ -22,7 +22,6 @@ namespace CoinControl
         {
             InitializeComponent();
         }
-        private string ConnectionString = "Data Source=EPIOW\\SQLEXPRESS01;Initial Catalog=CoinControl;Integrated Security=True";
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +39,7 @@ namespace CoinControl
             if (authenticatedUser != null)
             {
                 MessageBox.Show("Login successful!");
-                AuthenticationManager.LoggedInUserId =(int)authenticatedUser.User_ID;
+                AuthenticationManager.LoggedInUserId = (int)authenticatedUser.User_ID;
                 MainDashboard mainDashboard = new MainDashboard();
                 mainDashboard.Show();
                 this.Close();
@@ -75,7 +74,7 @@ namespace CoinControl
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -98,7 +97,7 @@ namespace CoinControl
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -132,10 +131,12 @@ namespace CoinControl
 
         private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtUsername.Text != ""){
+            if (txtUsername.Text != "")
+            {
                 txtUser.Visibility = Visibility.Hidden;
             }
-            else{
+            else
+            {
                 txtUser.Visibility = Visibility.Visible;
             }
         }

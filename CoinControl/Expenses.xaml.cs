@@ -30,8 +30,21 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
+            /*
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
+            */
+            var expenses = _context.Expense
+            .Where(e => e.User_ID == loggedInUserId)
+            .Select(e => new
+            {
+                Date = e.Trans_Datetime,
+                Description = e.Note,
+                Amount = e.Amount
+            })
+            .ToList();
+
+                    expensesDataGrid.ItemsSource = expenses;
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -92,9 +105,9 @@ namespace CoinControl
                 MessageBox.Show("Please select an expense to delete.");
             }
         }
+
         private void AddTran_Btn(object sender, RoutedEventArgs e)
         {
-
         }
 
     }
