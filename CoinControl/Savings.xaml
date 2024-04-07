@@ -41,7 +41,7 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Language="en-ph" Text="SAVINGS"/></TextBlock>
-            <DataGrid x:Name="savingsDataGrid" AutoGenerateColumns="True" Margin="22,52,20,20" SelectionChanged="savingsDataGrid_SelectionChanged"/>
+            <DataGrid x:Name="savingsDataGrid" AutoGenerateColumns="True" Margin="22,52,20,20"/>
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>

@@ -30,10 +30,11 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
-            /*
+            
             var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
             expensesDataGrid.ItemsSource = expenses;
-            */
+
+            /*
             var expenses = _context.Expense
             .Where(e => e.User_ID == loggedInUserId)
             .Select(e => new
@@ -43,8 +44,9 @@ namespace CoinControl
                 Amount = e.Amount
             })
             .ToList();
-
-                    expensesDataGrid.ItemsSource = expenses;
+           
+            expensesDataGrid.ItemsSource = expenses;
+             */
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -79,6 +81,12 @@ namespace CoinControl
             loginWindow.Show();
             Close();
         }
+        private void AddTran_Btn(object sender, RoutedEventArgs e)
+        {
+            AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
+            addExpenseWindow.Show();
+            Close();
+        }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
         {
@@ -89,8 +97,6 @@ namespace CoinControl
                 try
                 {
                     _context.SaveChanges();
-
-                    // Refresh the DataGrid after the deletion
                     LoadExpenses();
 
                     MessageBox.Show("Expense deleted successfully.");
@@ -106,9 +112,7 @@ namespace CoinControl
             }
         }
 
-        private void AddTran_Btn(object sender, RoutedEventArgs e)
-        {
-        }
+
 
     }
 }
