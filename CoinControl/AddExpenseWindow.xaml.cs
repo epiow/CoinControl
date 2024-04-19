@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace CoinControl
     /// <summary>
     /// Interaction logic for AddExpenseWindow.xaml
     /// </summary>
+    /// 
+
     public partial class AddExpenseWindow : Window
     {
         public AddExpenseWindow()
@@ -31,7 +34,10 @@ namespace CoinControl
             decimal amount = decimal.Parse(AmountTextBox.Text);
             DateTime transactionDate = DateTime.Now;
             string note = NoteBox.Text;
-            string categoryName = CategoryBox.Text;
+
+            ComboBoxItem typeItem = (ComboBoxItem)selectedCategory.SelectedItem;
+            string categoryName = typeItem.Content.ToString();
+            //string categoryName = CategoryBox.Text;
             string paymentMethod = PaymentMethodBox.Text;
 
             // Create an instance of DatabaseContext
@@ -42,7 +48,7 @@ namespace CoinControl
                     .FirstOrDefault(c => c.CategoryName == categoryName && c.User_ID == AuthenticationManager.LoggedInUserId);
 
                 long categoryId;
-
+                
                 if (existingCategory == null)
                 {
                     // Insert a new category
@@ -50,6 +56,7 @@ namespace CoinControl
                     {
                         User_ID = AuthenticationManager.LoggedInUserId,
                         CategoryName = categoryName
+                        //Category_ID = categoryId
                     };
                     dbContext.Categories.Add(newCategory);
                     dbContext.SaveChanges();
