@@ -39,5 +39,9 @@
         <Button Click="Confirm_Btn" Background="Green" Margin="552,93,104,-80" Grid.Row="10">
             <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
         </Button>
+        <ComboBox Margin="116,84,354,-62" Grid.Row="10" Name="selectedCategory">
+            <ComboBoxItem Content="Yo"></ComboBoxItem>
+            <ComboBoxItem Content="Hello"></ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>
