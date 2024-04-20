@@ -30,7 +30,6 @@ namespace CoinControl
         private void Confirm_Btn(object sender, RoutedEventArgs e)
         {
             // Get the values from the input fields
-            string description = DescriptionTextBox.Text;
             decimal amount = decimal.Parse(AmountTextBox.Text);
             DateTime transactionDate = DateTime.Now;
             string note = NoteBox.Text;
@@ -58,12 +57,15 @@ namespace CoinControl
                 dbContext.Expense.Add(expense);
 
                 dbContext.SaveChanges();
-                Expenses expenses = new Expenses();
-                expenses.Show();
                 this.Close();
             }
 
-            DescriptionTextBox.Clear();
+            if (Application.Current.Windows.OfType<Expenses>().Any())
+            {
+                Expenses expensesWindow = Application.Current.Windows.OfType<Expenses>().FirstOrDefault();
+                expensesWindow?.LoadExpenses(); 
+            }
+
             AmountTextBox.Clear();
             NoteBox.Clear();
         }

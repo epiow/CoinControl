@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="AddIncomeWindow" Height="450" Width="800">
+        Title="AddIncomeWindow" Height="443" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10" Height="39.04">
+            <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+        </Button>
     </Grid>
 </Window>

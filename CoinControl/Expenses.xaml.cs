@@ -28,7 +28,7 @@ namespace CoinControl
             LoadExpenses();
         }
 
-        private void LoadExpenses()
+        public void LoadExpenses()
         {
             var expensesData = _context.Expense
                 .Where(e => e.User_ID == loggedInUserId)
@@ -73,7 +73,6 @@ namespace CoinControl
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
-            Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
