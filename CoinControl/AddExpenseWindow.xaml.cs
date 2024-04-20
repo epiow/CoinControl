@@ -35,68 +35,37 @@ namespace CoinControl
             DateTime transactionDate = DateTime.Now;
             string note = NoteBox.Text;
 
-            ComboBoxItem typeItem = (ComboBoxItem)selectedCategory.SelectedItem;
-            string categoryName = typeItem.Content.ToString();
-            //string categoryName = CategoryBox.Text;
-            string paymentMethod = PaymentMethodBox.Text;
+            ComboBoxItem CategorySelection= (ComboBoxItem)selectedCategory.SelectedItem;
+            string categoryName = CategorySelection.Content.ToString();
+
+            ComboBoxItem PaymentSelection = (ComboBoxItem)selectedPayment.SelectedItem;
+            string paymentMethod = PaymentSelection.Content.ToString();
 
             // Create an instance of DatabaseContext
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                // Check if the category exists
-                CategoriesDB existingCategory = dbContext.Categories
-                    .FirstOrDefault(c => c.CategoryName == categoryName && c.User_ID == AuthenticationManager.LoggedInUserId);
-
-                long categoryId;
                 
-                if (existingCategory == null)
-                {
-                    // Insert a new category
-                    CategoriesDB newCategory = new CategoriesDB
-                    {
-                        User_ID = AuthenticationManager.LoggedInUserId,
-                        CategoryName = categoryName
-                        //Category_ID = categoryId
-                    };
-                    dbContext.Categories.Add(newCategory);
-                    dbContext.SaveChanges();
-
-                    // Use the newly inserted Category_ID
-                    categoryId = newCategory.Category_ID;
-                }
-                else
-                {
-                    // Use the existing Category_ID
-                    categoryId = existingCategory.Category_ID;
-                }
-
-                // Create a new ExpenseDB instance
                 ExpenseDB expense = new ExpenseDB
                 {
                     User_ID = AuthenticationManager.LoggedInUserId,
-                    Category_ID = categoryId,
+                    Category_Name = categoryName,
                     Amount = amount,
                     Note = note,
                     Payment_Method = paymentMethod,
                     Trans_Datetime = transactionDate
                 };
 
-                // Add the expense to the context
                 dbContext.Expense.Add(expense);
 
-                // Save the changes to the database
                 dbContext.SaveChanges();
                 Expenses expenses = new Expenses();
                 expenses.Show();
                 this.Close();
             }
 
-            // Clear the input fields or perform any other necessary actions
             DescriptionTextBox.Clear();
             AmountTextBox.Clear();
             NoteBox.Clear();
-            CategoryBox.Clear();
-            PaymentMethodBox.Clear();
         }
 
         /*

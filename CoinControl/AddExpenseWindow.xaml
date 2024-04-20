@@ -31,17 +31,28 @@
         <TextBox x:Name="NoteBox" Grid.Row="7" Margin="0,0,0,10" />
 
         <Label Grid.Row="8" Content="Category:" />
-        <TextBox x:Name="CategoryBox" Grid.Row="9" Margin="0,0,0,10" />
 
-        <Label Grid.Row="10" Content="Payment Method:" />
-        <TextBox x:Name="PaymentMethodBox" Grid.Row="10" Margin="0,30,0,0" />
+        <Label Grid.Row="10" Content="Payment Method:" Margin="0,47,0,-23" />
 
         <Button Click="Confirm_Btn" Background="Green" Margin="552,93,104,-80" Grid.Row="10">
             <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
         </Button>
-        <ComboBox Margin="116,84,354,-62" Grid.Row="10" Name="selectedCategory">
-            <ComboBoxItem Content="Yo"></ComboBoxItem>
-            <ComboBoxItem Content="Hello"></ComboBoxItem>
+        <ComboBox Margin="10,19,460,19" Grid.Row="10" Name="selectedCategory">
+            <ComboBoxItem Content="Utilities"></ComboBoxItem>
+            <ComboBoxItem Content="Transportation"></ComboBoxItem>
+            <ComboBoxItem Content="Food"></ComboBoxItem>
+            <ComboBoxItem Content="Rent"></ComboBoxItem>
+            <ComboBoxItem Content="Shopping"></ComboBoxItem>
+            <ComboBoxItem Content="Entertainment"></ComboBoxItem>
+            <ComboBoxItem Content="Health"></ComboBoxItem>
+            <ComboBoxItem Content="Miscalleanous"></ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox Margin="10,83,460,-45" Grid.Row="10" x:Name="selectedPayment" RenderTransformOrigin="0.5,0.5">
+            <ComboBoxItem Content="Cash"/>
+            <ComboBoxItem Content="Credit Card"/>
+            <ComboBoxItem Content="Debit Card"/>
+            <ComboBoxItem Content="E-Wallet"/>
         </ComboBox>
     </Grid>
 </Window>

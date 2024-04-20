@@ -13,7 +13,7 @@ namespace CoinControl
         public DbSet<ExpenseDB> Expense { get; set; }
         public DbSet<IncomeDB> Income { get; set; }
         public DbSet<UserDB> User { get; set; }
-        public DbSet<CategoriesDB> Categories { get; set; }
+        //public DbSet<CategoriesDB> Categories { get; set; }
         public DbSet<BudgetingDB> Budgeting { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,8 +29,10 @@ namespace CoinControl
             .HasKey(e => e.Income_ID);
             modelBuilder.Entity<UserDB>()
             .HasKey(e => e.User_ID);
+            /*
             modelBuilder.Entity<CategoriesDB>()
             .HasKey(e => e.Category_ID);
+            */
             modelBuilder.Entity<BudgetingDB>()
             .HasKey(e => e.Budget_ID);
         }
@@ -40,7 +42,7 @@ namespace CoinControl
     {
         public long Payment_ID { get; set; }
         public long User_ID { get; set; }
-        public long Category_ID { get; set; }
+        public string Category_Name { get; set; }
         public decimal Amount { get; set; }
         public string Note { get; set; }
         public string Payment_Method { get; set; }
@@ -63,17 +65,18 @@ namespace CoinControl
         public string Email { get; set; }
         public string Password { get; set; }
     }
+    /*
     public class CategoriesDB
     {
         public long Category_ID { get; set; }
         public long User_ID { get; set; }
         public string CategoryName { get; set; }
-    }
+    }*/
     public class BudgetingDB
     {
         public long Budget_ID { get; set; }
         public long User_ID { get; set; }
-        public long Category_ID { get; set; }
+        public string Category_Name { get; set; }
         public decimal Amount { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }

@@ -24,7 +24,18 @@ namespace CoinControl
         public Savings()
         {
             InitializeComponent();
+            LoadIncome();
         }
+
+        private void LoadIncome()
+        {
+            var incomeData = _context.Income
+                .Where(e => e.User_ID == loggedInUserId)
+                .ToList();
+
+            incomeDataGrid.ItemsSource = incomeData;
+        }
+
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();
@@ -54,6 +65,35 @@ namespace CoinControl
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
+        }
+        private void AddTran_Btn(object sender, RoutedEventArgs e)
+        {
+            AddIncomeWindow addIncomeWindow = new AddIncomeWindow();
+            addIncomeWindow.Show();
+            Close();
+        }
+
+        private void DeleteTran_Btn(object sender, RoutedEventArgs e)
+        {
+            IncomeDB selectedIncome = incomeDataGrid.SelectedItem as IncomeDB;
+            if (selectedIncome != null)
+            {
+                _context.Income.Remove(selectedIncome);
+                try
+                {
+                    _context.SaveChanges();
+                    LoadIncome();
+                    MessageBox.Show("Expense deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting expense: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an expense to delete.");
+            }
         }
     }
 }

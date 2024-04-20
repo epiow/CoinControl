@@ -30,70 +30,11 @@ namespace CoinControl
 
         private void LoadExpenses()
         {
-            //var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
-
-            /*var displayExpenses = expenses.Select(e => new {
-                e.Amount,
-                e.Note,
-                e.Payment_Method,
-                e.Trans_Datetime
-            }).ToList();
-
-            expensesDataGrid.ItemsSource = displayExpenses;
-            */
-
-            var expensesWithCategoryNames = _context.Expense
+            var expensesData = _context.Expense
                 .Where(e => e.User_ID == loggedInUserId)
-                .Select(e => new {
-                    CategoryName = _context.Categories
-                        .Where(c => c.Category_ID == e.Category_ID)
-                        .Select(c => c.CategoryName)
-                        .FirstOrDefault(),
-                    e.Amount,
-                    e.Note,
-                    e.Payment_Method,
-                    e.Trans_Datetime
-                    })
                 .ToList();
-
-            
-            expensesDataGrid.AutoGeneratingColumn += (sender, e) =>
-            {
-                if (e.PropertyName == "CategoryName")
-                    e.Column.Header = "Expenditures";
-                else if (e.PropertyName == "Amount")
-                    e.Column.Header = "Expense Amount";
-                else if (e.PropertyName == "Note")
-                    e.Column.Header = "Note";
-                else if (e.PropertyName == "Payment_Method")
-                    e.Column.Header = "Payment Method";
-                else if (e.PropertyName == "Trans_Datetime")
-                    e.Column.Header = "Transaction Date & Time";
-            };
-            
-
-            expensesDataGrid.ItemsSource = expensesWithCategoryNames;
-            
-
-            /*
-            var expenses = _context.Expense
-
-
-            var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
-            expensesDataGrid.ItemsSource = expenses;
-            
-            var expenses = _context.Expense
-
-            .Where(e => e.User_ID == loggedInUserId)
-            .Select(e => new
-            {
-                Date = e.Trans_Datetime,
-                Description = e.Note,
-                Amount = e.Amount
-            })
-            .ToList();
-            */
-
+           
+            expenseDataGrid.ItemsSource = expensesData;
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -137,7 +78,7 @@ namespace CoinControl
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
         {
-            ExpenseDB selectedExpense = expensesDataGrid.SelectedItem as ExpenseDB;
+            ExpenseDB selectedExpense = expenseDataGrid.SelectedItem as ExpenseDB;
             if (selectedExpense != null)
             {
                 _context.Expense.Remove(selectedExpense);
@@ -145,7 +86,6 @@ namespace CoinControl
                 {
                     _context.SaveChanges();
                     LoadExpenses();
-
                     MessageBox.Show("Expense deleted successfully.");
                 }
                 catch (Exception ex)

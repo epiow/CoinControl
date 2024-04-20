@@ -44,7 +44,15 @@
             <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
 
             <!-- DataGrid to display expenses -->
-            <DataGrid x:Name="expensesDataGrid" AutoGenerateColumns="True" Margin="20,52,20,86"/>
+            <DataGrid x:Name="expenseDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Expenditures" Binding="{Binding Category_Name}" />
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" />
+                    <DataGridTextColumn Header="Payment Method" Binding="{Binding Payment_Method}" />
+                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
+                </DataGrid.Columns>
+            </DataGrid>
 
             <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
                 <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>

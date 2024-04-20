@@ -41,7 +41,21 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
+            <DataGrid x:Name="incomeDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Source of Income" Binding="{Binding Source}" />
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" />
+                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
+                </DataGrid.Columns>
+            </DataGrid>
 
+            <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
+                <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+            </Button>
+            <Button Click="AddTran_Btn" Background="Green" Margin="53,364,347,26">
+                <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+            </Button>
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>
