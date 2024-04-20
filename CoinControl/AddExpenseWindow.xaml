@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="AddExpenseWindow" Height="443" Width="400" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
-        <Label Content="Amount:" Margin="10,83,211,270" />
-        <TextBox x:Name="AmountTextBox" Margin="20,46,22,306" Height="32.04" />
-
         <Label Content="Description:" Margin="10,19,287,333" />
+        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" />
+
+        <Label Content="Amount:" Margin="10,83,211,270" />
+        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" />
 
         <Label Content="Category:" Margin="10,166,270,192" />
         <ComboBox Margin="20,197,22,159" Name="selectedCategory">
@@ -33,7 +34,6 @@
         <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10">
             <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
         </Button>
-        <TextBox x:Name="NoteBox" Margin="20,119,22,233" Height="32.04" />
         <Label Content="Payment Method:" Margin="10,240,247,116" />
     </Grid>
 </Window>

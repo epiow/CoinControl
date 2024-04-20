@@ -23,5 +23,44 @@ namespace CoinControl
         {
             InitializeComponent();
         }
+
+        private void Confirm_Btn(object sender, RoutedEventArgs e)
+        {
+            // Get the values from the input fields
+            decimal amount = decimal.Parse(AmountTextBox.Text);
+            DateTime transactionDate = DateTime.Now;
+            string note = NoteBox.Text;
+
+            ComboBoxItem IncomeSelection = (ComboBoxItem)selectedIncome.SelectedItem;
+            string incomeName = IncomeSelection.Content.ToString();
+
+            // Create an instance of DatabaseContext
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+
+                IncomeDB income = new IncomeDB
+                {
+                    User_ID = AuthenticationManager.LoggedInUserId,
+                    Source = incomeName,
+                    Amount = amount,
+                    Note = note,
+                    Trans_Datetime = transactionDate
+                };
+
+                dbContext.Income.Add(income);
+
+                dbContext.SaveChanges();
+                this.Close();
+            }
+
+            if (Application.Current.Windows.OfType<Savings>().Any())
+            {
+                Savings incomeWindow = Application.Current.Windows.OfType<Savings>().FirstOrDefault();
+                incomeWindow?.LoadIncome();
+            }
+
+            AmountTextBox.Clear();
+            NoteBox.Clear();
+        }
     }
 }

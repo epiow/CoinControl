@@ -45,7 +45,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Source of Income" Binding="{Binding Source}" />
                     <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
-                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" />
+                    <DataGridTextColumn Header="Description" Binding="{Binding Note}" />
                     <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
                 </DataGrid.Columns>
             </DataGrid>

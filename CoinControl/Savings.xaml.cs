@@ -27,7 +27,7 @@ namespace CoinControl
             LoadIncome();
         }
 
-        private void LoadIncome()
+        public void LoadIncome()
         {
             var incomeData = _context.Income
                 .Where(e => e.User_ID == loggedInUserId)
@@ -70,7 +70,6 @@ namespace CoinControl
         {
             AddIncomeWindow addIncomeWindow = new AddIncomeWindow();
             addIncomeWindow.Show();
-            Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)

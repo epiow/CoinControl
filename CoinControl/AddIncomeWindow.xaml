@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="AddIncomeWindow" Height="443" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Label Content="Description:" Margin="10,19,287,333" Height="32.04" />
+        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" />
+
+        <Label Content="Amount:" Margin="10,83,211,270" Height="32.04" />
+        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" />
+
+        <Label Content="Source:" Margin="10,166,270,192" Height="26.04" />
+        <ComboBox Margin="20,197,22,159" Name="selectedIncome" Height="28.04">
+            <ComboBoxItem Content="Salary"></ComboBoxItem>
+            <ComboBoxItem Content="Freelancing"></ComboBoxItem>
+            <ComboBoxItem Content="Investments"></ComboBoxItem>
+            <ComboBoxItem Content="Gifts/Inhertiances"></ComboBoxItem>
+            <ComboBoxItem Content="Profit"></ComboBoxItem>
+        </ComboBox>
         <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10" Height="39.04">
             <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
         </Button>
