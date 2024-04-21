@@ -73,6 +73,8 @@ namespace CoinControl
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
+
+            Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
@@ -89,7 +91,7 @@ namespace CoinControl
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting expense: " + ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
             }
             else

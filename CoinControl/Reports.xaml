@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Reports" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Grid>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
@@ -41,8 +42,16 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <TextBlock Text="REPORTS" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
-            <!-- Content of the main dashboard goes here -->
-            <!-- You can use Grid or other layout panels to arrange your content -->
+
+            <!-- DataGrid to display expenses and income -->
+            <DataGrid x:Name="dataGridTransactions" AutoGenerateColumns="False" Margin="20,50,20,0" VerticalAlignment="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="100"/>
+                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="300"/>
+                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>
