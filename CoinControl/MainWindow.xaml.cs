@@ -74,7 +74,7 @@ namespace CoinControl
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
@@ -94,10 +94,18 @@ namespace CoinControl
                 }
             }
         }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Close(); // Close the window if the user clicks Yes
+            }
+        }
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {

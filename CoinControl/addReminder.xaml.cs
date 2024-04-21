@@ -50,7 +50,7 @@ namespace CoinControl
                 BudgetingDB budgeted = new BudgetingDB
                 {
                     User_ID = AuthenticationManager.LoggedInUserId,
-                    Category_Name = expenseCategory,
+                    // Category_Name = expenseCategory,
                     Amount = amount,
                     StartDate = transactionDate,
                     EndDate = due_Date
