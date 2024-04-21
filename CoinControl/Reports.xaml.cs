@@ -19,10 +19,48 @@ namespace CoinControl
     /// </summary>
     public partial class Reports : Window
     {
+        private DatabaseContext dbContext;
+        private long currentUserId = AuthenticationManager.LoggedInUserId;
+
         public Reports()
         {
             InitializeComponent();
+            dbContext = new DatabaseContext();
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            List<ExpenseDB> expenses = dbContext.Expense.Where(e => e.User_ID == currentUserId).ToList();
+            List<IncomeDB> income = dbContext.Income.Where(i => i.User_ID == currentUserId).ToList();
+
+            foreach (var expense in expenses)
+            {
+                transactions.Add(new Transaction
+                {
+                    Type = "Expense",
+                    Amount = expense.Amount,
+                    Note = expense.Note,
+                    Trans_Datetime = expense.Trans_Datetime
+                });
+            }
+
+            foreach (var inc in income)
+            {
+                transactions.Add(new Transaction
+                {
+                    Type = "Income",
+                    Amount = inc.Amount,
+                    Note = inc.Note,
+                    Trans_Datetime = inc.Trans_Datetime
+                });
+            }
+
+            dataGridTransactions.ItemsSource = transactions;
+        }
+
+
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();
@@ -54,4 +92,5 @@ namespace CoinControl
             Close();
         }
     }
+
 }

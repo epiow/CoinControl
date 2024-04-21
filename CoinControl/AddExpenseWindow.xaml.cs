@@ -47,7 +47,6 @@ namespace CoinControl
                 ExpenseDB expense = new ExpenseDB
                 {
                     User_ID = AuthenticationManager.LoggedInUserId,
-                    Category_Name = categoryName,
                     Amount = amount,
                     Note = note,
                     Payment_Method = paymentMethod,
