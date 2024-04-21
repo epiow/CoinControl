@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
+using System.Linq;
 
 namespace CoinControl
 {
@@ -87,4 +88,20 @@ namespace CoinControl
         public DateTime Trans_Datetime { get; set; }
     }
 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (var context = new DatabaseContext())
+            {
+                // Retrieve all records from the Income table
+                var allIncomes = context.Income.ToList();
+
+                // Calculate the overall amount
+                decimal overallAmount = allIncomes.Sum(income => income.Amount);
+
+                Console.WriteLine($"Overall amount from Income: {overallAmount}");
+            }
+        }
+    }
 }
