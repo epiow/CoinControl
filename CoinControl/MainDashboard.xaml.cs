@@ -22,33 +22,18 @@ namespace CoinControl
         public MainDashboard()
         {
             InitializeComponent();
-            LoadTotalIncome();
-            LoadTotalExpenses();
-            LoadProfit();
+            LoadInformation();
         }
 
-        public void LoadTotalExpenses()
-        {
-            var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
-
-            decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
-            expenseText.Text = totalExpenses.ToString("0.00");
-        }
-        public void LoadTotalIncome()
+        public void LoadInformation()
         {
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
-
             decimal totalIncome = allIncomes.Sum(income => income.Amount);
             incomeText.Text = totalIncome.ToString("0.00");
-        }
-
-        public void LoadProfit()
-        {
-            var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
-            decimal totalIncome = allIncomes.Sum(income => income.Amount);
 
             var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
             decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
+            expenseText.Text = totalExpenses.ToString("0.00");
 
             decimal profit = totalIncome - totalExpenses;
 
@@ -88,6 +73,12 @@ namespace CoinControl
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
+        }
+
+        private void addReminder(object sender, RoutedEventArgs e)
+        {
+            addReminder reminder = new addReminder();
+            reminder.Show();
         }
     }
 }
