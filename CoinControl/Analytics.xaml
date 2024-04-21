@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Expenses" Height="450" Width="800"
@@ -50,9 +51,20 @@
         </StackPanel>
 
         <!-- Main Content Area -->
+        <Grid Margin="200,0,0,0">
+            <!-- Content of the analytics dashboard goes here -->
+            <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="Right">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Categories" Labels="{Binding ChartLabels}"/>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Amount"/>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
+        </Grid>
 
 
-            <!-- Content of the main dashboard goes here -->
+        <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
     </Grid>
 </Window>

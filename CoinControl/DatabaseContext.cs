@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
+using System.Linq;
 
 namespace CoinControl
 {
@@ -43,6 +44,7 @@ namespace CoinControl
         public long Payment_ID { get; set; }
         public long User_ID { get; set; }
         public decimal Amount { get; set; }
+        // public string Category_Name { get; set; }
         public string Note { get; set; }
         public string Payment_Method { get; set; }
         public DateTime Trans_Datetime { get; set; }
@@ -75,9 +77,10 @@ namespace CoinControl
     {
         public long Budget_ID { get; set; }
         public long User_ID { get; set; }
+        // public string Category_Name { get; set; }
         public decimal Amount { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
     public class Transaction
     {
@@ -87,4 +90,20 @@ namespace CoinControl
         public DateTime Trans_Datetime { get; set; }
     }
 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            using (var context = new DatabaseContext())
+            {
+                // Retrieve all records from the Income table
+                var allIncomes = context.Income.ToList();
+
+                // Calculate the overall amount
+                decimal overallAmount = allIncomes.Sum(income => income.Amount);
+
+                Console.WriteLine($"Overall amount from Income: {overallAmount}");
+            }
+        }
+    }
 }

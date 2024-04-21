@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Expenses" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <!-- Side Navigation Menu -->
         <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -25,7 +26,7 @@
                     <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Background="White">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Background="White" Width="208">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Expenses" Foreground="Black" Margin="10,0"/>
                 </StackPanel>

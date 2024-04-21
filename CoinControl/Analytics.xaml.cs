@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,36 @@ namespace CoinControl
         public Analytics()
         {
             InitializeComponent();
+            DataContext = new AnalyticsViewModel();
+        }
+        public class AnalyticsViewModel
+        {
+            public List<string> ChartLabels { get; set; }
+            public List<ColumnSeries> ChartSeries { get; set; }
+
+            public AnalyticsViewModel()
+            {
+                using (var context = new DatabaseContext())
+                {
+                    // Retrieve data from the database
+                    var expensesByMonth = context.Expense
+                        .GroupBy(expense => expense.Trans_Datetime.Month)
+                        .Select(group => new { Month = group.Key, TotalAmount = group.Sum(expense => expense.Amount) })
+                        .OrderBy(item => item.Month)
+                        .ToList();
+
+                    // Populate chart data
+                    ChartLabels = expensesByMonth.Select(item => new DateTime(2024, item.Month, 1).ToString("MMMM")).ToList();
+                    ChartSeries = new List<ColumnSeries>
+                {
+                    new ColumnSeries
+                    {
+                        Title = "Total Expenses",
+                        Values = new ChartValues<double>(expensesByMonth.Select(item => (double)item.TotalAmount))
+                    }
+                };
+                }
+            }
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

@@ -97,7 +97,7 @@ namespace CoinControl
                 {
                     _context.SaveChanges();
                     LoadIncome();
-                    MessageBox.Show("Expense deleted successfully.");
+                    MessageBox.Show("Income deleted successfully.");
                 }
                 catch (Exception ex)
                 {
@@ -106,7 +106,7 @@ namespace CoinControl
             }
             else
             {
-                MessageBox.Show("Please select an expense to delete.");
+                MessageBox.Show("Please select an income to delete.");
             }
         }
     }

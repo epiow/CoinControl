@@ -88,6 +88,7 @@ namespace CoinControl
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
+
             this.Close();
         }
 

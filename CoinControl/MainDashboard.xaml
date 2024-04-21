@@ -1,31 +1,33 @@
-﻿<Window x:Class="CoinControl.MainDashboard"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="CoinControl.MainDashboard"
         Title="Main Dashboard" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Button Content="X" FontSize="10" Foreground="White" FontWeight="Bold" Click="CloseButton_Click" Background="Transparent" BorderThickness="0"/>
         </Border>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome" Background="White">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome" Background="White" Width="204">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Home" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Focusable="False">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Focusable="False">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Focusable="False">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
                 </StackPanel>
@@ -46,15 +48,59 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <TextBlock Text="Welcome to CoinControl" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <TextBlock HorizontalAlignment="Left" Margin="25,191,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22"><Run Language="en-ph" Text="Current Balance"/></TextBlock>
-            <Grid Margin="45,62,441,260" >
-                <Border Margin="0,0,0,0" Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+            <TextBlock HorizontalAlignment="Center" Margin="0,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="Total Income"/></TextBlock>
+            <Grid Margin="233,77,243,264" >
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
                     <Border.Effect>
                         <DropShadowEffect/>
                     </Border.Effect>
-                    <Rectangle Fill="White" Stroke="Black" Margin="37,89,118,98" />
+                </Border>
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-198,0,198,0" Width="124">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                </Border>
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="198,0,-198,0" Width="124">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
                 </Border>
             </Grid>
+            
+            <TextBlock x:Name="incomeText" HorizontalAlignment="Left" Margin="241,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" Margin="29,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Text="Total "/><Run Language="en-ph" Text="Expenses"/></TextBlock>
+            
+            <TextBlock x:Name="expenseText" HorizontalAlignment="Left" Margin="45,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,199,78,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808" Width="54"><Run Language="en-ph" Text="Profit"/></TextBlock>
+            
+            <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
+            
+            <Button Content="+" HorizontalAlignment="Left" Margin="150,257,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="100"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="20,297,31,10" CanUserAddRows="false">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Reminder" Binding="{Binding Category_Name}" />
+                    <DataGridTextColumn Header="Amount to Pay" Binding="{Binding Amount}" />
+                    <DataGridTextColumn Header="Time Set" Binding="{Binding StartDate}" />
+                    <DataGridTextColumn Header="Due Date" Binding="{Binding EndDate}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="removeReminder">Done</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>
