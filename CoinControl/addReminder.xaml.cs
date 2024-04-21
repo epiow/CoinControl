@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,42 @@ namespace CoinControl
         public addReminder()
         {
             InitializeComponent();
+        }
+
+        private void saveReminder(object sender, RoutedEventArgs e)
+        {
+
+            ComboBoxItem chosenCategory = (ComboBoxItem)selectedCategory.SelectedItem;
+            string expenseCategory = chosenCategory.Content.ToString();
+
+            decimal amount = decimal.Parse(AmountTextBox.Text);
+
+            DateTime transactionDate = DateTime.Now;
+            // Create an instance of DatabaseContext
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                BudgetingDB budgeted = new BudgetingDB
+                {
+                    User_ID = AuthenticationManager.LoggedInUserId,
+                    Category_Name = expenseCategory,
+                    Amount = amount,
+                    StartDate = transactionDate,
+                    EndDate = (DateTime)datePicked.SelectedDate
+                };
+
+                dbContext.Budgeting.Add(budgeted);
+
+                dbContext.SaveChanges();
+                this.Close();
+            }
+
+            if (Application.Current.Windows.OfType<MainDashboard>().Any())
+            {
+                MainDashboard mainDash = Application.Current.Windows.OfType<MainDashboard>().FirstOrDefault();
+                mainDash?.LoadReminders();
+            }
+
+            AmountTextBox.Clear();
         }
     }
 }

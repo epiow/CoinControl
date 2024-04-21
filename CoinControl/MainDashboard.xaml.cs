@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,11 +9,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CoinControl;
+using System.Printing;
 
 namespace CoinControl
 {
@@ -23,6 +26,7 @@ namespace CoinControl
         {
             InitializeComponent();
             LoadInformation();
+            LoadReminders();
         }
 
         public void LoadInformation()
@@ -38,6 +42,13 @@ namespace CoinControl
             decimal profit = totalIncome - totalExpenses;
 
             profitText.Text = profit.ToString("0.00");
+        }
+        
+        public void LoadReminders()
+        {
+            var expenseReminder = _context.Budgeting
+                .Where(e => e.User_ID == loggedInUserId)
+                .ToList();
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -77,8 +88,18 @@ namespace CoinControl
 
         private void addReminder(object sender, RoutedEventArgs e)
         {
-            addReminder reminder = new addReminder();
-            reminder.Show();
+            var expenseReminder = _context.Budgeting
+                .Where(e => e.User_ID == loggedInUserId);
+
+            if(expenseReminder.Count() > 5)
+            {
+                MessageBox.Show("Only a limit of 5 reminders are allowed!");
+            }
+            else
+            {
+                addReminder reminder = new addReminder();
+                reminder.Show();
+            }
         }
     }
 }
