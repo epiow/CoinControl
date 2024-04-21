@@ -5,39 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="AddExpenseWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+        Title="AddExpenseWindow" Height="443" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
+        <Label Content="Description:" Margin="10,19,287,333" />
+        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" />
 
-        <Label Grid.Row="0" Content="Description:" />
-        <TextBox x:Name="DescriptionTextBox" Grid.Row="1" Margin="0,0,0,10" />
+        <Label Content="Amount:" Margin="10,83,211,270" />
+        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" />
 
-        <Label Grid.Row="2" Content="Amount:" />
-        <TextBox x:Name="AmountTextBox" Grid.Row="3" Margin="0,0,0,10" />
+        <Label Content="Category:" Margin="10,166,270,192" />
+        <ComboBox Margin="20,197,22,159" Name="selectedCategory">
+            <ComboBoxItem Content="Utilities"></ComboBoxItem>
+            <ComboBoxItem Content="Transportation"></ComboBoxItem>
+            <ComboBoxItem Content="Food"></ComboBoxItem>
+            <ComboBoxItem Content="Rent"></ComboBoxItem>
+            <ComboBoxItem Content="Shopping"></ComboBoxItem>
+            <ComboBoxItem Content="Entertainment"></ComboBoxItem>
+            <ComboBoxItem Content="Health"></ComboBoxItem>
+            <ComboBoxItem Content="Miscalleanous"></ComboBoxItem>
+        </ComboBox>
 
-        <Label Grid.Row="4" Content="Date:" />
-        <DatePicker x:Name="DatePicker" Grid.Row="5" Margin="0,0,0,10" />
-
-        <Label Grid.Row="6" Content="Note:" />
-        <TextBox x:Name="NoteBox" Grid.Row="7" Margin="0,0,0,10" />
-
-        <Label Grid.Row="8" Content="Type:" />
-        <TextBox x:Name="TypeBox" Grid.Row="10" Margin="10,28,-10,-18" />
-
-        <Label Grid.Row="10" Content="Payment Method:" />
-        <TextBox x:Name="PaymentMethodBox" Grid.Row="10" Margin="0,59,0,-49" />
-
+        <ComboBox Margin="22,273,22,83" x:Name="selectedPayment" RenderTransformOrigin="0.5,0.5" Height="28.04">
+            <ComboBoxItem Content="Cash"/>
+            <ComboBoxItem Content="Credit Card"/>
+            <ComboBoxItem Content="Debit Card"/>
+            <ComboBoxItem Content="E-Wallet"/>
+        </ComboBox>
+        <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10">
+            <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+        </Button>
+        <Label Content="Payment Method:" Margin="10,240,247,116" />
     </Grid>
 </Window>

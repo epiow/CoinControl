@@ -28,30 +28,13 @@ namespace CoinControl
             LoadExpenses();
         }
 
-        private void LoadExpenses()
+        public void LoadExpenses()
         {
-            var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
-            expensesDataGrid.ItemsSource = expenses;
-
-            /*
-            var expenses = _context.Expense
-
-
-            var expenses = _context.Expense.Where(e => e.User_ID == loggedInUserId).ToList();
-            expensesDataGrid.ItemsSource = expenses;
-            
-            var expenses = _context.Expense
-
-            .Where(e => e.User_ID == loggedInUserId)
-            .Select(e => new
-            {
-                Date = e.Trans_Datetime,
-                Description = e.Note,
-                Amount = e.Amount
-            })
-            .ToList();
-            */
-
+            var expensesData = _context.Expense
+                .Where(e => e.User_ID == loggedInUserId)
+                .ToList();
+           
+            expenseDataGrid.ItemsSource = expensesData;
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -90,12 +73,13 @@ namespace CoinControl
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
+
             Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
         {
-            ExpenseDB selectedExpense = expensesDataGrid.SelectedItem as ExpenseDB;
+            ExpenseDB selectedExpense = expenseDataGrid.SelectedItem as ExpenseDB;
             if (selectedExpense != null)
             {
                 _context.Expense.Remove(selectedExpense);
@@ -103,7 +87,6 @@ namespace CoinControl
                 {
                     _context.SaveChanges();
                     LoadExpenses();
-
                     MessageBox.Show("Expense deleted successfully.");
                 }
                 catch (Exception ex)

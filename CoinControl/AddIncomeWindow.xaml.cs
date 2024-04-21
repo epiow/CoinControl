@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +15,11 @@ using System.Windows.Shapes;
 namespace CoinControl
 {
     /// <summary>
-    /// Interaction logic for AddExpenseWindow.xaml
+    /// Interaction logic for AddIncomeWindow.xaml
     /// </summary>
-    /// 
-
-    public partial class AddExpenseWindow : Window
+    public partial class AddIncomeWindow : Window
     {
-        public AddExpenseWindow()
+        public AddIncomeWindow()
         {
             InitializeComponent();
         }
@@ -34,48 +31,36 @@ namespace CoinControl
             DateTime transactionDate = DateTime.Now;
             string note = NoteBox.Text;
 
-            ComboBoxItem CategorySelection= (ComboBoxItem)selectedCategory.SelectedItem;
-            string categoryName = CategorySelection.Content.ToString();
-
-            ComboBoxItem PaymentSelection = (ComboBoxItem)selectedPayment.SelectedItem;
-            string paymentMethod = PaymentSelection.Content.ToString();
+            ComboBoxItem IncomeSelection = (ComboBoxItem)selectedIncome.SelectedItem;
+            string incomeName = IncomeSelection.Content.ToString();
 
             // Create an instance of DatabaseContext
             using (DatabaseContext dbContext = new DatabaseContext())
             {
-                
-                ExpenseDB expense = new ExpenseDB
+
+                IncomeDB income = new IncomeDB
                 {
                     User_ID = AuthenticationManager.LoggedInUserId,
+                    Source = incomeName,
                     Amount = amount,
                     Note = note,
-                    Payment_Method = paymentMethod,
                     Trans_Datetime = transactionDate
                 };
 
-                dbContext.Expense.Add(expense);
+                dbContext.Income.Add(income);
 
                 dbContext.SaveChanges();
                 this.Close();
             }
 
-            if (Application.Current.Windows.OfType<Expenses>().Any())
+            if (Application.Current.Windows.OfType<Savings>().Any())
             {
-                Expenses expensesWindow = Application.Current.Windows.OfType<Expenses>().FirstOrDefault();
-                expensesWindow?.LoadExpenses(); 
+                Savings incomeWindow = Application.Current.Windows.OfType<Savings>().FirstOrDefault();
+                incomeWindow?.LoadIncome();
             }
 
             AmountTextBox.Clear();
             NoteBox.Clear();
         }
-
-        /*
-        using (var context = new BloggingContext())
-        {
-            var blog = new Blog { Url = "http://example.com" };
-            context.Blogs.Add(blog);
-            context.SaveChanges();
-        }
-        */
     }
 }

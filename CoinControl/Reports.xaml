@@ -18,7 +18,7 @@
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Savings" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
@@ -26,9 +26,9 @@
                     <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Reports" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
@@ -42,8 +42,16 @@
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
             <TextBlock Text="REPORTS" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20"/>
-            <!-- Content of the main dashboard goes here -->
-            <!-- You can use Grid or other layout panels to arrange your content -->
+
+            <!-- DataGrid to display expenses and income -->
+            <DataGrid x:Name="dataGridTransactions" AutoGenerateColumns="False" Margin="20,50,20,0" VerticalAlignment="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="100"/>
+                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="300"/>
+                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" Width="200"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>

@@ -19,10 +19,23 @@ namespace CoinControl
     /// </summary>
     public partial class Savings : Window
     {
+        private readonly DatabaseContext _context = new DatabaseContext();
+        int loggedInUserId = AuthenticationManager.LoggedInUserId;
         public Savings()
         {
             InitializeComponent();
+            LoadIncome();
         }
+
+        public void LoadIncome()
+        {
+            var incomeData = _context.Income
+                .Where(e => e.User_ID == loggedInUserId)
+                .ToList();
+
+            incomeDataGrid.ItemsSource = incomeData;
+        }
+
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();
@@ -38,7 +51,7 @@ namespace CoinControl
         }
         private void NavigateToSavings(object sender, RoutedEventArgs e)
         {
-
+            //lmao
         }
 
         private void NavigateToReports(object sender, RoutedEventArgs e)
@@ -52,6 +65,34 @@ namespace CoinControl
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
+        }
+        private void AddTran_Btn(object sender, RoutedEventArgs e)
+        {
+            AddIncomeWindow addIncomeWindow = new AddIncomeWindow();
+            addIncomeWindow.Show();
+        }
+
+        private void DeleteTran_Btn(object sender, RoutedEventArgs e)
+        {
+            IncomeDB selectedIncome = incomeDataGrid.SelectedItem as IncomeDB;
+            if (selectedIncome != null)
+            {
+                _context.Income.Remove(selectedIncome);
+                try
+                {
+                    _context.SaveChanges();
+                    LoadIncome();
+                    MessageBox.Show("Expense deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting expense: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an expense to delete.");
+            }
         }
     }
 }
