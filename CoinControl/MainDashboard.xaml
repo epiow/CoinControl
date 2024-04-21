@@ -51,10 +51,17 @@
                         <DropShadowEffect/>
                     </Border.Effect>
                 </Border>
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="198,0,-198,0" Width="124">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                </Border>
             </Grid>
             <TextBlock Name="incomeText" HorizontalAlignment="Left" Margin="241,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" Margin="29,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Text="Total "/><Run Language="en-ph" Text="Expenses"/></TextBlock>
             <TextBlock Name="expenseText" HorizontalAlignment="Left" Margin="45,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,199,78,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808" Width="54"><Run Language="en-ph" Text="Profit"/></TextBlock>
+            <TextBlock Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>

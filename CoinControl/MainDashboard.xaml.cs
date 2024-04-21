@@ -24,22 +24,37 @@ namespace CoinControl
             InitializeComponent();
             LoadTotalIncome();
             LoadTotalExpenses();
+            LoadProfit();
         }
 
-        private void LoadTotalExpenses()
+        public void LoadTotalExpenses()
         {
             var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
 
             decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
-            expenseText.Text = totalExpenses.ToString();
+            expenseText.Text = totalExpenses.ToString("0.00");
         }
-        private void LoadTotalIncome()
+        public void LoadTotalIncome()
         {
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
 
             decimal totalIncome = allIncomes.Sum(income => income.Amount);
-            incomeText.Text = totalIncome.ToString();
+            incomeText.Text = totalIncome.ToString("0.00");
         }
+
+        public void LoadProfit()
+        {
+            var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
+            decimal totalIncome = allIncomes.Sum(income => income.Amount);
+
+            var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
+            decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
+
+            decimal profit = totalIncome - totalExpenses;
+
+            profitText.Text = profit.ToString("0.00");
+        }
+
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();
