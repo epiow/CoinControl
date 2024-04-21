@@ -34,6 +34,16 @@ namespace CoinControl
             decimal amount = decimal.Parse(AmountTextBox.Text);
 
             DateTime transactionDate = DateTime.Now;
+            DateTime due_Date = (DateTime)datePicked.SelectedDate;
+
+            if(due_Date <= transactionDate.AddDays(1)) {
+                MessageBox.Show("Please select a due date that is after the current date.");
+                return;
+                //addReminder reminder = new addReminder();
+                //reminder.Show();
+
+                //this.Close();
+            }
             // Create an instance of DatabaseContext
             using (DatabaseContext dbContext = new DatabaseContext())
             {
@@ -43,7 +53,7 @@ namespace CoinControl
                     Category_Name = expenseCategory,
                     Amount = amount,
                     StartDate = transactionDate,
-                    EndDate = (DateTime)datePicked.SelectedDate
+                    EndDate = due_Date
                 };
 
                 dbContext.Budgeting.Add(budgeted);
