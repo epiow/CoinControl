@@ -55,8 +55,8 @@ namespace CoinControl
 
             if (Application.Current.Windows.OfType<Savings>().Any())
             {
-                Savings incomeWindow = Application.Current.Windows.OfType<Savings>().FirstOrDefault();
-                incomeWindow?.LoadIncome();
+                Savings income = Application.Current.Windows.OfType<Savings>().FirstOrDefault();
+                income?.LoadIncome();
             }
 
             AmountTextBox.Clear();

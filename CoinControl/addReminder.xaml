@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="addReminder" Height="443" Width="400">
+        Title="addReminder" Height="443" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
+
+            <Label Content="Category:" Margin="10,10,270,348" />
+            <ComboBox Margin="21,36,21,320" Name="selectedCategory">
+                <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                <ComboBoxItem Content="Transportation"></ComboBoxItem>
+                <ComboBoxItem Content="Food"></ComboBoxItem>
+                <ComboBoxItem Content="Rent"></ComboBoxItem>
+                <ComboBoxItem Content="Shopping"></ComboBoxItem>
+                <ComboBoxItem Content="Entertainment"></ComboBoxItem>
+                <ComboBoxItem Content="Health"></ComboBoxItem>
+                <ComboBoxItem Content="Miscalleanous"></ComboBoxItem>
+            </ComboBox>
+
+            <Label Content="Amount:" Margin="10,69,211,284" />
+            <TextBox x:Name="AmountTextBox" Margin="22,100,20,252" Height="32.04" />
+
+            <Label Content="Date To Pay:" Margin="10,148,247,208" />
+            <DatePicker Name="datePicked" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Center"/>
+
+            <Button Click="saveReminder" Background="Green" Margin="255,335,10,10">
+                <TextBlock Text="Save" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+            </Button>
+
+        </Grid>
     </Grid>
 </Window>
