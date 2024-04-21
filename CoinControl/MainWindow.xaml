@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True">
-    
     <Grid Height="434">
         <Grid.Background>
             <ImageBrush ImageSource="img\mainbg.png"/>
@@ -41,7 +40,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Label Content="WELCOME" Margin="372,49,0,0" Grid.Row="3" Width="412" FontFamily="MV Boli" FontSize="72" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="WELCOME" Margin="372,49,0,0" Grid.Row="3" Width="412" FontFamily="Roboto" FontSize="72" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="txtUsername" Grid.Row="3" Margin="436,199,118,5" Height="34" VerticalContentAlignment="Center" TextChanged="txtUsername_TextChanged" Padding="2,0,0,0"/>
         <Label x:Name="txtUser" Content="Enter Username" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,203,118,9" Grid.Row="3"/>
         <Label x:Name="txtPass" Content="Enter Password" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,258,127,-46" Grid.Row="3"/>
