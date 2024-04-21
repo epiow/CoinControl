@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using System;
 
 namespace CoinControl
@@ -14,6 +15,7 @@ namespace CoinControl
         public DbSet<UserDB> User { get; set; }
         public DbSet<CategoriesDB> Categories { get; set; }
         public DbSet<BudgetingDB> Budgeting { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConnectionString);
@@ -41,10 +43,8 @@ namespace CoinControl
         public long Category_ID { get; set; }
         public decimal Amount { get; set; }
         public string Note { get; set; }
-        public string Type { get; set; }
         public string Payment_Method { get; set; }
-        public string Trans_Datetime { get; set; }
-        // Add other properties of the Expense table here
+        public DateTime Trans_Datetime { get; set; }
     }
     public class IncomeDB
     {
@@ -53,7 +53,7 @@ namespace CoinControl
         public decimal Amount { get; set; }
         public string Note { get; set; }
         public string Source { get; set; }
-        public string Trans_Datetime { get; set; }
+        public DateTime Trans_Datetime { get; set; }
     }
     public class UserDB
     {
@@ -77,4 +77,5 @@ namespace CoinControl
         public string StartDate { get; set; }
         public string EndDate { get; set; }
     }
+
 }
