@@ -53,10 +53,10 @@ namespace CoinControl
                 this.Close();
             }
 
-            if (Application.Current.Windows.OfType<MainDashboard>().Any())
+            if (Application.Current.Windows.OfType<Savings>().Any())
             {
-                MainDashboard mainDash = Application.Current.Windows.OfType<MainDashboard>().FirstOrDefault();
-                mainDash?.LoadReminders();
+                Savings income = Application.Current.Windows.OfType<Savings>().FirstOrDefault();
+                income?.LoadIncome();
             }
 
             AmountTextBox.Clear();

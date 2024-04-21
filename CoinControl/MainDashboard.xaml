@@ -66,22 +66,30 @@
             <TextBlock HorizontalAlignment="Right" Margin="0,199,78,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808" Width="54"><Run Language="en-ph" Text="Profit"/></TextBlock>
             
             <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,285,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
             
-            <Button Content="+" HorizontalAlignment="Left" Margin="159,281,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
+            <Button Content="+" HorizontalAlignment="Left" Margin="150,257,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="100"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            
-            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="20,321,31,10">
+
+            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="20,297,31,10" CanUserAddRows="false">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Reminder" Binding="{Binding Category_Name}" />
                     <DataGridTextColumn Header="Amount to Pay" Binding="{Binding Amount}" />
                     <DataGridTextColumn Header="Time Set" Binding="{Binding StartDate}" />
                     <DataGridTextColumn Header="Due Date" Binding="{Binding EndDate}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="removeReminder">Done</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 

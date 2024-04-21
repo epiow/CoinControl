@@ -56,6 +56,7 @@ namespace CoinControl
             {
                 MainDashboard mainDash = Application.Current.Windows.OfType<MainDashboard>().FirstOrDefault();
                 mainDash?.LoadReminders();
+                mainDash.reminderCount++;
             }
 
             AmountTextBox.Clear();

@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CoinControl;
 using System.Printing;
+using System.Data.Entity.Migrations.Design;
+
 
 namespace CoinControl
 {
@@ -22,11 +24,15 @@ namespace CoinControl
     {
         private readonly DatabaseContext _context = new DatabaseContext();
         int loggedInUserId = AuthenticationManager.LoggedInUserId;
+        public int reminderCount;
         public MainDashboard()
         {
             InitializeComponent();
             LoadInformation();
             LoadReminders();
+
+            var budgetInfo = _context.Budgeting.Where(income => income.User_ID == loggedInUserId);
+            reminderCount = budgetInfo.Count(); ;
         }
 
         public void LoadInformation()
@@ -49,6 +55,8 @@ namespace CoinControl
             var expenseReminder = _context.Budgeting
                 .Where(e => e.User_ID == loggedInUserId)
                 .ToList();
+
+            expenseReminders.ItemsSource = expenseReminder;
         }
 
         private void NavigateToHome(object sender, RoutedEventArgs e)
@@ -88,10 +96,9 @@ namespace CoinControl
 
         private void addReminder(object sender, RoutedEventArgs e)
         {
-            var expenseReminder = _context.Budgeting
-                .Where(e => e.User_ID == loggedInUserId);
-
-            if(expenseReminder.Count() > 5)
+            //MessageBox.Show(reminderCount.ToString());
+            
+            if(reminderCount >= 5)
             {
                 MessageBox.Show("Only a limit of 5 reminders are allowed!");
             }
@@ -100,6 +107,16 @@ namespace CoinControl
                 addReminder reminder = new addReminder();
                 reminder.Show();
             }
+        }
+
+        private void removeReminder(object sender, RoutedEventArgs e)
+        {
+            long budget_id = (expenseReminders.SelectedItem as BudgetingDB).Budget_ID;
+            BudgetingDB budget = (from r in _context.Budgeting where r.Budget_ID == budget_id select r).SingleOrDefault();
+            _context.Budgeting.Remove(budget);
+            _context.SaveChanges();
+            expenseReminders.ItemsSource = _context.Budgeting.ToList();
+            reminderCount--;
         }
     }
 }
