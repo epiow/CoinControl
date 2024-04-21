@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Income" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
@@ -15,7 +17,7 @@
                     <TextBlock Text="Home" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Background="White">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Background="White" Width="208">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Income" Foreground="Black" Margin="10,0"/>
                 </StackPanel>

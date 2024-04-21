@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,11 +17,29 @@ namespace CoinControl
 {
     public partial class MainDashboard : Window
     {
+        private readonly DatabaseContext _context = new DatabaseContext();
+        int loggedInUserId = AuthenticationManager.LoggedInUserId;
         public MainDashboard()
         {
             InitializeComponent();
+            LoadTotalIncome();
+            LoadTotalExpenses();
         }
 
+        private void LoadTotalExpenses()
+        {
+            var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
+
+            decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
+            expenseText.Text = totalExpenses.ToString();
+        }
+        private void LoadTotalIncome()
+        {
+            var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
+
+            decimal totalIncome = allIncomes.Sum(income => income.Amount);
+            incomeText.Text = totalIncome.ToString();
+        }
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();

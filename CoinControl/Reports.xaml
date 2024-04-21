@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Reports" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
@@ -25,7 +27,7 @@
                     <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Background="White">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Background="White" Width="209">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Reports" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
