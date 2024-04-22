@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Login" Height="450" Width="800"
         WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True">
+    
     <Grid Height="434">
         <Grid.Background>
             <ImageBrush ImageSource="img\mainbg.png"/>

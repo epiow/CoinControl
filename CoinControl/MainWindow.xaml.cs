@@ -54,9 +54,14 @@ namespace CoinControl
 
         private void createAcc_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Password;
+            createAccountWindow createAcc = new createAccountWindow();
+            createAcc.Show();
+            Close();
 
+            //string username = txtUsername.Text;
+            //string password = txtPassword.Password;
+
+            /*
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.");
@@ -72,6 +77,7 @@ namespace CoinControl
             {
                 MessageBox.Show("Failed to create user account. Please try again.");
             }
+            */
         }
 
         private bool InsertUser(string username, string password)
