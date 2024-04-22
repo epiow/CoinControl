@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CoinControl;
 using System.Printing;
 using System.Data.Entity.Migrations.Design;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace CoinControl
@@ -40,6 +41,7 @@ namespace CoinControl
             var user = _context.User.FirstOrDefault(u => u.User_ID == loggedInUserId);
             if (user != null)
             {
+                userName.Text = $"{user.Name}!";
                 balanceText.Text = user.Balance.ToString("0.00");
             }
 
