@@ -32,53 +32,57 @@ namespace CoinControl
         }
         private void userTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox box)
+            if (userText.Text != "")
             {
-                if (string.IsNullOrEmpty(box.Text))
-                    box.Background = (ImageBrush)FindResource("watermark");
-                else
-                    box.Background = null;
+                txtUser.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtUser.Visibility = Visibility.Visible;
             }
         }
-
         private void emailTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox box)
+            if (emailText.Text != "")
             {
-                if (string.IsNullOrEmpty(box.Text))
-                    box.Background = (ImageBrush)FindResource("watermark");
-                else
-                    box.Background = null;
+                txtEmail.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtEmail.Visibility = Visibility.Visible;
             }
         }
         private void passTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox box)
+            if (passText.Text != "")
             {
-                if (string.IsNullOrEmpty(box.Text))
-                    box.Background = (ImageBrush)FindResource("watermark");
-                else
-                    box.Background = null;
+                txtPass.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtPass.Visibility = Visibility.Visible;
             }
         }
         private void confirmPassTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox box)
+            if (confirmPassText.Text != "")
             {
-                if (string.IsNullOrEmpty(box.Text))
-                    box.Background = (ImageBrush)FindResource("watermark");
-                else
-                    box.Background = null;
+                txtConfirm.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtConfirm.Visibility = Visibility.Visible;
             }
         }
         private void balanceTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender is TextBox box)
+            if (balanceText.Text != "")
             {
-                if (string.IsNullOrEmpty(box.Text))
-                    box.Background = (ImageBrush)FindResource("watermark");
-                else
-                    box.Background = null;
+                txtBalance.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                txtBalance.Visibility = Visibility.Visible;
             }
         }
     }

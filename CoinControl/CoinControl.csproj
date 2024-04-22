@@ -10,6 +10,7 @@
     <StartupObject>CoinControl.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="fonts\Harmonia Sans W01 Regular.otf" />
     <None Remove="fonts\Montserrat-Regular.ttf" />
     <None Remove="img\mainbg.png" />
     <None Remove="img\returnButton.png" />
@@ -27,6 +28,7 @@
     <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="fonts\Harmonia Sans W01 Regular.otf" />
     <Resource Include="fonts\Montserrat-Regular.ttf" />
     <Resource Include="img\mainbg.png" />
     <Resource Include="img\returnButton.png" />
