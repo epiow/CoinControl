@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="426" 
+        Title="Register" Height="620" Width="460" 
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Window.Resources>
@@ -29,163 +29,190 @@
         </Style>
 
     </Window.Resources>
-    <Border CornerRadius="35" BorderThickness="20" >
+    <Border CornerRadius="8,8,8,8" BorderThickness="20" >
         <Border.BorderBrush>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#FFFFD8D8" Offset="0.0"/>
-                <GradientStop Color="White" Offset="0.5"/>
-                <GradientStop Color="White" Offset="1.0"/>
-            </LinearGradientBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
         </Border.BorderBrush>
 
-        <Grid>
-            <Grid.Background>
+        <Grid Margin="0,20,0,-20">
+            <!--<Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#FFFFD8D8" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="0.0"/>
                     <GradientStop Color="White" Offset="0.5"/>
                     <GradientStop Color="White" Offset="1.0"/>
                 </LinearGradientBrush>
             </Grid.Background>
+            -->
 
+            <!--<Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="White" Offset="0.0"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            -->
 
-            <!--<Image Source="img\signUpBack.png" Margin="-18,-24,-19,-24" Stretch="Fill">
+            <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,-421,0">
                 <Image.Clip>
-                    <RectangleGeometry Rect="110,10,290,410"/>
+                    <RectangleGeometry Rect="20,10,430,960"></RectangleGeometry>
                 </Image.Clip>
             </Image>
-            -->
+
             <Grid>
                 <TextBox x:Name="userText"
                          TextChanged="userTextChanged" 
-                         FontFamily="pack://application:,,,/fonts/#Montserrat" 
-                         BorderThickness="0.3" 
+                         FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                         BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
                          VerticalAlignment="Top" 
-                         Width="234" 
-                         Height="34"
-                         Margin="0,38,0,0" 
-                         VerticalContentAlignment="Center" Padding="46,0,0,0">
+                         Width="268" 
+                         Height="49"
+                         Margin="0,94,0,0" 
+                         VerticalContentAlignment="Center" 
+                         Padding="55,0,0,0"
+                         Background="#FF839BC4" 
+                         BorderBrush="White"
+                         Foreground="White">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="CornerRadius" Value="23"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="txtUser" 
                        Content="Enter Username" 
                        Background="Transparent" 
-                       Opacity="0.5" 
                        IsHitTestVisible="False" 
-                       Margin="120,43,169,333"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
-                <Image Source="img\usernameIcon.png" Margin="76,28,259,327"/>
+                       Margin="130,108,164,450"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                       RenderTransformOrigin="0.366,0.76" 
+                       Foreground="White"/>
+                <Image Source="img\userIcon.png" Margin="64,96,277,439" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="emailText" 
                          TextChanged="emailTextChanged" 
                          FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
-                         BorderThickness="0.3" 
+                         BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
                          VerticalAlignment="Top" 
-                         Width="234" 
-                         Height="34" 
-                         Margin="0,108,0,0" 
-                         VerticalContentAlignment="Center" Padding="46,0,0,0">
+                         Width="268" 
+                         Height="52" 
+                         Margin="0,170,0,0" 
+                         VerticalContentAlignment="Center" 
+                         Padding="55,0,0,0" 
+                         Background="#FF839BC4" 
+                         BorderBrush="White"
+                         Foreground="White">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="CornerRadius" Value="23"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="txtEmail" 
                        Content="Enter Email" 
                        Background="Transparent" 
-                       Opacity="0.5" 
                        IsHitTestVisible="False" 
-                       Margin="120,114,190,232"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
-                <Image Source="img\emailIcon.png" Margin="79,92,261,252"/>
+                       Margin="130,184,183,362"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                <Image Source="img\emailIcon.png" Margin="64,174,277,362" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="passText" 
                              TextChanged="passTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
-                             BorderThickness="0.3" 
+                             BorderThickness="2" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Top" 
-                             Width="234" 
-                             Height="34"
-                             Margin="0,178,0,0" 
-                             VerticalContentAlignment="Center" Padding="46,0,0,0">
+                             Width="268" 
+                             Height="52"
+                             Margin="0,246,0,0" 
+                             Background="#FF839BC4"
+                             VerticalContentAlignment="Center" 
+                             Padding="55,0,0,0" 
+                             BorderBrush="White"
+                             Foreground="White">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="CornerRadius" Value="23"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="txtPass" 
                        Content="Enter Password" 
                        Background="Transparent" 
-                       Opacity="0.5" 
                        IsHitTestVisible="False" 
-                       Margin="120,183,162,198"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
-                <Image Source="img\passwordIcon.png" Margin="76,168,262,188"></Image>
+                       Margin="130,261,152,297"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                <Image Source="img\passwordIcon.png" Margin="64,250,277,286" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="confirmPassText" 
                              TextChanged="confirmPassTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
-                             BorderThickness="0.3" 
+                             BorderThickness="2" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Top" 
-                             Width="234" 
-                             Height="34" 
-                             Margin="0,248,0,0" 
-                             VerticalContentAlignment="Center" Padding="46,0,0,0">
+                             Width="268" 
+                             Height="52" 
+                             Margin="0,322,0,0" 
+                             Background="#FF839BC4"
+                             VerticalContentAlignment="Center" 
+                             Padding="55,0,0,0" 
+                             BorderBrush="White"
+                             Foreground="White">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="CornerRadius" Value="23"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="txtConfirm" 
                        Content="Confirm Password" 
                        Background="Transparent" 
-                       Opacity="0.5" 
                        IsHitTestVisible="False" 
-                       Margin="120,253,144,128"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
-                <Image Source="img\confirmPasswordIcon.png" Margin="74,237,260,117"></Image>
+                       Margin="130,337,134,210"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                <Image Source="img\confirmPasswordIcon.png" Margin="64,326,277,210" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="balanceText" 
                          TextChanged="balanceTextChanged"
                          FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
-                         BorderThickness="0.3" 
+                         BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
                          VerticalAlignment="Top"
-                         Width="234" Height="34" 
-                         Margin="0,318,0,0" 
-                         VerticalContentAlignment="Center" Padding="46,0,0,0">
+                         Width="268" Height="52" 
+                         Margin="0,398,0,0" 
+                         Background="#FF839BC4"
+                         VerticalContentAlignment="Center" 
+                         Padding="55,0,0,0" 
+                         BorderBrush="White"
+                         Foreground="White">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="15"/>
+                            <Setter Property="CornerRadius" Value="23"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
                 <Label x:Name="txtBalance" 
                        Content="Enter Initial Balance" 
                        Background="Transparent" 
-                       Opacity="0.5" 
                        IsHitTestVisible="False" 
-                       Margin="120,323,130,58"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
-                <Image Source="img\balanceIcon.png" Margin="81,316,264,56"></Image>
+                       Margin="130,412,120,144"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                <Image Source="img\balanceIcon.png" Margin="64,399,277,131"/>
 
 
             </Grid>
 
-            <Label Content="SIGN UP" FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Margin="0,-10,0,0"/>
+            <Label Content="SIGN UP" 
+                   FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                   FontSize="60" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Foreground="White" FontWeight="Bold" Height="84" Width="448" HorizontalContentAlignment="Center"/>
 
             <Button x:Name="return" 
                     Click="returnButton" 
@@ -193,22 +220,25 @@
                     BorderThickness="0"  
                     Style="{StaticResource MyButton}" 
                     HorizontalAlignment="Left" 
-                    Height="53" 
+                    Height="54" 
                     VerticalAlignment="Top" 
                     Width="56">
-                <Image Source="img\returnButton.png" Height="37" Width="39"/>
+                <Image Source="img\whiteReturnButton.png" Height="37" Width="39"/>
             </Button>
 
-            <Button FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+            <Button x:Name="create"
+                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
                     Content="CREATE ACCOUNT" 
                     HorizontalAlignment="Center" 
-                    Margin="0,375,0,0" 
+                    Margin="0,490,0,0" 
                     VerticalAlignment="Top" 
-                    Width="234"
-                    Click="createAcc" Background="White" Height="23">
+                    Width="268"
+                    Click="createAcc" 
+                    Background="#FF657FAC" Height="38"
+                    Foreground="White">
                 <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="7"/>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
                     </Style>
                 </Button.Resources>
             </Button>

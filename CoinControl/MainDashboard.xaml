@@ -39,15 +39,21 @@
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <TextBlock Text="Welcome to CoinControl" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="Total Income"/></TextBlock>
+            <TextBlock Text="Welcome to CoinControl" 
+                       FontSize="24" 
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                       FontWeight="Bold" 
+                       Margin="20" 
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Left"/>
+            <TextBlock HorizontalAlignment="Left" Margin="309,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="Total Income"/></TextBlock>
             <Grid Margin="233,77,243,264" >
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="62,0,-62,0">
                     <Border.Effect>
                         <DropShadowEffect/>
                     </Border.Effect>
                 </Border>
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-198,0,198,0" Width="124">
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-75,0,75,0" Width="124">
                     <Border.Effect>
                         <DropShadowEffect/>
                     </Border.Effect>
@@ -57,17 +63,32 @@
                         <DropShadowEffect/>
                     </Border.Effect>
                 </Border>
+                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-213,0,213,0" Width="124">
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                </Border>
             </Grid>
-            
-            <TextBlock x:Name="incomeText" HorizontalAlignment="Left" Margin="241,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Left" Margin="29,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Text="Total "/><Run Language="en-ph" Text="Expenses"/></TextBlock>
-            
-            <TextBlock x:Name="expenseText" HorizontalAlignment="Left" Margin="45,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Right" Margin="0,199,78,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808" Width="54"><Run Language="en-ph" Text="Profit"/></TextBlock>
-            
+
+            <TextBlock x:Name="balanceText" HorizontalAlignment="Left" Margin="25,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" 
+                       Margin="25,199,0,0" 
+                       TextWrapping="Wrap" 
+                       VerticalAlignment="Top" 
+                       FontSize="18" 
+                       RenderTransformOrigin="0.911,0.808"
+                       Text="Current Balance"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
+
+            <TextBlock x:Name="incomeText" HorizontalAlignment="Left" Margin="306,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Left" Margin="164,199,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.911,0.808"><Run Text="Total "/><Run Language="en-ph" Text="Expenses"/></TextBlock>
+
+            <TextBlock x:Name="expenseText" HorizontalAlignment="Left" Margin="168,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,199,78,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.911,0.808" Width="54"><Run Language="en-ph" Text="Profit"/></TextBlock>
+
             <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
-            
+
             <Button Content="+" HorizontalAlignment="Left" Margin="150,257,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -92,7 +113,7 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
+            
             <!-- Content of the main dashboard goes here -->
             <!-- You can use Grid or other layout panels to arrange your content -->
         </Grid>
