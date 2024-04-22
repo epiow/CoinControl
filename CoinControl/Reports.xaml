@@ -10,6 +10,9 @@
         WindowStyle="None"
         ResizeMode="NoResize">
     <Grid>
+        <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button Content="X" FontSize="10" Foreground="White" FontWeight="Bold" Click="CloseButton_Click" Background="Transparent" BorderThickness="0"/>
+        </Border>
         <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
@@ -30,6 +33,11 @@
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Background="White" Width="209">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Reports" Foreground="Black" Margin="10,0"/>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToAnalytics">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Analytics" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
