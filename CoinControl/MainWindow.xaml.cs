@@ -18,6 +18,8 @@ namespace CoinControl
 {
     public partial class LoginWindow : Window
     {
+        public string dataConnector = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True";
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -52,9 +54,14 @@ namespace CoinControl
 
         private void createAcc_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Password;
+            createAccountWindow createAcc = new createAccountWindow();
+            createAcc.Show();
+            Close();
 
+            //string username = txtUsername.Text;
+            //string password = txtPassword.Password;
+
+            /*
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.");
@@ -70,11 +77,13 @@ namespace CoinControl
             {
                 MessageBox.Show("Failed to create user account. Please try again.");
             }
+            */
         }
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {
@@ -105,7 +114,8 @@ namespace CoinControl
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {

@@ -26,14 +26,13 @@ namespace CoinControl
         {
             modelBuilder.Entity<ExpenseDB>()
             .HasKey(e => e.Payment_ID);
+            
             modelBuilder.Entity<IncomeDB>()
             .HasKey(e => e.Income_ID);
+            
             modelBuilder.Entity<UserDB>()
             .HasKey(e => e.User_ID);
-            /*
-            modelBuilder.Entity<CategoriesDB>()
-            .HasKey(e => e.Category_ID);
-            */
+            
             modelBuilder.Entity<BudgetingDB>()
             .HasKey(e => e.Budget_ID);
         }
@@ -48,8 +47,8 @@ namespace CoinControl
         public string Note { get; set; }
         public string Payment_Method { get; set; }
         public DateTime Trans_Datetime { get; set; }
-        // Add other properties of the Expense table here
     }
+
     public class IncomeDB
     {
         public long Income_ID { get; set; }
@@ -65,14 +64,9 @@ namespace CoinControl
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public decimal Balance { get; set; }
     }
-    /*
-    public class CategoriesDB
-    {
-        public long Category_ID { get; set; }
-        public long User_ID { get; set; }
-        public string CategoryName { get; set; }
-    }*/
+    
     public class BudgetingDB
     {
         public long Budget_ID { get; set; }
