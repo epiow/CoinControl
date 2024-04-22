@@ -5,11 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
-    <Grid>
-        <Button Name="AButton" Click="OnImageButtonClick" Margin="27,37,740,382">
-            <Image Source="img\returnButton.jpg"></Image>
-        </Button>
-    </Grid>
+        Title="Register" Height="450" Width="426" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Border CornerRadius="35" BorderThickness="20">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#666666" Offset="0.0"/>
+                <GradientStop Color="#666666" Offset="0.5"/>
+                <GradientStop Color="#666666" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#666666" Offset="0.0"/>
+                    <GradientStop Color="#666666" Offset="0.5"/>
+                    <GradientStop Color="#666666" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid>
+                <TextBox Name="userText" TextChanged="userTextChanged" FontFamily="pack://application:,,,/fonts/#Montserrat" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="234" Height="34" Margin="0,38,0,0" VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox Name="emailText" TextChanged="emailTextChanged" FontFamily="pack://application:,,,/fonts/#Montserrat" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="234" Height="34" Margin="0,108,0,0" VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox Name="passText" TextChanged="passTextChanged" FontFamily="pack://application:,,,/fonts/#Montserrat" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="234" Height="34" Margin="0,178,0,0" VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox Name="confirmPassText" TextChanged="confirmPassTextChanged" FontFamily="pack://application:,,,/fonts/#Montserrat" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Confirm Password" VerticalAlignment="Top" Width="234" Height="34" Margin="0,248,0,0" VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBox Name="balanceText" TextChanged="balanceTextChanged" FontFamily="pack://application:,,,/fonts/#Montserrat" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Enter Initial Balance" VerticalAlignment="Top" Width="234" Height="34" Margin="0,318,0,0" VerticalContentAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="15"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </Grid>
+
+            <Button Name="return" 
+                    Click="returnButton" 
+                    Margin="0,10,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="53" 
+                    VerticalAlignment="Top" 
+                    Width="56">
+                <Image Source="img\returnButton.png" Height="37" Width="39"></Image>
+            </Button>
+
+        </Grid>
+    </Border>
 </Window>

@@ -24,9 +24,62 @@ namespace CoinControl
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void returnButton(object sender, RoutedEventArgs e)
         {
+            LoginWindow login = new LoginWindow();
+            login.Show();
+            this.Close();
+        }
+        private void userTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (string.IsNullOrEmpty(box.Text))
+                    box.Background = (ImageBrush)FindResource("watermark");
+                else
+                    box.Background = null;
+            }
+        }
 
+        private void emailTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (string.IsNullOrEmpty(box.Text))
+                    box.Background = (ImageBrush)FindResource("watermark");
+                else
+                    box.Background = null;
+            }
+        }
+        private void passTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (string.IsNullOrEmpty(box.Text))
+                    box.Background = (ImageBrush)FindResource("watermark");
+                else
+                    box.Background = null;
+            }
+        }
+        private void confirmPassTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (string.IsNullOrEmpty(box.Text))
+                    box.Background = (ImageBrush)FindResource("watermark");
+                else
+                    box.Background = null;
+            }
+        }
+        private void balanceTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox box)
+            {
+                if (string.IsNullOrEmpty(box.Text))
+                    box.Background = (ImageBrush)FindResource("watermark");
+                else
+                    box.Background = null;
+            }
         }
     }
 }
