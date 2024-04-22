@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoinControl
 {
@@ -50,14 +52,20 @@ namespace CoinControl
                     Amount = amount,
                     Note = note,
                     Payment_Method = paymentMethod,
-                    Trans_Datetime = transactionDate
+                    Trans_Datetime = transactionDate,
+                    Category_Name = categoryName
                 };
 
                 dbContext.Expense.Add(expense);
 
                 dbContext.SaveChanges();
-                this.Close();
+
+                var userIDParameter = new SqlParameter("@UserID", AuthenticationManager.LoggedInUserId);
+                var expenseAmountParameter = new SqlParameter("@ExpenseAmount", amount);
+                dbContext.Database.ExecuteSqlRaw("EXEC DeductExpenseFromBalance @UserID, @ExpenseAmount", userIDParameter, expenseAmountParameter);
             }
+
+            this.Close();
 
             if (Application.Current.Windows.OfType<Expenses>().Any())
             {
