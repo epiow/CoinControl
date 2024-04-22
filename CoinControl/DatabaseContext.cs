@@ -9,7 +9,7 @@ namespace CoinControl
     public class DatabaseContext : DbContext
     {
         //change data source here!!!
-        private string ConnectionString = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True";
+        private string ConnectionString = "Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True";
 
         public DbSet<ExpenseDB> Expense { get; set; }
         public DbSet<IncomeDB> Income { get; set; }
@@ -43,7 +43,7 @@ namespace CoinControl
         public long Payment_ID { get; set; }
         public long User_ID { get; set; }
         public decimal Amount { get; set; }
-        public string Category_Name { get; set; }
+        // public string Category_Name { get; set; }
         public string Note { get; set; }
         public string Payment_Method { get; set; }
         public DateTime Trans_Datetime { get; set; }
@@ -71,7 +71,7 @@ namespace CoinControl
     {
         public long Budget_ID { get; set; }
         public long User_ID { get; set; }
-        public string Category_Name { get; set; }
+        // public string Category_Name { get; set; }
         public decimal Amount { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

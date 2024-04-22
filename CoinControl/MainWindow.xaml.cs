@@ -83,6 +83,7 @@ namespace CoinControl
         private bool InsertUser(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {
@@ -114,6 +115,7 @@ namespace CoinControl
         private User ValidateUser(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {

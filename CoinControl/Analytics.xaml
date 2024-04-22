@@ -1,20 +1,19 @@
-﻿<Window x:Class="CoinControl.Expenses"
+﻿<Window x:Class="CoinControl.Analytics"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Expenses" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        ResizeMode="NoResize">
+        WindowStyle="None">
     <Grid>
-        <!-- Side Navigation Menu -->
         <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
             <Button Content="X" FontSize="10" Foreground="White" FontWeight="Bold" Click="CloseButton_Click" Background="Transparent" BorderThickness="0"/>
         </Border>
-
+        <!-- Side Navigation Menu -->
         <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
                 <StackPanel Orientation="Horizontal">
@@ -26,9 +25,9 @@
                     <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Background="White" Width="208">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Expenses" Foreground="Black" Margin="10,0"/>
+                    <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
@@ -36,9 +35,9 @@
                     <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToAnalytics">
+            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToAnalytics" Background="White">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Analytics" Foreground="White" Margin="10,0"/>
+                    <TextBlock Text="Analytics" Foreground="Black" Margin="10,0"/>
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
@@ -46,33 +45,26 @@
                     <TextBlock Text="Logout" Foreground="White" Margin="10,0" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
+            
 
             <!-- Add more buttons for additional menu items -->
         </StackPanel>
 
         <!-- Main Content Area -->
         <Grid Margin="200,0,0,0">
-            <TextBlock Text="EXPENSES" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
-
-            <!-- DataGrid to display expenses -->
-            <DataGrid x:Name="expenseDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Expenditures" Binding="{Binding Category_Name}" />
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
-                    <DataGridTextColumn Header="Description" Binding="{Binding Note}" />
-                    <DataGridTextColumn Header="Payment Method" Binding="{Binding Payment_Method}" />
-                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
-                <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-            </Button>
-            <Button Click="AddTran_Btn" Background="Green" Margin="53,364,347,26">
-                <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-            </Button>
-            <!-- Content of the main dashboard goes here -->
-            <!-- You can use Grid or other layout panels to arrange your content -->
+            <!-- Content of the analytics dashboard goes here -->
+            <lvc:CartesianChart Series="{Binding ChartSeries}" LegendLocation="Right">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis Title="Categories" Labels="{Binding ChartLabels}"/>
+                </lvc:CartesianChart.AxisX>
+                <lvc:CartesianChart.AxisY>
+                    <lvc:Axis Title="Amount"/>
+                </lvc:CartesianChart.AxisY>
+            </lvc:CartesianChart>
         </Grid>
+
+
+        <!-- Content of the main dashboard goes here -->
+            <!-- You can use Grid or other layout panels to arrange your content -->
     </Grid>
 </Window>

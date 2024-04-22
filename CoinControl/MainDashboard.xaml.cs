@@ -55,7 +55,7 @@ namespace CoinControl
 
             profitText.Text = profit.ToString("0.00");
         }
-        
+
         public void LoadReminders()
         {
             var expenseReminder = _context.Budgeting
@@ -85,7 +85,12 @@ namespace CoinControl
             savings.Show();
             this.Close();
         }
-
+        private void NavigateToAnalytics(object sender, RoutedEventArgs e)
+        {
+            Analytics analytics = new Analytics();
+            analytics.Show();
+            this.Close();
+        }
         private void NavigateToReports(object sender, RoutedEventArgs e)
         {
             Reports reports = new Reports();
@@ -99,12 +104,19 @@ namespace CoinControl
             loginWindow.Show();
             Close();
         }
-
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Close(); // Close the window if the user clicks Yes
+            }
+        }
         private void addReminder(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(reminderCount.ToString());
-            
-            if(reminderCount >= 5)
+
+            if (reminderCount >= 5)
             {
                 MessageBox.Show("Only a limit of 5 reminders are allowed!");
             }
