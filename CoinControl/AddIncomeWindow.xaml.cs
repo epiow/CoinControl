@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace CoinControl
 {
@@ -50,8 +52,13 @@ namespace CoinControl
                 dbContext.Income.Add(income);
 
                 dbContext.SaveChanges();
-                this.Close();
+
+                var userIDParameter = new SqlParameter("@UserID", AuthenticationManager.LoggedInUserId);
+                var incomeAmountParameter = new SqlParameter("@IncomeAmount", amount);
+                dbContext.Database.ExecuteSqlRaw("AddIncomeToBalance @UserID, @IncomeAmount", userIDParameter, incomeAmountParameter);
             }
+
+            this.Close();
 
             if (Application.Current.Windows.OfType<Savings>().Any())
             {
