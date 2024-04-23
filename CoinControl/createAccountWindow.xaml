@@ -28,7 +28,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-  
+
     <Border CornerRadius="8,8,8,8" BorderThickness="20" >
         <Border.BorderBrush>
             <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
@@ -42,10 +42,22 @@
                 </Image.Clip>
             </Image>
 
+            <Border CornerRadius="8,8,8,8" Margin="-20,0,-20,0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\yellowRegister.png"/>
+                </Border.Background>
+            </Border>
+
+            <Border CornerRadius="8,8,8,8" Margin="-20,-41,-20,41">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\darkBlueRegister.png"/>
+                </Border.Background>
+            </Border>
+
             <Grid>
                 <TextBox x:Name="userText"
                          TextChanged="userTextChanged" 
-                         FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                         FontFamily="pack://application:,,,/fonts/#Montserrat"
                          BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
@@ -69,14 +81,14 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,108,164,450"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
                        RenderTransformOrigin="0.366,0.76" 
                        Foreground="White"/>
                 <Image Source="img\userIcon.png" Margin="64,96,277,439" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="emailText" 
                          TextChanged="emailTextChanged" 
-                         FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                         FontFamily="pack://application:,,,/fonts/#Montserrat"
                          BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
@@ -100,12 +112,13 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,184,183,362"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Foreground="White"/>
                 <Image Source="img\emailIcon.png" Margin="64,174,277,362" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="passText" 
                              TextChanged="passTextChanged" 
-                             FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                             FontFamily="pack://application:,,,/fonts/#Montserrat" 
                              BorderThickness="2" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Top" 
@@ -128,12 +141,13 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,261,152,297"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       Foreground="White"/>
                 <Image Source="img\passwordIcon.png" Margin="64,250,277,286" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="confirmPassText" 
                              TextChanged="confirmPassTextChanged" 
-                             FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                             FontFamily="pack://application:,,,/fonts/#Montserrat"
                              BorderThickness="2" 
                              HorizontalAlignment="Center" 
                              VerticalAlignment="Top" 
@@ -156,12 +170,13 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,337,134,210"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       Foreground="White"/>
                 <Image Source="img\confirmPasswordIcon.png" Margin="64,326,277,210" Width="79" Height="44.481981981982"/>
 
                 <TextBox x:Name="balanceText" 
                          TextChanged="balanceTextChanged"
-                         FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                         FontFamily="pack://application:,,,/fonts/#Montserrat"
                          BorderThickness="2" 
                          HorizontalAlignment="Center" 
                          TextWrapping="Wrap" 
@@ -184,13 +199,13 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,412,120,144"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
                        Foreground="White"/>
                 <Image Source="img\balanceIcon.png" Margin="64,399,277,131"/>
             </Grid>
 
             <Label Content="SIGN UP" 
-                   FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
                    FontSize="60" 
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Top" 
@@ -209,7 +224,7 @@
             </Button>
 
             <Button x:Name="create"
-                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" 
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
                     Content="CREATE ACCOUNT" 
                     HorizontalAlignment="Center" 
                     Margin="0,490,0,0" 

@@ -70,14 +70,54 @@
                 </Image.Clip>
             </Image>
 
+            <Border CornerRadius="8,8,8,8" Margin="-21,-17,-20,0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\LoginBack.png"/>
+                </Border.Background>
+            </Border>
+
+            <Border CornerRadius="8,8,8,8" Margin="-21,-40,-20,23">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\shadeLogin.png"/>
+                </Border.Background>
+            </Border>
+
+            <Image Source="img\coinControl.png" Stretch="Fill" Margin="0,117,53,290">
+                <Image.Clip>
+                    <RectangleGeometry Rect="20,10,430,960"></RectangleGeometry>
+                </Image.Clip>
+            </Image>
+
             <Grid>
-                <Label Content="WELCOME" 
-                       Width="344" 
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
-                       FontSize="72" 
+                <Label Content="CoinControl" 
+                       Width="245" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       FontSize="36" 
                        VerticalAlignment="Top" 
-                       HorizontalAlignment="Center"
-                       Foreground="White" Margin="0,75,0,0"/>
+                       HorizontalAlignment="Left"
+                       Foreground="White" 
+                       Margin="51,47,0,0" RenderTransformOrigin="0.5,0.5" Height="75">
+                   
+                </Label>
+
+                <TextBox x:Name="txtUsername"
+                     TextChanged="txtUsername_TextChanged" 
+                     RenderTransformOrigin="0.5,0.5"
+                     Width="268" 
+                     Height="49"
+                     Margin="76,241,76,290" 
+                     VerticalContentAlignment="Center" 
+                     Padding="55,0,0,0"
+                     Background="#FF839BC4" 
+                     BorderBrush="White"
+                     Foreground="White"
+                     FontFamily="pack://application:,,,/fonts/#Montserrat">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
 
                 <PasswordBox Template="{StaticResource passwordbox}"
                              x:Name="txtPassword" 
@@ -87,11 +127,11 @@
                              Height="49"
                              Margin="0,94,0,0" 
                              VerticalContentAlignment="Center" 
-                             Padding="49,0,0,0"
+                             Padding="55,0,0,0"
                              Background="#FF839BC4" 
                              BorderBrush="White"
-                             Foreground="White">
-
+                             Foreground="White"
+                             FontFamily="pack://application:,,,/fonts/#Montserrat">
                     <PasswordBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
@@ -99,55 +139,39 @@
                     </PasswordBox.Resources>
                 </PasswordBox>
 
-                <TextBox x:Name="txtUsername"
-                     TextChanged="txtUsername_TextChanged" 
-                     RenderTransformOrigin="0.5,0.5"
-                     Width="268" 
-                     Height="49"
-                     Margin="76,241,76,290" 
-                     VerticalContentAlignment="Center" 
-                     Padding="49,0,0,0"
-                     Background="#FF839BC4" 
-                     BorderBrush="White"
-                     Foreground="White">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="23"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-
                 <Label x:Name="txtUser" 
                        Content="Enter Username" 
                        Background="Transparent" 
                        IsHitTestVisible="False" 
-                       Margin="124,253,0,0" 
+                       Margin="130,253,0,0" 
                        RenderTransformOrigin="0.5,0.5" 
                        HorizontalAlignment="Left" 
                        HorizontalContentAlignment="Center" 
                        VerticalAlignment="Top" 
-                       Foreground="White"/>
+                       Foreground="White"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
                 <Label x:Name="txtPass" 
                        Content="Enter Password" 
                        Background="Transparent" 
                        IsHitTestVisible="False" 
-                       Margin="124,324,202,229" 
+                       Margin="130,325,163,229" 
                        RenderTransformOrigin="0.5,0.5" 
                        Foreground="White"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
                 <Image Source="img\passwordIcon.png" Margin="63,315,278,221" Width="79" Height="44.481981981982"/>
 
                 <Image Source="img\userIcon.png" Margin="63,243,278,292" Width="79" Height="44.481981981982"/>
             </Grid>
 
-            <Button Content="Create an Account" 
-                    Click="createAcc_Click" 
-                    Margin="228,429,10,115" 
-                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+            <Button Content="Login" 
+                    Click="btnLogin_Click" 
+                    Margin="10,429,228,115" 
+                    RenderTransformOrigin="0.5,0.5"
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
                     Background="#FF657FAC"
-                    Foreground="White" BorderBrush="White" Width="182" Height="36">
+                    Foreground="White" BorderBrush="White">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>
@@ -155,13 +179,12 @@
                 </Button.Resources>
             </Button>
 
-            <Button Content="Login" 
-                    Click="btnLogin_Click" 
-                    Margin="10,429,228,115" 
-                    RenderTransformOrigin="0.5,0.5"
-                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+            <Button Content="Create an Account" 
+                    Click="createAcc_Click" 
+                    Margin="228,429,10,115" 
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
                     Background="#FF657FAC"
-                    Foreground="White" BorderBrush="White">
+                    Foreground="White" BorderBrush="White" Width="182" Height="36">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>
