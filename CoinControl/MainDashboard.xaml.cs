@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CoinControl;
 using System.Printing;
 using System.Data.Entity.Migrations.Design;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace CoinControl
@@ -37,6 +38,13 @@ namespace CoinControl
 
         public void LoadInformation()
         {
+            var user = _context.User.FirstOrDefault(u => u.User_ID == loggedInUserId);
+            if (user != null)
+            {
+                userName.Text = $"{user.Name}!";
+                balanceText.Text = user.Balance.ToString("0.00");
+            }
+
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
             decimal totalIncome = allIncomes.Sum(income => income.Amount);
             incomeText.Text = totalIncome.ToString("0.00");

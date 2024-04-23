@@ -10,7 +10,18 @@
     <StartupObject>CoinControl.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="fonts\Harmonia Sans W01 Regular.otf" />
+    <None Remove="fonts\Montserrat-Regular.ttf" />
+    <None Remove="img\balanceIcon.png" />
+    <None Remove="img\blueBack.png" />
+    <None Remove="img\confirmPasswordIcon.png" />
+    <None Remove="img\emailIcon.png" />
     <None Remove="img\mainbg.png" />
+    <None Remove="img\offWhiteBG.png" />
+    <None Remove="img\passwordIcon.png" />
+    <None Remove="img\returnButton.png" />
+    <None Remove="img\userIcon.png" />
+    <None Remove="img\whiteReturnButton.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LiveCharts" Version="0.9.7" />
@@ -27,6 +38,17 @@
     <PackageReference Include="EntityFramework" Version="6.4.4" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="fonts\Harmonia Sans W01 Regular.otf" />
+    <Resource Include="fonts\Montserrat-Regular.ttf" />
+    <Resource Include="img\balanceIcon.png" />
+    <Resource Include="img\blueBack.png" />
+    <Resource Include="img\confirmPasswordIcon.png" />
+    <Resource Include="img\emailIcon.png" />
     <Resource Include="img\mainbg.png" />
+    <Resource Include="img\offWhiteBG.png" />
+    <Resource Include="img\passwordIcon.png" />
+    <Resource Include="img\returnButton.png" />
+    <Resource Include="img\userIcon.png" />
+    <Resource Include="img\whiteReturnButton.png" />
   </ItemGroup>
 </Project>

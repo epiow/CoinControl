@@ -18,6 +18,8 @@ namespace CoinControl
 {
     public partial class LoginWindow : Window
     {
+        public string dataConnector = "Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True";
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -52,9 +54,14 @@ namespace CoinControl
 
         private void createAcc_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Password;
+            createAccountWindow createAcc = new createAccountWindow();
+            createAcc.Show();
+            Close();
 
+            //string username = txtUsername.Text;
+            //string password = txtPassword.Password;
+
+            /*
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.");
@@ -70,11 +77,14 @@ namespace CoinControl
             {
                 MessageBox.Show("Failed to create user account. Please try again.");
             }
+            */
         }
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
+
+            using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {
@@ -105,11 +115,14 @@ namespace CoinControl
 
         private User ValidateUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(dataConnector))
+
             {
                 try
                 {
                     connection.Open();
+                    //string query2 = "INSERT INTO [User] (Balance, [Name], [Email], [Password]) VALUES (10, 'testuser1','test@gmail.com', 'test');";
+                    //SqlCommand command2 = new SqlCommand(query2, connection);
                     string query = "SELECT User_ID, COUNT(1) FROM [User] WHERE Name=@Name AND Password=@Password GROUP BY User_ID";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@Name", username);
