@@ -89,7 +89,6 @@ namespace CoinControl
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
 
-            this.Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
