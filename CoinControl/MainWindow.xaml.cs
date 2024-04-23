@@ -27,16 +27,16 @@ namespace CoinControl
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Password;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.");
                 return;
             }
 
-            User authenticatedUser = ValidateUser(username, password);
+            User authenticatedUser = ValidateUser(email, password);
 
             if (authenticatedUser != null)
             {
@@ -48,7 +48,9 @@ namespace CoinControl
             }
             else
             {
-                MessageBox.Show("Invalid username or password. Please try again.");
+                MessageBox.Show("Invalid email or password. Please try again.");
+                txtEmail.Clear();
+                txtPassword.Clear();
             }
         }
 
@@ -57,30 +59,14 @@ namespace CoinControl
             createAccountWindow createAcc = new createAccountWindow();
             createAcc.Show();
             Close();
-
-            //string username = txtUsername.Text;
-            //string password = txtPassword.Password;
-
-            /*
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both username and password.");
-                return;
-            }
-
-            // Insert the new user into the database
-            if (InsertUser(username, password))
-            {
-                MessageBox.Show("User account created successfully!");
-            }
-            else
-            {
-                MessageBox.Show("Failed to create user account. Please try again.");
-            }
-            */
         }
 
-        private bool InsertUser(string username, string password)
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private User ValidateUser(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(dataConnector))
 
@@ -88,41 +74,9 @@ namespace CoinControl
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO [User] (Name, Password) VALUES (@Name, @Password)";
+                    string query = "SELECT User_ID, COUNT(1) FROM [User] WHERE Email=@Email AND Password=@Password GROUP BY User_ID";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Name", username);
-                    command.Parameters.AddWithValue("@Password", password);
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    return rowsAffected > 0;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                    return false;
-                }
-            }
-        }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                Close(); // Close the window if the user clicks Yes
-            }
-        }
-
-        private User ValidateUser(string username, string password)
-        {
-            using (SqlConnection connection = new SqlConnection(dataConnector))
-
-            {
-                try
-                {
-                    connection.Open();
-                    string query = "SELECT User_ID, COUNT(1) FROM [User] WHERE Name=@Name AND Password=@Password GROUP BY User_ID";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Name", username);
+                    command.Parameters.AddWithValue("@Email", email);
                     command.Parameters.AddWithValue("@Password", password);
 
                     SqlDataReader reader = command.ExecuteReader();
@@ -147,15 +101,15 @@ namespace CoinControl
             }
         }
 
-        private void txtUsername_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtUsername.Text != "")
+            if (txtEmail.Text != "")
             {
-                txtUser.Visibility = Visibility.Hidden;
+                txtEmailWater.Visibility = Visibility.Hidden;
             }
             else
             {
-                txtUser.Visibility = Visibility.Visible;
+                txtEmailWater.Visibility = Visibility.Visible;
             }
         }
 
