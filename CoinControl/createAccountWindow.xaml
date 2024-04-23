@@ -9,6 +9,30 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
     <Window.Resources>
+        <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+            x:Name="Bd" 
+            BorderBrush="#ffffff"
+            BorderThickness="{TemplateBinding BorderThickness}" 
+            CornerRadius="23">
+                <ScrollViewer Name="PART_ContentHost" 
+                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                    TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
         <Style x:Key="MyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="Cursor" Value="Hand" />
@@ -116,8 +140,9 @@
                        Foreground="White"/>
                 <Image Source="img\emailIcon.png" Margin="82,182,282,364"/>
 
-                <TextBox x:Name="passText" 
-                             TextChanged="passTextChanged" 
+                <PasswordBox Template="{StaticResource passwordbox}"
+                             x:Name="passText" 
+                             PasswordChanged="passTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat" 
                              BorderThickness="2" 
                              HorizontalAlignment="Center" 
@@ -130,12 +155,12 @@
                              Padding="55,0,0,0" 
                              BorderBrush="White"
                              Foreground="White">
-                    <TextBox.Resources>
+                    <PasswordBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
                         </Style>
-                    </TextBox.Resources>
-                </TextBox>
+                    </PasswordBox.Resources>
+                </PasswordBox>
                 <Label x:Name="txtPass" 
                        Content="Enter Password" 
                        Background="Transparent" 
@@ -145,8 +170,9 @@
                        Foreground="White"/>
                 <Image Source="img\passwordIcon.png" Margin="84,254,284,290"/>
 
-                <TextBox x:Name="confirmPassText" 
-                             TextChanged="confirmPassTextChanged" 
+                <PasswordBox Template="{StaticResource passwordbox}"
+                             x:Name="confirmPassText" 
+                             PasswordChanged="confirmPassTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat"
                              BorderThickness="2" 
                              HorizontalAlignment="Center" 
@@ -159,12 +185,12 @@
                              Padding="55,0,0,0" 
                              BorderBrush="White"
                              Foreground="White">
-                    <TextBox.Resources>
+                    <PasswordBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
                         </Style>
-                    </TextBox.Resources>
-                </TextBox>
+                    </PasswordBox.Resources>
+                </PasswordBox>
                 <Label x:Name="txtConfirm" 
                        Content="Confirm Password" 
                        Background="Transparent" 
