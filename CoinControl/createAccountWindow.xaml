@@ -27,35 +27,18 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Window.Resources>
+  
     <Border CornerRadius="8,8,8,8" BorderThickness="20" >
         <Border.BorderBrush>
             <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
         </Border.BorderBrush>
 
         <Grid Margin="0,20,0,-20">
-            <!--<Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="0.5"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            -->
-
-            <!--<Grid.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="White" Offset="0.0"/>
-                    <GradientStop Color="White" Offset="0.5"/>
-                    <GradientStop Color="White" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            -->
 
             <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,-421,0">
                 <Image.Clip>
-                    <RectangleGeometry Rect="20,10,430,960"></RectangleGeometry>
+                    <RectangleGeometry Rect="20,10,430,960"/>
                 </Image.Clip>
             </Image>
 
@@ -201,10 +184,9 @@
                        Background="Transparent" 
                        IsHitTestVisible="False" 
                        Margin="130,412,120,144"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular" Foreground="White"/>
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                       Foreground="White"/>
                 <Image Source="img\balanceIcon.png" Margin="64,399,277,131"/>
-
-
             </Grid>
 
             <Label Content="SIGN UP" 
@@ -234,8 +216,10 @@
                     VerticalAlignment="Top" 
                     Width="268"
                     Click="createAcc" 
-                    Background="#FF657FAC" Height="38"
-                    Foreground="White">
+                    Background="#FF657FAC" 
+                    Height="38"
+                    Foreground="White"
+                    BorderBrush="#ffffff">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>

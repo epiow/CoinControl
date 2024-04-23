@@ -5,47 +5,169 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" AllowsTransparency="True">
-    
-    <Grid Height="434">
+        Title="Login" Height="620" Width="460"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" 
+        WindowStyle="None" 
+        AllowsTransparency="True">
 
-        <Grid.Background>
-            <ImageBrush ImageSource="img\mainbg.png"/>
-        </Grid.Background>
+    <Window.Resources>
+        <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+                    x:Name="Bd" 
+                    BorderBrush="#ffffff"
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="23">
+                <ScrollViewer Name="PART_ContentHost" 
+                              SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                            TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <PasswordBox x:Name="txtPassword" Grid.Row="3" Margin="436,246,118,-58" Height="34" VerticalContentAlignment="Center" PasswordChanged="PassChanged" Padding="2,0,0,0"/>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                                BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
-        <Button Content="Login" Click="btnLogin_Click" Grid.Row="3" Margin="390,315,255,-125" RenderTransformOrigin="0.5,0.5" Height="31.96">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.061"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Button Content="Create an Account" Click="createAcc_Click" Margin="570,314,75,-124" Grid.Row="3" Height="31.96">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.061"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Label Content="WELCOME" Margin="372,49,0,0" Grid.Row="3" Width="412" FontFamily="Roboto" FontSize="72" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtUsername" Grid.Row="3" Margin="436,199,118,5" Height="34" VerticalContentAlignment="Center" TextChanged="txtUsername_TextChanged" Padding="2,0,0,0"/>
-        <Label x:Name="txtUser" Content="Enter Username" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,203,118,9" Grid.Row="3"/>
-        <Label x:Name="txtPass" Content="Enter Password" Background="Transparent" Opacity="0.5" IsHitTestVisible="False" Margin="436,258,127,-46" Grid.Row="3"/>
-    </Grid>
-    
+    <Border CornerRadius="8,8,8,8" BorderThickness="20">
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
+        <Grid Margin="0,20,0,-20">
+
+            <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,-421,0">
+                <Image.Clip>
+                    <RectangleGeometry Rect="20,10,430,960"></RectangleGeometry>
+                </Image.Clip>
+            </Image>
+
+            <Grid>
+                <Label Content="WELCOME" 
+                       Width="344" 
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                       FontSize="72" 
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Center"
+                       Foreground="White" Margin="0,75,0,0"/>
+
+                <PasswordBox Template="{StaticResource passwordbox}"
+                             x:Name="txtPassword" 
+                             PasswordChanged="PassChanged" 
+                             RenderTransformOrigin="0.5,0.5"
+                             Width="268" 
+                             Height="49"
+                             Margin="0,94,0,0" 
+                             VerticalContentAlignment="Center" 
+                             Padding="49,0,0,0"
+                             Background="#FF839BC4" 
+                             BorderBrush="White"
+                             Foreground="White">
+
+                    <PasswordBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </PasswordBox.Resources>
+                </PasswordBox>
+
+                <TextBox x:Name="txtUsername"
+                     TextChanged="txtUsername_TextChanged" 
+                     RenderTransformOrigin="0.5,0.5"
+                     Width="268" 
+                     Height="49"
+                     Margin="76,241,76,290" 
+                     VerticalContentAlignment="Center" 
+                     Padding="49,0,0,0"
+                     Background="#FF839BC4" 
+                     BorderBrush="White"
+                     Foreground="White">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <Label x:Name="txtUser" 
+                       Content="Enter Username" 
+                       Background="Transparent" 
+                       IsHitTestVisible="False" 
+                       Margin="124,253,0,0" 
+                       RenderTransformOrigin="0.5,0.5" 
+                       HorizontalAlignment="Left" 
+                       HorizontalContentAlignment="Center" 
+                       VerticalAlignment="Top" 
+                       Foreground="White"/>
+
+                <Label x:Name="txtPass" 
+                       Content="Enter Password" 
+                       Background="Transparent" 
+                       IsHitTestVisible="False" 
+                       Margin="124,324,202,229" 
+                       RenderTransformOrigin="0.5,0.5" 
+                       Foreground="White"
+                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
+
+                <Image Source="img\passwordIcon.png" Margin="63,315,278,221" Width="79" Height="44.481981981982"/>
+
+                <Image Source="img\userIcon.png" Margin="63,243,278,292" Width="79" Height="44.481981981982"/>
+            </Grid>
+
+            <Button Content="Create an Account" 
+                    Click="createAcc_Click" 
+                    Margin="228,429,10,115" 
+                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                    Background="#FF657FAC"
+                    Foreground="White" BorderBrush="White" Width="182" Height="36">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="Login" 
+                    Click="btnLogin_Click" 
+                    Margin="10,429,228,115" 
+                    RenderTransformOrigin="0.5,0.5"
+                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
+                    Background="#FF657FAC"
+                    Foreground="White" BorderBrush="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Border>
 </Window>
