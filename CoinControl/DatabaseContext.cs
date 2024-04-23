@@ -77,7 +77,7 @@ namespace CoinControl
     {
         public long Budget_ID { get; set; }
         public long User_ID { get; set; }
-        // public string Category_Name { get; set; }
+        public string Category_Name { get; set; }
         public decimal Amount { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

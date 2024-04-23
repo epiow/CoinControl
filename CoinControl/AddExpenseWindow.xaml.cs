@@ -69,13 +69,5 @@ namespace CoinControl
             NoteBox.Clear();
         }
 
-        /*
-        using (var context = new BloggingContext())
-        {
-            var blog = new Blog { Url = "http://example.com" };
-            context.Blogs.Add(blog);
-            context.SaveChanges();
-        }
-        */
     }
 }

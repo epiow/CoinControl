@@ -74,7 +74,7 @@ namespace CoinControl
 
         private bool InsertUser(string username, string password)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection("Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True"))
             {
                 try
                 {
