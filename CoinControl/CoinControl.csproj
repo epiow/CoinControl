@@ -12,14 +12,18 @@
   <ItemGroup>
     <None Remove="fonts\Montserrat-Regular.ttf" />
     <None Remove="img\balanceIcon.png" />
+    <None Remove="img\blackExitButton.png" />
     <None Remove="img\blueBack.png" />
     <None Remove="img\darkblueRegister.png" />
+    <None Remove="img\dirtyWhiteBack.png" />
     <None Remove="img\emailIcon.png" />
     <None Remove="img\exitButton.png" />
+    <None Remove="img\homeButton.png" />
     <None Remove="img\LoginBack.png" />
     <None Remove="img\offWhiteBG.png" />
     <None Remove="img\passwordIcon.png" />
     <None Remove="img\returnButton.png" />
+    <None Remove="img\rightDashboardColor.png" />
     <None Remove="img\shadeLogin.png" />
     <None Remove="img\userIcon.png" />
     <None Remove="img\whiteReturnButton.png" />
@@ -42,14 +46,18 @@
   <ItemGroup>
     <Resource Include="fonts\Montserrat-Regular.ttf" />
     <Resource Include="img\balanceIcon.png" />
+    <Resource Include="img\blackExitButton.png" />
     <Resource Include="img\blueBack.png" />
     <Resource Include="img\darkblueRegister.png" />
+    <Resource Include="img\dirtyWhiteBack.png" />
     <Resource Include="img\emailIcon.png" />
     <Resource Include="img\exitButton.png" />
+    <Resource Include="img\homeButton.png" />
     <Resource Include="img\LoginBack.png" />
     <Resource Include="img\offWhiteBG.png" />
     <Resource Include="img\passwordIcon.png" />
     <Resource Include="img\returnButton.png" />
+    <Resource Include="img\rightDashboardColor.png" />
     <Resource Include="img\shadeLogin.png" />
     <Resource Include="img\userIcon.png" />
     <Resource Include="img\whiteReturnButton.png" />

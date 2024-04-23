@@ -2,137 +2,151 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="CoinControl.MainDashboard"
-        Title="Main Dashboard" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        ResizeMode="NoResize">
-    <Grid>
-        <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Content="X" FontSize="10" Foreground="White" FontWeight="Bold" Click="CloseButton_Click" Background="Transparent" BorderThickness="0"/>
-        </Border>
-        <!-- Side Navigation Menu -->
-        <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome" Background="White" Width="204">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Home" Foreground="Black" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Focusable="False">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Income" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses" Focusable="False">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports" Focusable="False">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToAnalytics">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Analytics" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Logout" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-            <!-- Add more buttons for additional menu items -->
-        </StackPanel>
+        Title="Main Dashboard" Height="620" Width="800"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" 
+        WindowStyle="None" 
+        AllowsTransparency="True">
 
-        <!-- Main Content Area -->
+    <Window.Resources>
+        <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" 
+                BorderBrush="#ffffff"
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="23">
+                <ScrollViewer Name="PART_ContentHost" 
+                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                        TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- 
+    NavigateToHome
+    NavigateToSavings
+    NavigateToExpenses
+    NavigateToReports
+    
+    LogoutButton
+    -->
+    <Border CornerRadius="8,8,8,8" BorderThickness="20">
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
         <Grid Margin="200,0,0,0">
-            <TextBlock Text="Welcome to CoinControl" 
-                       FontSize="24" 
+            <Border CornerRadius="20,20,20,20" Margin="-222,-22,160,-25">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\dirtyWhiteBack.png"/>
+                </Border.Background>
+            </Border>
+
+            <Border CornerRadius="20,20,20,20" Margin="347,-22,-22,-25">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\rightDashboardColor.png"/>
+                </Border.Background>
+            </Border>
+
+            <TextBlock Text="WELCOME TO" 
                        FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       FontWeight="Bold" 
-                       Margin="20,10,0,0" 
+                       Margin="-201,69,0,0" 
                        VerticalAlignment="Top" 
                        HorizontalAlignment="Left"/>
+            <TextBlock Text="COINCONTROL" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       Margin="-201,84,0,0" 
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Left" FontStyle="Italic"/>
 
             <TextBlock x:Name="userName"
-                       HorizontalAlignment="Left" 
-                       Margin="20,44,0,0" 
-                       TextWrapping="Wrap" 
-                       Text="" 
-                       VerticalAlignment="Top" 
-                       Height="23" 
-                       Width="98"
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-
+                           HorizontalAlignment="Left" 
+                           Margin="-197,0,0,0" 
+                           TextWrapping="Wrap" 
+                           Text="aa" 
+                           VerticalAlignment="Top" 
+                           Height="69" 
+                           Width="98"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" FontSize="16" FontWeight="Bold"/>
 
             <TextBlock HorizontalAlignment="Left" 
-                       Margin="315,199,0,0" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       TextWrapping="Wrap" 
-                       VerticalAlignment="Top" 
-                       FontSize="14" 
-                       RenderTransformOrigin="0.911,0.808"
-                       Text="Total Income"/>
+                           Margin="315,199,0,0" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="14" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Total Income"/>
 
-            <Grid Margin="233,77,243,264" >
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="62,0,-62,0">
-                    <Border.Effect>
-                        <DropShadowEffect/>
-                    </Border.Effect>
-                </Border>
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-75,0,75,0" Width="124">
-                    <Border.Effect>
-                        <DropShadowEffect/>
-                    </Border.Effect>
-                </Border>
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="198,0,-198,0" Width="124">
-                    <Border.Effect>
-                        <DropShadowEffect/>
-                    </Border.Effect>
-                </Border>
-                <Border Background="White" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Margin="-213,0,213,0" Width="124">
-                    <Border.Effect>
-                        <DropShadowEffect/>
-                    </Border.Effect>
-                </Border>
-            </Grid>
+
 
             <TextBlock x:Name="balanceText" HorizontalAlignment="Left" Margin="25,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" 
-                       Margin="25,199,0,0" 
-                       TextWrapping="Wrap" 
-                       VerticalAlignment="Top" 
-                       FontSize="14" 
-                       RenderTransformOrigin="0.911,0.808"
-                       Text="Current Balance"
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       Height="16" 
-                       Width="115"/>
+                           Margin="25,199,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="14" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Current Balance"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="16" 
+                           Width="115"/>
 
             <TextBlock x:Name="incomeText" HorizontalAlignment="Left" Margin="306,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" 
-                       Margin="168,199,0,0" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       TextWrapping="Wrap" 
-                       VerticalAlignment="Top" 
-                       FontSize="14" 
-                       RenderTransformOrigin="0.911,0.808"
-                       Text="Total Expenses"/>
+                           Margin="168,199,0,0" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="14" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Total Expenses"/>
 
             <TextBlock x:Name="expenseText" HorizontalAlignment="Left" Margin="168,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Right" 
-                       Margin="0,199,70,0" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       TextWrapping="Wrap" 
-                       VerticalAlignment="Top" 
-                       FontSize="14" 
-                       RenderTransformOrigin="0.911,0.808" 
-                       Width="54"
-                       Text="Profit"/>
+                           Margin="0,199,70,0" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="14" 
+                           RenderTransformOrigin="0.911,0.808" 
+                           Width="54"
+                           Text="Profit"/>
 
             <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,261,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="-40,307,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
 
             <Button Content="+" HorizontalAlignment="Left" Margin="150,257,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
                 <Button.Resources>
@@ -142,7 +156,7 @@
                 </Button.Resources>
             </Button>
 
-            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="20,297,31,10" CanUserAddRows="false">
+            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="-40,338,235,10" CanUserAddRows="false">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Reminder" Binding="{Binding Category_Name}" />
                     <DataGridTextColumn Header="Amount to Pay" Binding="{Binding Amount}" />
@@ -158,9 +172,39 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            
-            <!-- Content of the main dashboard goes here -->
-            <!-- You can use Grid or other layout panels to arrange your content -->
+
+            <Button x:Name="exit" 
+                        Click="CloseButton_Click" 
+                        Margin="504,0,0,0" 
+                        BorderThickness="0"  
+                        Style="{StaticResource MyButton}" 
+                        HorizontalAlignment="Left" 
+                        Height="54" 
+                        VerticalAlignment="Top" 
+                        Width="56">
+
+                <Image Source="img\blackExitButton.png" 
+                               Height="37" 
+                               Width="39"/>
+            </Button>
+
+            <Button Margin="-232,159,624,364">
+                <StackPanel Orientation="Horizontal" Height="64" Width="244">
+                    <Image Source="img\homeButton.png" Width="67" Height="49"/>
+                    <Label Padding="0" 
+                           Content="My Button Text" 
+                           Height="20" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="92" FontSize="10"/>
+                </StackPanel>
+            </Button>
+
+            <Rectangle HorizontalAlignment="Left" 
+                       Height="605" 
+                       Margin="-79,0,0,0" 
+                       Stroke="Black" 
+                       VerticalAlignment="Top" 
+                       Width="1" 
+                       Fill="Black" Opacity="0.2"/>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
