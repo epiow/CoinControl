@@ -13,12 +13,10 @@
     <None Remove="fonts\Montserrat-Regular.ttf" />
     <None Remove="img\balanceIcon.png" />
     <None Remove="img\blueBack.png" />
-    <None Remove="img\coinControl.png" />
-    <None Remove="img\confirmPasswordIcon.png" />
     <None Remove="img\darkblueRegister.png" />
     <None Remove="img\emailIcon.png" />
+    <None Remove="img\exitButton.png" />
     <None Remove="img\LoginBack.png" />
-    <None Remove="img\mainbg.png" />
     <None Remove="img\offWhiteBG.png" />
     <None Remove="img\passwordIcon.png" />
     <None Remove="img\returnButton.png" />
@@ -45,12 +43,10 @@
     <Resource Include="fonts\Montserrat-Regular.ttf" />
     <Resource Include="img\balanceIcon.png" />
     <Resource Include="img\blueBack.png" />
-    <Resource Include="img\coinControl.png" />
-    <Resource Include="img\confirmPasswordIcon.png" />
     <Resource Include="img\darkblueRegister.png" />
     <Resource Include="img\emailIcon.png" />
+    <Resource Include="img\exitButton.png" />
     <Resource Include="img\LoginBack.png" />
-    <Resource Include="img\mainbg.png" />
     <Resource Include="img\offWhiteBG.png" />
     <Resource Include="img\passwordIcon.png" />
     <Resource Include="img\returnButton.png" />
