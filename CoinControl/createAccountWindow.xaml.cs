@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace CoinControl
 {
@@ -55,22 +56,22 @@ namespace CoinControl
                 txtEmail.Visibility = Visibility.Visible;
             }
         }
-        private void passTextChanged(object sender, TextChangedEventArgs e)
+        private void passTextChanged(object sender, RoutedEventArgs e)
         {
-            if (passText.Text != "")
+            if (passText.Password.Length > 0)
             {
-                txtPass.Visibility = Visibility.Hidden;
+                txtPass.Visibility = Visibility.Collapsed;
             }
             else
             {
                 txtPass.Visibility = Visibility.Visible;
             }
         }
-        private void confirmPassTextChanged(object sender, TextChangedEventArgs e)
+        private void confirmPassTextChanged(object sender, RoutedEventArgs e)
         {
-            if (confirmPassText.Text != "")
+            if (confirmPassText.Password.Length > 0)
             {
-                txtConfirm.Visibility = Visibility.Hidden;
+                txtConfirm.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -93,8 +94,8 @@ namespace CoinControl
         {
             string username = userText.Text;
             string email = emailText.Text;
-            string password = passText.Text; 
-            string confirmPass = confirmPassText.Text;
+            string password = passText.Password; 
+            string confirmPass = confirmPassText.Password;
 
             if (password != confirmPass)
             {
@@ -108,6 +109,12 @@ namespace CoinControl
                 string.IsNullOrEmpty(confirmPass))
             {
                 MessageBox.Show("Please complete the necessary credentials.");
+                return;
+            }
+
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Please enter a valid email address.");
                 return;
             }
 
@@ -143,6 +150,12 @@ namespace CoinControl
                     MessageBox.Show("Failed to create user account. Please try again. Error: " + ex.Message);
                 }
             }
+        }
+        private bool IsValidEmail(string email)
+        {
+            // This is a simple regex pattern to check for basic email format
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern);
         }
     }
 }

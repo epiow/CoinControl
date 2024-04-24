@@ -70,14 +70,55 @@
                 </Image.Clip>
             </Image>
 
+            <Border CornerRadius="8,8,8,8" Margin="-21,-17,-20,0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\LoginBack.png"/>
+                </Border.Background>
+            </Border>
+
+            <Border CornerRadius="8,8,8,8" Margin="-21,-40,-20,23">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\shadeLogin.png"/>
+                </Border.Background>
+            </Border>
+
+            <Label Content="COIN" 
+                   Width="438" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   FontSize="60" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left"
+                   Foreground="White" 
+                   Margin="0,53,0,0" RenderTransformOrigin="0.5,0.5" Height="102"/>
+
+            <Label Content="CONTROL" 
+                   Width="438" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   FontSize="72" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Left"
+                   Foreground="White" 
+                   Margin="0,104,0,0" RenderTransformOrigin="0.5,0.5" Height="102"/>
+
             <Grid>
-                <Label Content="WELCOME" 
-                       Width="344" 
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
-                       FontSize="72" 
-                       VerticalAlignment="Top" 
-                       HorizontalAlignment="Center"
-                       Foreground="White" Margin="0,75,0,0"/>
+                <TextBox x:Name="txtEmail"
+                     TextChanged="txtEmail_TextChanged" 
+                     RenderTransformOrigin="0.5,0.5"
+                     Width="268" 
+                     Height="49"
+                     Margin="76,241,76,290" 
+                     VerticalContentAlignment="Center" 
+                     Padding="55,0,0,0"
+                     Background="#FF839BC4" 
+                     BorderBrush="White"
+                     Foreground="White"
+                     FontFamily="pack://application:,,,/fonts/#Montserrat">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="23"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
 
                 <PasswordBox Template="{StaticResource passwordbox}"
                              x:Name="txtPassword" 
@@ -87,11 +128,11 @@
                              Height="49"
                              Margin="0,94,0,0" 
                              VerticalContentAlignment="Center" 
-                             Padding="49,0,0,0"
+                             Padding="55,0,0,0"
                              Background="#FF839BC4" 
                              BorderBrush="White"
-                             Foreground="White">
-
+                             Foreground="White"
+                             FontFamily="pack://application:,,,/fonts/#Montserrat">
                     <PasswordBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
@@ -99,74 +140,121 @@
                     </PasswordBox.Resources>
                 </PasswordBox>
 
-                <TextBox x:Name="txtUsername"
-                     TextChanged="txtUsername_TextChanged" 
-                     RenderTransformOrigin="0.5,0.5"
-                     Width="268" 
-                     Height="49"
-                     Margin="76,241,76,290" 
-                     VerticalContentAlignment="Center" 
-                     Padding="49,0,0,0"
-                     Background="#FF839BC4" 
-                     BorderBrush="White"
-                     Foreground="White">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="23"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-
-                <Label x:Name="txtUser" 
-                       Content="Enter Username" 
+                <Label x:Name="txtEmailWater" 
+                       Content="Enter Email" 
                        Background="Transparent" 
                        IsHitTestVisible="False" 
-                       Margin="124,253,0,0" 
+                       Margin="130,253,0,0" 
                        RenderTransformOrigin="0.5,0.5" 
                        HorizontalAlignment="Left" 
                        HorizontalContentAlignment="Center" 
                        VerticalAlignment="Top" 
-                       Foreground="White"/>
+                       Foreground="White"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
                 <Label x:Name="txtPass" 
                        Content="Enter Password" 
                        Background="Transparent" 
                        IsHitTestVisible="False" 
-                       Margin="124,324,202,229" 
+                       Margin="130,325,163,229" 
                        RenderTransformOrigin="0.5,0.5" 
                        Foreground="White"
-                       FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"/>
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-                <Image Source="img\passwordIcon.png" Margin="63,315,278,221" Width="79" Height="44.481981981982"/>
+                <Image Source="img\passwordIcon.png" Margin="84,320,286,224"/>
 
-                <Image Source="img\userIcon.png" Margin="63,243,278,292" Width="79" Height="44.481981981982"/>
+                <Image Source="img\emailIcon.png" Margin="86,251,288,299"/>
             </Grid>
 
-            <Button Content="Create an Account" 
-                    Click="createAcc_Click" 
-                    Margin="228,429,10,115" 
-                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
-                    Background="#FF657FAC"
-                    Foreground="White" BorderBrush="White" Width="182" Height="36">
+            <Button Content="LOGIN" 
+        Click="btnLogin_Click" 
+        Margin="10,429,228,115" 
+        RenderTransformOrigin="0.5,0.5"
+        FontFamily="pack://application:,,,/fonts/#Montserrat"
+        Background="#FF657FAC"
+        Foreground="White" 
+        BorderBrush="White"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
+                        <Setter Property="Width" Value="182"/>
+                        <Setter Property="Height" Value="36"/>
                         <Setter Property="CornerRadius" Value="20"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="200" Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="Height" To="50" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="182" Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="Height" To="36" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </Button.Resources>
             </Button>
 
-            <Button Content="Login" 
-                    Click="btnLogin_Click" 
-                    Margin="10,429,228,115" 
-                    RenderTransformOrigin="0.5,0.5"
-                    FontFamily="pack://application:,,,/fonts/#HarmoniaSansMonoW01-Regular"
-                    Background="#FF657FAC"
-                    Foreground="White" BorderBrush="White">
+            <Button Content="SIGN UP" 
+        Click="createAcc_Click" 
+        Margin="228,429,10,115" 
+        FontFamily="pack://application:,,,/fonts/#Montserrat"
+        Background="#FF657FAC"
+        Foreground="White" 
+        BorderBrush="White" 
+        Width="182" 
+        Height="36"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>
+                        <Setter Property="Width" Value="182"/>
+                        <Setter Property="Height" Value="36"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="200" Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="Height" To="50" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Width" To="182" Duration="0:0:0.3"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="Height" To="36" Duration="0:0:0.3"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </Button.Resources>
+            </Button>
+
+            <Button x:Name="exit" 
+                    Click="exitButton" 
+                    Margin="373,-30,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="54" 
+                    VerticalAlignment="Top" 
+                    Width="56"> 
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
             </Button>
         </Grid>
     </Border>
