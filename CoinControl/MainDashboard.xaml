@@ -1,7 +1,10 @@
 ﻿<Window 
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="CoinControl.MainDashboard"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="av" 
+        x:Class="CoinControl.MainDashboard"
         Title="Main Dashboard" Height="620" Width="800"
         WindowStartupLocation="CenterScreen" 
         Background="Transparent" 
@@ -52,16 +55,40 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="SomeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SomeButtonStyleWithoutHover" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
-    <!-- 
-    NavigateToHome
-    NavigateToSavings
-    NavigateToExpenses
-    NavigateToReports
-    
-    LogoutButton
-    -->
+    <!--Main Code-->
     <Border CornerRadius="8,8,8,8" BorderThickness="20">
         <Border.BorderBrush>
             <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
@@ -80,26 +107,46 @@
                 </Border.Background>
             </Border>
 
-            <TextBlock Text="WELCOME TO" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       Margin="-201,69,0,0" 
-                       VerticalAlignment="Top" 
-                       HorizontalAlignment="Left"/>
-            <TextBlock Text="COINCONTROL" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       Margin="-201,84,0,0" 
-                       VerticalAlignment="Top" 
-                       HorizontalAlignment="Left" FontStyle="Italic"/>
+            <Image Source="img\coinControl.png" Margin="-222,15,698,492">
+                <Image.Clip>
+                    <RectangleGeometry Rect="10,0,30,100"></RectangleGeometry>
+                </Image.Clip>
+            </Image>
+
+            <TextBlock Text="COIN" 
+                       Margin="-178,34,645,525"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       FontSize="18" />
+
+            <TextBlock Text="CONTROL" 
+                       Margin="-178,53,661,507"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       FontSize="14" />
 
             <TextBlock x:Name="userName"
                            HorizontalAlignment="Left" 
-                           Margin="-197,0,0,0" 
+                           Margin="-208,91,0,0" 
                            TextWrapping="Wrap" 
                            Text="aa" 
                            VerticalAlignment="Top" 
-                           Height="69" 
-                           Width="98"
-                           FontFamily="pack://application:,,,/fonts/#Montserrat" FontSize="16" FontWeight="Bold"/>
+                           Height="23" 
+                           Width="104"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                           FontSize="16" 
+                           FontWeight="Bold" 
+                           TextAlignment="Right"/>
+
+            <TextBlock x:Name="emailUser"
+                       HorizontalAlignment="Left" 
+                       Margin="-214,114,0,0" 
+                       TextWrapping="Wrap" 
+                       Text="aa" 
+                       VerticalAlignment="Top" 
+                       Height="10" 
+                       Width="110"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       FontSize="8" 
+                       TextAlignment="Right" FontStyle="Italic"/>
 
             <TextBlock HorizontalAlignment="Left" 
                            Margin="315,199,0,0" 
@@ -110,8 +157,7 @@
                            RenderTransformOrigin="0.911,0.808"
                            Text="Total Income"/>
 
-
-
+            
             <TextBlock x:Name="balanceText" HorizontalAlignment="Left" Margin="25,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" 
                            Margin="25,199,0,0" 
@@ -148,7 +194,12 @@
             <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="441,161,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" Margin="-40,307,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
 
-            <Button Content="+" HorizontalAlignment="Left" Margin="150,257,0,0" VerticalAlignment="Top" Height="35" Width="35" Click="addReminder">
+            <Button Content="+" HorizontalAlignment="Left" 
+                    Margin="150,257,0,0" 
+                    VerticalAlignment="Top" 
+                    Height="35" 
+                    Width="35" 
+                    Click="addReminder">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="100"/>
@@ -188,23 +239,118 @@
                                Width="39"/>
             </Button>
 
-            <Button Margin="-232,159,624,364">
+            <Button Margin="-210,169,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyleWithoutHover}" 
+                    Click="NavigateToHome" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.49,0.209">
                 <StackPanel Orientation="Horizontal" Height="64" Width="244">
-                    <Image Source="img\homeButton.png" Width="67" Height="49"/>
+                    <Image Source="img\homeButton.png" Width="34" Height="51" RenderTransformOrigin="0.546,0.174" VerticalAlignment="Top"/>
                     <Label Padding="0" 
-                           Content="My Button Text" 
-                           Height="20" 
-                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="92" FontSize="10"/>
+                           Content="Home" 
+                           Height="58" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="42"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,219,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyle}" 
+                    Click="NavigateToExpenses" 
+                    HorizontalAlignment="Left" 
+                    Height="23" 
+                    VerticalAlignment="Top" 
+                    Width="95" 
+                    RenderTransformOrigin="0.49,0.209"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal" Height="64" Width="244">
+                    <Image Source="img\expensesButton.png" Width="33" Height="35" RenderTransformOrigin="0.546,0.174" VerticalAlignment="Top" Opacity="0.5"/>
+                    <Label Padding="0" 
+                           Content="Expenses" 
+                           Height="60" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="79" Opacity="0.5"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,269,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyle}" 
+                    Click="NavigateToSavings" 
+                    HorizontalAlignment="Left" 
+                    Height="23" 
+                    VerticalAlignment="Top" 
+                    Width="95"
+                    RenderTransformOrigin="0.49,0.209"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal" Height="64" Width="244">
+                    <Image Source="img\incomeButton.png" Width="33" Height="35" RenderTransformOrigin="0.546,0.174" VerticalAlignment="Top" Opacity="0.5"/>
+                    <Label Padding="0" 
+                           Content="Income" 
+                           Height="60" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="79" Opacity="0.5"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,319,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyle}" 
+                    Click="NavigateToReports" 
+                    HorizontalAlignment="Left" 
+                    Height="23" 
+                    VerticalAlignment="Top" 
+                    Width="95"
+                    RenderTransformOrigin="0.49,0.209"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal" Height="64" Width="244">
+                    <Image Source="img\reportsButton.png" Width="33" Height="35" RenderTransformOrigin="0.546,0.174" VerticalAlignment="Top" Opacity="0.5"/>
+                    <Label Padding="0" 
+                           Content="Reports" 
+                           Height="60" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" Width="79" Opacity="0.5"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,404,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyle}" 
+                    Click="LogoutButton" 
+                    HorizontalAlignment="Left" 
+                    Height="23" 
+                    VerticalAlignment="Top" 
+                    Width="95"
+                    RenderTransformOrigin="0.49,0.209"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal" Height="64" Width="244">
+                    <Image Source="img\logOut.png" 
+                           Width="33" 
+                           Height="35" 
+                           RenderTransformOrigin="0.546,0.174" 
+                           VerticalAlignment="Top" 
+                           Opacity="0.5"/>
+                    <Label Padding="0" 
+                           Content="Sign Out" 
+                           Height="60" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                           Width="79" 
+                           Opacity="1.0" 
+                           Foreground="#FFFE0000" 
+                           FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
             <Rectangle HorizontalAlignment="Left" 
                        Height="605" 
-                       Margin="-79,0,0,0" 
+                       Margin="-99,0,0,0" 
                        Stroke="Black" 
                        VerticalAlignment="Top" 
                        Width="1" 
                        Fill="Black" Opacity="0.2"/>
+            
+            <Rectangle HorizontalAlignment="Left" 
+                       Height="55" 
+                       Margin="-181,24,0,0" 
+                       Stroke="Black" 
+                       VerticalAlignment="Top" 
+                       Width="1"/>
         </Grid>
     </Border>
 </Window>

@@ -30,6 +30,13 @@ namespace CoinControl
 
         public void LoadExpenses()
         {
+            var user = _context.User.FirstOrDefault(u => u.User_ID == loggedInUserId);
+            if (user != null)
+            {
+                userName.Text = $"{user.Name}";
+                emailUser.Text = $"{user.Email}";
+            }
+
             var expensesData = _context.Expense
                 .Where(e => e.User_ID == loggedInUserId)
                 .ToList();

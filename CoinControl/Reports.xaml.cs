@@ -20,6 +20,7 @@ namespace CoinControl
     public partial class Reports : Window
     {
         private DatabaseContext dbContext;
+        private readonly DatabaseContext _context = new DatabaseContext();
         private long currentUserId = AuthenticationManager.LoggedInUserId;
 
         public Reports()
@@ -31,6 +32,13 @@ namespace CoinControl
 
         private void LoadData()
         {
+            var user = _context.User.FirstOrDefault(u => u.User_ID == currentUserId);
+            if (user != null)
+            {
+                userName.Text = $"{user.Name}";
+                emailUser.Text = $"{user.Email}";
+            }
+
             List<Transaction> transactions = new List<Transaction>();
             List<ExpenseDB> expenses = dbContext.Expense.Where(e => e.User_ID == currentUserId).ToList();
             List<IncomeDB> income = dbContext.Income.Where(i => i.User_ID == currentUserId).ToList();
@@ -106,6 +114,7 @@ namespace CoinControl
             loginWindow.Show();
             Close();
         }
+
     }
 
 }
