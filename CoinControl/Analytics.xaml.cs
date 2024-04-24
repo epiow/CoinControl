@@ -1,24 +1,15 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 
 namespace CoinControl
 {
-    /// <summary>
-    /// Interaction logic for Analytics.xaml
-    /// </summary>
     public partial class Analytics : Window
     {
         public Analytics()
@@ -26,35 +17,7 @@ namespace CoinControl
             InitializeComponent();
             DataContext = new AnalyticsViewModel();
         }
-        public class AnalyticsViewModel
-        {
-            public List<string> ChartLabels { get; set; }
-            public List<ColumnSeries> ChartSeries { get; set; }
 
-            public AnalyticsViewModel()
-            {
-                using (var context = new DatabaseContext())
-                {
-                    // Retrieve data from the database
-                    var expensesByMonth = context.Expense
-                        .GroupBy(expense => expense.Trans_Datetime.Month)
-                        .Select(group => new { Month = group.Key, TotalAmount = group.Sum(expense => expense.Amount) })
-                        .OrderBy(item => item.Month)
-                        .ToList();
-
-                    // Populate chart data
-                    ChartLabels = expensesByMonth.Select(item => new DateTime(2024, item.Month, 1).ToString("MMMM")).ToList();
-                    ChartSeries = new List<ColumnSeries>
-                {
-                    new ColumnSeries
-                    {
-                        Title = "Total Expenses",
-                        Values = new ChartValues<double>(expensesByMonth.Select(item => (double)item.TotalAmount))
-                    }
-                };
-                }
-            }
-        }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -64,27 +27,25 @@ namespace CoinControl
             }
         }
 
-        private void NavigateToAnalytics(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void NavigateToHome(object sender, RoutedEventArgs e)
         {
             MainDashboard mainDashboard = new MainDashboard();
             mainDashboard.Show();
             this.Close();
         }
+        private void NavigateToAnalytics(object sender, RoutedEventArgs e)
+        {
 
+        }
         private void NavigateToExpenses(object sender, RoutedEventArgs e)
         {
             Expenses expenses = new Expenses();
             expenses.Show();
             this.Close();
         }
+
         private void NavigateToSavings(object sender, RoutedEventArgs e)
         {
-
             Savings savings = new Savings();
             savings.Show();
             this.Close();
@@ -102,6 +63,63 @@ namespace CoinControl
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
+        }
+    }
+
+    public class AnalyticsViewModel
+    {
+        public List<ColumnSeries> IncomeChartSeries { get; set; }
+        public List<ColumnSeries> ExpenseChartSeries { get; set; }
+        public List<LineSeries> LineChartSeries { get; set; }
+        public List<string> ChartLabels { get; set; }
+
+        public AnalyticsViewModel()
+        {
+            IncomeChartSeries = new List<ColumnSeries>();
+            ExpenseChartSeries = new List<ColumnSeries>();
+            LineChartSeries = new List<LineSeries>();
+            ChartLabels = new List<string>();
+
+            // Retrieve income data by month from the database
+            using (var context = new DatabaseContext())
+            {
+                var incomeByMonth = context.Income
+                    .GroupBy(income => income.Trans_Datetime.Month)
+                    .Select(group => new { Month = group.Key, TotalAmount = group.Sum(income => income.Amount) })
+                    .OrderBy(item => item.Month)
+                    .ToList();
+
+                foreach (var item in incomeByMonth)
+                {
+                    IncomeChartSeries.Add(new ColumnSeries
+                    {
+                        Title = "Income",
+                        Values = new ChartValues<double>(new[] { (double)item.TotalAmount }),
+                        Fill = Brushes.LightGreen
+                    });
+                    ChartLabels.Add(new DateTime(2024, 04, 23).ToString("MMMM"));
+                }
+
+                var expensesByDate = context.Expense
+                    .OrderBy(expense => expense.Trans_Datetime)
+                    .ToList();
+
+                var lineSeries = new LineSeries
+                {
+                    Title = "Expenses over Time",
+                    Values = new ChartValues<double>(),
+                    PointGeometry = DefaultGeometries.Circle,
+                    PointGeometrySize = 10
+                };
+
+                foreach (var expense in expensesByDate)
+                {
+                    lineSeries.Values.Add((double)expense.Amount);
+                    ChartLabels.Add(expense.Trans_Datetime.ToString("MMMM dd, yyyy"));
+                }
+
+                LineChartSeries.Add(lineSeries);
+            }
         }
     }
 }

@@ -318,14 +318,31 @@
                    Width="1"/>
 
             <!--Actual Functionality-->
-            <TextBlock Text="REPORTS" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="-48,10,88,0"/>
+            <TextBlock Text="REPORTS"  Foreground="#FF657FAC" FontSize="24" FontFamily="pack://application:,,,/fonts/#Montserrat"  FontWeight="Bold" Margin="160,16,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
 
-                <!-- DataGrid to display expenses and income -->
-            <DataGrid x:Name="dataGridTransactions" AutoGenerateColumns="False" Margin="20,50,20,0" VerticalAlignment="Top">
+            <!-- DataGrid to display expenses and income -->
+            <DataGrid x:Name="dataGridTransactions" AutoGenerateColumns="False" Margin="-38,52,56,94" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Padding="0">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGrid">
+                        <Setter Property="Background" Value="#8da4cd"/>
+                        <Setter Property="BorderBrush" Value="#5d5e61"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="RowBackground" Value="#565656"/>
+                        <Setter Property="Foreground" Value="AntiqueWhite"/>
+                        <Setter Property="FontFamily" Value="pack://application:,,,/fonts/#Montserrat"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Background" Value="#6a7996"/>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="100"/>
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="100"/>
-                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="300"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="120"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="120"/>
+                    <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="120"/>
                     <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" Width="200"/>
                 </DataGrid.Columns>
             </DataGrid>

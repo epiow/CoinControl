@@ -319,8 +319,25 @@
 
             <!--Actual Functionality-->
 
-                <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
-                <DataGrid x:Name="incomeDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
+            <TextBlock Foreground="#FF657FAC" FontSize="24" FontFamily="pack://application:,,,/fonts/#Montserrat"  FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Text="INCOME"/>
+            <DataGrid x:Name="incomeDataGrid" AutoGenerateColumns="False" Margin="30,57,30,153" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Padding="0">
+    <DataGrid.Resources>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#8da4cd"/>
+            <Setter Property="BorderBrush" Value="#5d5e61"/>
+            <Setter Property="BorderThickness" Value="10"/>
+            <Setter Property="RowBackground" Value="#565656"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/fonts/#Montserrat"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Padding" Value="21"/>
+                        <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="#6a7996"/>
+        </Style>
+    </DataGrid.Resources>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Source of Income" Binding="{Binding Source}" />
                         <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
@@ -329,13 +346,13 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
-                    <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-                </Button>
-                <Button Click="AddTran_Btn" Background="Green" Margin="53,364,347,26">
-                    <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-                </Button>
-                
+            <Button Click="DeleteTran_Btn" Background="#eca390" Margin="351,478,42,55">
+                <TextBlock Text="DELETE TRANSACTION" Foreground="White" Margin="10,0" FontWeight="Bold" FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+            </Button>
+            <Button Click="AddTran_Btn" Background="#ffde59" Margin="41,478,359,56">
+                <TextBlock Text="ADD TRANSACTION" Foreground="White" Margin="10,0" FontWeight="Bold" FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+            </Button>
+
         </Grid>
     </Border>
 </Window>

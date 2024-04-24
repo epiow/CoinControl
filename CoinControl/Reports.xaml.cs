@@ -114,6 +114,7 @@ namespace CoinControl
             loginWindow.Show();
             Close();
         }
+
     }
 
 }
