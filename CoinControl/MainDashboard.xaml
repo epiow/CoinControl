@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="av" 
         x:Class="CoinControl.MainDashboard"
         Title="Main Dashboard" Height="620" Width="800"
@@ -767,6 +768,49 @@
                 </Grid>
             </Border>
 
+            <Border Background="#FF5F5EE8" 
+                    BorderBrush="White" 
+                    BorderThickness="1,1,1,1" 
+                    CornerRadius="10,10,10,10" 
+                    Margin="-73,192,455,338">
+
+                <Grid Background="Transparent"
+                      Margin="376,72,0,407">
+
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="-363,-65,0,0" 
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               FontSize="14" 
+                               RenderTransformOrigin="0.911,0.808"
+                               Text="Profit"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="profitText" 
+                               HorizontalAlignment="Left" 
+                               Margin="-363,-48,0,0" 
+                               TextWrapping="Wrap" 
+                               Text="TextBlock" 
+                               VerticalAlignment="Top" 
+                               Width="108"
+                               Foreground="White"
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+
+                    <Image Name="downProfit"
+                           Source="img\downProfit.png" 
+                           Margin="-268,-69,193,26"
+                           Opacity="0"/>
+                    <Image Name="upProfit"
+                           Source="img\upProfit.png" 
+                           Margin="-268,-67,193,26"
+                           Opacity="0"/>
+                    <Image Name="equalProfit"
+                           Source="img\equalProfit.png" 
+                           Margin="-268,-67,193,30"
+                           Opacity="1"/>
+                </Grid>
+            </Border>
 
 
 
@@ -775,50 +819,114 @@
 
 
 
+            <TextBlock HorizontalAlignment="Left" 
+                       Margin="-73,280,0,0" 
+                       TextWrapping="Wrap" 
+                       VerticalAlignment="Top" 
+                       FontSize="20" 
+                       RenderTransformOrigin="0.911,0.808"
+                       Text="REMINDERS !"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat">
+            </TextBlock>
 
-            <TextBlock HorizontalAlignment="Right" 
-                           Margin="0,213,427,0" 
-                           FontFamily="pack://application:,,,/fonts/#Montserrat"
-                           TextWrapping="Wrap" 
-                           VerticalAlignment="Top" 
-                           FontSize="14" 
-                           RenderTransformOrigin="0.911,0.808" 
-                           Width="54"
-                           Text="Profit"/>
+            <Button x:Name="addRemind" 
+                Click="addReminder" 
+                Margin="60,266,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource MyButton}" 
+                HorizontalAlignment="Left" 
+                Height="52" 
+                VerticalAlignment="Top" 
+                Width="58">
 
-            <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="34,180,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Left" Margin="-40,307,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
-
-            <Button Content="+" HorizontalAlignment="Left" 
-                    Margin="150,257,0,0" 
-                    VerticalAlignment="Top" 
-                    Height="35" 
-                    Width="35" 
-                    Click="addReminder">
-                <Button.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius" Value="100"/>
-                    </Style>
-                </Button.Resources>
+                <Image Source="img\addBalance.png" 
+                       Height="42" 
+                       Width="42"/>
             </Button>
-
-            <DataGrid x:Name="expenseReminders" AutoGenerateColumns="False" Margin="-40,338,235,10" CanUserAddRows="false">
+            
+            <DataGrid Style="{DynamicResource DataGridStyle1}" 
+                      CellStyle="{DynamicResource DataGridCellStyle1}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      RowStyle="{DynamicResource DataGridRowStyle1}" 
+                      x:Name="expenseReminders" 
+                      AutoGenerateColumns="False" 
+                      Margin="-93,312,218,10" 
+                      CanUserAddRows="false">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Reminder" Binding="{Binding Category_Name}" />
-                    <DataGridTextColumn Header="Amount to Pay" Binding="{Binding Amount}" />
-                    <DataGridTextColumn Header="Time Set" Binding="{Binding StartDate}" />
-                    <DataGridTextColumn Header="Due Date" Binding="{Binding EndDate}" />
-
-                    <DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Reminder"
+                                            IsReadOnly="True"
+                                            Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="removeReminder">Done</Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Category_Name}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="To Pay"
+                                            IsReadOnly="True"
+                                            Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Amount}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Time Set"
+                                            IsReadOnly="True"
+                                            Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding StartDate}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Due Date"
+                                            IsReadOnly="True"
+                                            Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding EndDate}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Operations"
+                                            IsReadOnly="True"
+                                            Width="auto">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource gridEditButton}">
+                                        <Icon:PackIconMaterial Kind="PencilOutline"
+                                                               Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+
+                                    <Button Style="{StaticResource gridRemoveButton}"
+                                            Click ="removeReminder">
+                                        <Icon:PackIconMaterial Kind="DeleteOutline"
+                                                               Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+                                </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
 
         </Grid>
     </Border>

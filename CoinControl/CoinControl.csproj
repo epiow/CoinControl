@@ -18,8 +18,10 @@
     <None Remove="img\coinControl.png" />
     <None Remove="img\darkblueRegister.png" />
     <None Remove="img\dirtyWhiteBack.png" />
+    <None Remove="img\downProfit.png" />
     <None Remove="img\emailIcon.png" />
     <None Remove="img\entertainment.png" />
+    <None Remove="img\equalProfit.png" />
     <None Remove="img\exitButton.png" />
     <None Remove="img\expensesButton.png" />
     <None Remove="img\food.png" />
@@ -40,6 +42,7 @@
     <None Remove="img\totalExpenses.png" />
     <None Remove="img\totalIncome.png" />
     <None Remove="img\transportation.png" />
+    <None Remove="img\upProfit.png" />
     <None Remove="img\userIcon.png" />
     <None Remove="img\utilities.png" />
     <None Remove="img\whiteReturnButton.png" />
@@ -48,6 +51,7 @@
   <ItemGroup>
     <PackageReference Include="LiveCharts" Version="0.9.7" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
@@ -68,8 +72,10 @@
     <Resource Include="img\coinControl.png" />
     <Resource Include="img\darkblueRegister.png" />
     <Resource Include="img\dirtyWhiteBack.png" />
+    <Resource Include="img\downProfit.png" />
     <Resource Include="img\emailIcon.png" />
     <Resource Include="img\entertainment.png" />
+    <Resource Include="img\equalProfit.png" />
     <Resource Include="img\exitButton.png" />
     <Resource Include="img\expensesButton.png" />
     <Resource Include="img\food.png" />
@@ -90,6 +96,7 @@
     <Resource Include="img\totalExpenses.png" />
     <Resource Include="img\totalIncome.png" />
     <Resource Include="img\transportation.png" />
+    <Resource Include="img\upProfit.png" />
     <Resource Include="img\userIcon.png" />
     <Resource Include="img\utilities.png" />
     <Resource Include="img\whiteReturnButton.png" />

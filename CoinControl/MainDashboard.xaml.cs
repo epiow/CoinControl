@@ -66,12 +66,20 @@ namespace CoinControl
             expenseText.Text = totalExpenses.ToString("₱#,##0.00");
 
             decimal profit = totalIncome - totalExpenses;
+            profit = Math.Abs(profit);
             profitText.Text = profit.ToString("₱#,##0.00");
 
             if (profit > 0)
             {
-
+                upProfit.Opacity = 1;
+                equalProfit.Opacity = 0;
             }
+            else if(profit < 0)
+            {
+                downProfit.Opacity = 1;
+                equalProfit.Opacity = 0;
+            }
+            else { }
         }
 
         public int countOccurences(string item)
