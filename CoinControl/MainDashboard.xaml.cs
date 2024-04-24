@@ -43,7 +43,7 @@ namespace CoinControl
             {
                 userName.Text = $"{user.Name}";
                 emailUser.Text = $"{user.Email}";
-                balanceText.Text = user.Balance.ToString("0.00");
+                balanceText.Text = user.Balance.ToString("₱#,##0.00");
             }
 
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
@@ -114,6 +114,11 @@ namespace CoinControl
             {
                 Close(); // Close the window if the user clicks Yes
             }
+        }
+        private void addBalance_Click(object sender, RoutedEventArgs e)
+        {
+            addToBalance add = new addToBalance();
+            add.Show();
         }
         private void addReminder(object sender, RoutedEventArgs e)
         {
