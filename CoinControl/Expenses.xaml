@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
         Title="Expenses" 
@@ -319,44 +320,147 @@
 
             <!--Actual Functionality-->
 
-            <TextBlock Text="EXPENSES" Foreground="#FF657FAC" FontSize="24" FontFamily="pack://application:,,,/fonts/#Montserrat"  FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120"/>
+            <TextBlock Foreground="Black" 
+                       FontSize="24" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"  
+                       FontWeight="Bold" 
+                       Margin="-80,22,0,0" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Width="148" 
+                       Text="EXPENSES"/>
 
-            <!-- DataGrid to display expenses -->
-            <DataGrid x:Name="expenseDataGrid" AutoGenerateColumns="False" Margin="30,57,30,153" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Padding="0">
-                <DataGrid.Resources>
-                    <Style TargetType="DataGrid">
-                        <Setter Property="Background" Value="#8da4cd"/>
-                        <Setter Property="BorderBrush" Value="#5d5e61"/>
-                        <Setter Property="BorderThickness" Value="10"/>
-                        <Setter Property="RowBackground" Value="#565656"/>
-                        <Setter Property="Foreground" Value="AntiqueWhite"/>
-                        <Setter Property="FontFamily" Value="pack://application:,,,/fonts/#Montserrat"/>
-                    </Style>
-                    <Style TargetType="DataGridColumnHeader">
-                        <Setter Property="Padding" Value="9"/>
-                        <Setter Property="Background" Value="Transparent"/>
-                    </Style>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="Background" Value="#6a7996"/>
-                    </Style>
-                </DataGrid.Resources>
+            <!-- DataGrid to display expenses-->
+            <DataGrid Style="{DynamicResource DataGridStyle2}" 
+                      CellStyle="{DynamicResource DataGridCellStyle1}" 
+                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                      RowStyle="{DynamicResource DataGridRowStyle1}" 
+                      x:Name="expenseDataGrid" 
+                      AutoGenerateColumns="False" 
+                      Margin="-93,63,0,10" 
+                      CanUserAddRows="false"
+                      CanUserSortColumns="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Expenditures" Binding="{Binding Category_Name}" />
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
-                    <DataGridTextColumn Header="Description" Binding="{Binding Note}" />
-                    <DataGridTextColumn Header="Payment Method" Binding="{Binding Payment_Method}" />
-                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
+                    <DataGridTemplateColumn Header="Expenditures"
+                                            IsReadOnly="True"
+                                            Width="*"
+                                            CanUserResize="False"
+                                            SortMemberPath="Expenditures" 
+                                            CanUserSort="true">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Category_Name}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Amount"
+                                            IsReadOnly="True"
+                                            Width="*"
+                                            CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Amount, StringFormat='₱{0:N2}'}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Description"
+                                            IsReadOnly="True"
+                                            Width="*"
+                                            CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Note}"
+                                   VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            Width="*"
+                                            CanUserResize="False">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Payment">
+                                    <LineBreak/>
+                                    <TextBlock Text="Method"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Payment_Method}"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn IsReadOnly="True"
+                                            Width="*"
+                                            CanUserResize="False">
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Transaction">
+                                    <LineBreak/>
+                                    <TextBlock Text="Date"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Trans_Datetime, StringFormat='dd/MM/yyyy hh:mm tt'}"
+                                               VerticalAlignment="Center"
+                                               FontSize="8"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Operations"
+                                            IsReadOnly="True"
+                                            Width="auto"
+                                            CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource gridRemoveButton}"
+                                            Click ="DeleteTran_Btn">
+                                        <Icon:PackIconMaterial Kind="DeleteOutline"
+                                                               Style="{StaticResource gridButtonIcon}"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
+            <Button x:Name="addtran" 
+                    Click="AddTran_Btn" 
+                    Margin="51,11,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="52" 
+                    VerticalAlignment="Top" 
+                    Width="58">
 
-            <Button Click="DeleteTran_Btn" Background="#eca390" Margin="351,478,42,55">
-                <TextBlock Text="DELETE TRANSACTION" Foreground="White" Margin="10,0" FontWeight="Bold" FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                <Image Source="img\addBalance.png" 
+                       Height="42" 
+                       Width="42"/>
             </Button>
-            <Button Click="AddTran_Btn" Background="#ffde59" Margin="41,478,359,56">
-                <TextBlock Text="ADD TRANSACTION" Foreground="White" Margin="10,0" FontWeight="Bold" FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-            </Button>
-
         </Grid>
     </Border>
 </Window>

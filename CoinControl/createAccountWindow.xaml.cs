@@ -22,7 +22,7 @@ namespace CoinControl
     /// </summary>
     public partial class createAccountWindow : Window
     {
-        string connectionString = "Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True";
+        string connectionString = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True";
         public createAccountWindow()
         {
             InitializeComponent();

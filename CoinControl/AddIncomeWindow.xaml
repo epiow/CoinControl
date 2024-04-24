@@ -19,7 +19,7 @@
             <ComboBoxItem Content="Freelancing"></ComboBoxItem>
             <ComboBoxItem Content="Investments"></ComboBoxItem>
             <ComboBoxItem Content="Gifts/Inhertiances"></ComboBoxItem>
-            <ComboBoxItem Content="Profit"></ComboBoxItem>
+            <ComboBoxItem Content="Business Profit"></ComboBoxItem>
         </ComboBox>
         <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10" Height="39.04">
             <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>

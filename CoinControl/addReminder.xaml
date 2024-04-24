@@ -15,10 +15,9 @@
                 <ComboBoxItem Content="Transportation"></ComboBoxItem>
                 <ComboBoxItem Content="Food"></ComboBoxItem>
                 <ComboBoxItem Content="Rent"></ComboBoxItem>
-                <ComboBoxItem Content="Shopping"></ComboBoxItem>
                 <ComboBoxItem Content="Entertainment"></ComboBoxItem>
                 <ComboBoxItem Content="Health"></ComboBoxItem>
-                <ComboBoxItem Content="Miscalleanous"></ComboBoxItem>
+                <ComboBoxItem Content="Miscellanous"></ComboBoxItem>
             </ComboBox>
 
             <Label Content="Amount:" Margin="10,69,211,284" />

@@ -18,26 +18,40 @@
     <None Remove="img\coinControl.png" />
     <None Remove="img\darkblueRegister.png" />
     <None Remove="img\dirtyWhiteBack.png" />
+    <None Remove="img\downProfit.png" />
     <None Remove="img\emailIcon.png" />
+    <None Remove="img\entertainment.png" />
+    <None Remove="img\equalProfit.png" />
     <None Remove="img\exitButton.png" />
     <None Remove="img\expensesButton.png" />
+    <None Remove="img\food.png" />
+    <None Remove="img\health.png" />
     <None Remove="img\homeButton.png" />
     <None Remove="img\incomeButton.png" />
     <None Remove="img\LoginBack.png" />
     <None Remove="img\logOut.png" />
+    <None Remove="img\misc.png" />
     <None Remove="img\offWhiteBG.png" />
     <None Remove="img\passwordIcon.png" />
+    <None Remove="img\profit.png" />
+    <None Remove="img\rent.png" />
     <None Remove="img\reportsButton.png" />
     <None Remove="img\returnButton.png" />
     <None Remove="img\rightDashboardColor.png" />
     <None Remove="img\shadeLogin.png" />
+    <None Remove="img\totalExpenses.png" />
+    <None Remove="img\totalIncome.png" />
+    <None Remove="img\transportation.png" />
+    <None Remove="img\upProfit.png" />
     <None Remove="img\userIcon.png" />
+    <None Remove="img\utilities.png" />
     <None Remove="img\whiteReturnButton.png" />
     <None Remove="img\yellowRegister.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LiveCharts" Version="0.9.7" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
@@ -58,20 +72,33 @@
     <Resource Include="img\coinControl.png" />
     <Resource Include="img\darkblueRegister.png" />
     <Resource Include="img\dirtyWhiteBack.png" />
+    <Resource Include="img\downProfit.png" />
     <Resource Include="img\emailIcon.png" />
+    <Resource Include="img\entertainment.png" />
+    <Resource Include="img\equalProfit.png" />
     <Resource Include="img\exitButton.png" />
     <Resource Include="img\expensesButton.png" />
+    <Resource Include="img\food.png" />
+    <Resource Include="img\health.png" />
     <Resource Include="img\homeButton.png" />
     <Resource Include="img\incomeButton.png" />
     <Resource Include="img\LoginBack.png" />
     <Resource Include="img\logOut.png" />
+    <Resource Include="img\misc.png" />
     <Resource Include="img\offWhiteBG.png" />
     <Resource Include="img\passwordIcon.png" />
+    <Resource Include="img\profit.png" />
+    <Resource Include="img\rent.png" />
     <Resource Include="img\reportsButton.png" />
     <Resource Include="img\returnButton.png" />
     <Resource Include="img\rightDashboardColor.png" />
     <Resource Include="img\shadeLogin.png" />
+    <Resource Include="img\totalExpenses.png" />
+    <Resource Include="img\totalIncome.png" />
+    <Resource Include="img\transportation.png" />
+    <Resource Include="img\upProfit.png" />
     <Resource Include="img\userIcon.png" />
+    <Resource Include="img\utilities.png" />
     <Resource Include="img\whiteReturnButton.png" />
     <Resource Include="img\yellowRegister.png" />
   </ItemGroup>
