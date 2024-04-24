@@ -163,7 +163,7 @@ namespace CoinControl
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Close(); // Close the window if the user clicks Yes
+                Close();
             }
         }
         private void addBalance_Click(object sender, RoutedEventArgs e)

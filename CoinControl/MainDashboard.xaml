@@ -812,25 +812,18 @@
                 </Grid>
             </Border>
 
-
-
-
-
-
-
-
+            <!--Reminders-->
             <TextBlock HorizontalAlignment="Left" 
                        Margin="-73,280,0,0" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top" 
                        FontSize="20" 
                        RenderTransformOrigin="0.911,0.808"
-                       Text="REMINDERS !"
+                       Text="REMINDERS"
                        FontFamily="pack://application:,,,/fonts/#Montserrat">
             </TextBlock>
 
-            <Button x:Name="addRemind" 
-                Click="addReminder" 
+            <Button Click="addReminder" 
                 Margin="60,266,0,0" 
                 BorderThickness="0"  
                 Style="{StaticResource MyButton}" 
@@ -843,7 +836,7 @@
                        Height="42" 
                        Width="42"/>
             </Button>
-            
+
             <DataGrid Style="{DynamicResource DataGridStyle1}" 
                       CellStyle="{DynamicResource DataGridCellStyle1}" 
                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
@@ -855,12 +848,14 @@
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Reminder"
                                             IsReadOnly="True"
-                                            Width="*">
+                                            Width="*"
+                                            CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding Category_Name}"
-                                               VerticalAlignment="Center"/>
+                                               VerticalAlignment="Center"
+                                               FontSize="7.5"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -868,11 +863,12 @@
 
                     <DataGridTemplateColumn Header="To Pay"
                                             IsReadOnly="True"
-                                            Width="*">
+                                            Width="*"
+                                            CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Amount}"
+                                    <TextBlock Text="{Binding Amount, StringFormat='₱{0:N2}'}"
                                                VerticalAlignment="Center"/>
                                 </StackPanel>
                             </DataTemplate>
@@ -881,12 +877,16 @@
 
                     <DataGridTemplateColumn Header="Time Set"
                                             IsReadOnly="True"
-                                            Width="*">
+                                            Width="*"
+                                            CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding StartDate}"
-                                               VerticalAlignment="Center"/>
+                                    <TextBlock VerticalAlignment="Center" FontSize="8">
+                                        <Run Text="{Binding StartDate, StringFormat='MM/dd/yyyy'}"/>
+                                            <LineBreak/>
+                                        <Run Text="{Binding StartDate, StringFormat='hh:mm tt'}"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -894,12 +894,16 @@
 
                     <DataGridTemplateColumn Header="Due Date"
                                             IsReadOnly="True"
-                                            Width="*">
+                                            Width="*"
+                                            CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding EndDate}"
-                                               VerticalAlignment="Center"/>
+                                    <TextBlock VerticalAlignment="Center" FontSize="8">
+                                        <Run Text="{Binding EndDate, StringFormat='MM/dd/yyyy'}"/>
+                                            <LineBreak/>
+                                        <Run Text="{Binding EndDate, StringFormat='hh:mm tt'}"/>
+                                    </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -907,15 +911,11 @@
 
                     <DataGridTemplateColumn Header="Operations"
                                             IsReadOnly="True"
-                                            Width="auto">
+                                            Width="auto"
+                                            CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource gridEditButton}">
-                                        <Icon:PackIconMaterial Kind="PencilOutline"
-                                                               Style="{StaticResource gridButtonIcon}"/>
-                                    </Button>
-
                                     <Button Style="{StaticResource gridRemoveButton}"
                                             Click ="removeReminder">
                                         <Icon:PackIconMaterial Kind="DeleteOutline"
@@ -927,7 +927,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-
         </Grid>
     </Border>
 </Window>

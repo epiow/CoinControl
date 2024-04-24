@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,16 +100,19 @@ namespace CoinControl
             IncomeDB selectedIncome = incomeDataGrid.SelectedItem as IncomeDB;
             if (selectedIncome != null)
             {
-                _context.Income.Remove(selectedIncome);
-                try
+                using (DatabaseContext dbContext = new DatabaseContext())
                 {
-                    _context.SaveChanges();
-                    LoadIncome();
-                    MessageBox.Show("Income deleted successfully.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error deleting expense: " + ex.Message);
+                    long incomeId = selectedIncome.Income_ID;
+
+                    try
+                    {
+                        dbContext.Database.ExecuteSqlInterpolated($"EXEC DeleteIncome {incomeId}");
+                        LoadIncome();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error deleting income: " + ex.Message);
+                    }
                 }
             }
             else

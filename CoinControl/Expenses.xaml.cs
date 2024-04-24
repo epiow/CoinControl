@@ -40,7 +40,7 @@ namespace CoinControl
             var expensesData = _context.Expense
                 .Where(e => e.User_ID == loggedInUserId)
                 .ToList();
-           
+
             expenseDataGrid.ItemsSource = expensesData;
         }
 
@@ -63,7 +63,6 @@ namespace CoinControl
                 Close(); // Close the window if the user clicks Yes
             }
         }
-
 
         private void NavigateToSavings(object sender, RoutedEventArgs e)
         {
@@ -95,8 +94,6 @@ namespace CoinControl
         {
             AddExpenseWindow addExpenseWindow = new AddExpenseWindow();
             addExpenseWindow.Show();
-
-            //this.Close();
         }
 
         private void DeleteTran_Btn(object sender, RoutedEventArgs e)
@@ -104,16 +101,19 @@ namespace CoinControl
             ExpenseDB selectedExpense = expenseDataGrid.SelectedItem as ExpenseDB;
             if (selectedExpense != null)
             {
-                _context.Expense.Remove(selectedExpense);
-                try
+                using (DatabaseContext dbContext = new DatabaseContext())
                 {
-                    _context.SaveChanges();
-                    LoadExpenses();
-                    MessageBox.Show("Expense deleted successfully.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    long paymentId = selectedExpense.Payment_ID;
+
+                    try
+                    {
+                        dbContext.Database.ExecuteSqlInterpolated($"EXEC DeleteExpense {paymentId}");
+                        LoadExpenses();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             else
@@ -121,6 +121,5 @@ namespace CoinControl
                 MessageBox.Show("Please select an expense to delete.");
             }
         }
-
     }
 }
