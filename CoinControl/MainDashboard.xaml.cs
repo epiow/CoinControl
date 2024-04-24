@@ -41,7 +41,8 @@ namespace CoinControl
             var user = _context.User.FirstOrDefault(u => u.User_ID == loggedInUserId);
             if (user != null)
             {
-                userName.Text = $"{user.Name}!";
+                userName.Text = $"{user.Name}";
+                emailUser.Text = $"{user.Email}";
                 balanceText.Text = user.Balance.ToString("0.00");
             }
 

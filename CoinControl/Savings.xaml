@@ -5,69 +5,337 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Income" Height="450" Width="800"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        ResizeMode="NoResize">
-    <Grid>
-        <Border CornerRadius="15" Background="Red" Width="20" Height="20" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Content="X" FontSize="10" Foreground="White" FontWeight="Bold" Click="CloseButton_Click" Background="Transparent" BorderThickness="0"/>
-        </Border>
-        <!-- Side Navigation Menu -->
-        <StackPanel Background="#2C3E50" Width="200" Margin="0,0,600,0">
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToHome">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Home" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToSavings" Background="White" Width="208">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Income" Foreground="Black" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToExpenses">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Expenses" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToReports">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Reports" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="NavigateToAnalytics">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Analytics" Foreground="White" Margin="10,0"/>
-                </StackPanel>
-            </Button>
-            <Button Style="{StaticResource SidebarButtonStyle}" Click="LogoutButton" Background="#E74C3C">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Logout" Foreground="White" Margin="10,0" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-            <!-- Add more buttons for additional menu items -->
-        </StackPanel>
+        Title="Income" 
+        Height="620" 
+        Width="800"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" 
+        WindowStyle="None" 
+        AllowsTransparency="True">
 
-        <!-- Main Content Area -->
+    <Window.Resources>
+        <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" 
+                BorderBrush="#ffffff"
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="23">
+                <ScrollViewer Name="PART_ContentHost" 
+                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" 
+                        Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                        TargetName="Bd"/>
+                    <Setter Property="Foreground" 
+                        Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SomeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SomeButtonStyleWithoutHover" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!--Main Code-->
+    <Border CornerRadius="8,8,8,8" BorderThickness="20">
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
         <Grid Margin="200,0,0,0">
-            <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
-            <DataGrid x:Name="incomeDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Source of Income" Binding="{Binding Source}" />
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
-                    <DataGridTextColumn Header="Description" Binding="{Binding Note}" />
-                    <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
-                </DataGrid.Columns>
-            </DataGrid>
+            <Border CornerRadius="20,20,20,20" Margin="-222,-22,-22,-25">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\dirtyWhiteBack.png"/>
+                </Border.Background>
+            </Border>
 
-            <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
-                <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+            <!--Sidebar and Exit-->
+            <Image Source="img\coinControl.png" Margin="-222,15,698,492">
+                <Image.Clip>
+                    <RectangleGeometry Rect="10,0,30,100"></RectangleGeometry>
+                </Image.Clip>
+            </Image>
+
+            <TextBlock Text="COIN" 
+                   Margin="-178,34,645,525"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                   FontSize="18" />
+
+            <TextBlock Text="CONTROL" 
+                   Margin="-178,53,661,507"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                   FontSize="14" />
+
+            <TextBlock x:Name="userName"
+                   HorizontalAlignment="Left" 
+                   Margin="-208,91,0,0" 
+                   TextWrapping="Wrap" 
+                   Text="aa" 
+                   VerticalAlignment="Top" 
+                   Height="23" 
+                   Width="104"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                   FontSize="16" 
+                   FontWeight="Bold" 
+                   TextAlignment="Right"/>
+
+            <TextBlock x:Name="emailUser"
+                   HorizontalAlignment="Left" 
+                   Margin="-214,114,0,0" 
+                   TextWrapping="Wrap" 
+                   Text="aa" 
+                   VerticalAlignment="Top" 
+                   Height="10" 
+                   Width="110"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                   FontSize="8" 
+                   TextAlignment="Right" 
+                   FontStyle="Italic"/>
+
+            <Button x:Name="exit" 
+                Click="CloseButton_Click" 
+                Margin="504,0,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource MyButton}" 
+                HorizontalAlignment="Left" 
+                Height="54" 
+                VerticalAlignment="Top" 
+                Width="56">
+                <Image Source="img\blackExitButton.png" 
+                   Height="37" 
+                   Width="39"/>
             </Button>
-            <Button Click="AddTran_Btn" Background="Green" Margin="53,364,347,26">
-                <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+
+            <Button Margin="-210,169,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource SomeButtonStyle}" 
+                Click="NavigateToHome" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                VerticalAlignment="Top" 
+                Width="81" 
+                RenderTransformOrigin="0.49,0.209"
+                Cursor="Hand">
+                <StackPanel Orientation="Horizontal" 
+                        Height="64" 
+                        Width="244">
+                    <Image Source="img\homeButton.png" 
+                       Width="34" 
+                       Height="51" 
+                       RenderTransformOrigin="0.546,0.174" 
+                       VerticalAlignment="Top"
+                       Opacity="0.5"/>
+                    <Label Padding="0" 
+                       Content="Home" 
+                       Height="58" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Width="42"
+                       Opacity="0.5"/>
+                </StackPanel>
             </Button>
-            <!-- Content of the main dashboard goes here -->
-            <!-- You can use Grid or other layout panels to arrange your content -->
+
+            <Button Margin="-210,219,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource SomeButtonStyle}" 
+                Click="NavigateToExpenses" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                VerticalAlignment="Top" 
+                Width="95" 
+                RenderTransformOrigin="0.49,0.209"
+                Cursor="Hand">
+                <StackPanel Orientation="Horizontal" 
+                        Height="64" 
+                        Width="244">
+                    <Image Source="img\expensesButton.png" 
+                       Width="33" 
+                       Height="35" 
+                       RenderTransformOrigin="0.546,0.174" 
+                       VerticalAlignment="Top" 
+                       Opacity="0.5"/>
+                    <Label Padding="0" 
+                       Content="Expenses" 
+                       Height="60" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Width="79"
+                       Opacity="0.5" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,269,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource SomeButtonStyleWithoutHover}" 
+                Click="NavigateToSavings" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                VerticalAlignment="Top" 
+                Width="95"
+                RenderTransformOrigin="0.49,0.209">
+                <StackPanel Orientation="Horizontal" 
+                        Height="64" 
+                        Width="244">
+                    <Image Source="img\incomeButton.png" 
+                       Width="33" 
+                       Height="35" 
+                       RenderTransformOrigin="0.546,0.174" 
+                       VerticalAlignment="Top" />
+                    <Label Padding="0" 
+                       Content="Income" 
+                       Height="60" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Width="79" />
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,319,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource SomeButtonStyle}" 
+                Click="NavigateToReports" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                VerticalAlignment="Top" 
+                Width="95"
+                RenderTransformOrigin="0.49,0.209"
+                Cursor="Hand">
+                <StackPanel Orientation="Horizontal" 
+                        Height="64" 
+                        Width="244">
+                    <Image Source="img\reportsButton.png" 
+                       Width="33" 
+                       Height="35" 
+                       RenderTransformOrigin="0.546,0.174" 
+                       VerticalAlignment="Top" 
+                       Opacity="0.5"/>
+                    <Label Padding="0" 
+                       Content="Reports" 
+                       Height="60" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Width="79" 
+                       Opacity="0.5"/>
+                </StackPanel>
+            </Button>
+
+            <Button Margin="-210,404,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource SomeButtonStyle}" 
+                Click="LogoutButton" 
+                HorizontalAlignment="Left" 
+                Height="23" 
+                VerticalAlignment="Top" 
+                Width="95"
+                RenderTransformOrigin="0.49,0.209"
+                Cursor="Hand">
+                <StackPanel Orientation="Horizontal"
+                        Height="64" 
+                        Width="244">
+                    <Image Source="img\logOut.png" 
+                       Width="33" 
+                       Height="35" 
+                       RenderTransformOrigin="0.546,0.174" 
+                       VerticalAlignment="Top" 
+                       Opacity="0.5"/>
+                    <Label Padding="0" 
+                       Content="Sign Out" 
+                       Height="60" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                       Width="79" 
+                       Opacity="1.0" 
+                       Foreground="#FFFE0000" 
+                       FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+            <Rectangle HorizontalAlignment="Left" 
+                   Height="605" 
+                   Margin="-99,0,0,0" 
+                   Stroke="Black" 
+                   VerticalAlignment="Top" 
+                   Width="1" 
+                   Fill="Black" 
+                   Opacity="0.2"/>
+
+            <Rectangle HorizontalAlignment="Left" 
+                   Height="55" 
+                   Margin="-181,24,0,0" 
+                   Stroke="Black" 
+                   VerticalAlignment="Top" 
+                   Width="1"/>
+
+            <!--Actual Functionality-->
+
+                <TextBlock FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,23,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Text="INCOME"/>
+                <DataGrid x:Name="incomeDataGrid" AutoGenerateColumns="False" Margin="30,57,30,80">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Source of Income" Binding="{Binding Source}" />
+                        <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+                        <DataGridTextColumn Header="Description" Binding="{Binding Note}" />
+                        <DataGridTextColumn Header="Transaction Date" Binding="{Binding Trans_Datetime}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Click="DeleteTran_Btn" Background="#E74C3C" Margin="367,364,26,26">
+                    <TextBlock Text="Delete Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+                </Button>
+                <Button Click="AddTran_Btn" Background="Green" Margin="53,364,347,26">
+                    <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+                </Button>
+                
         </Grid>
-    </Grid>
+    </Border>
 </Window>
