@@ -18,6 +18,7 @@ using System.Printing;
 using System.Data.Entity.Migrations.Design;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data;
+using Microsoft.VisualBasic.ApplicationServices;
 
 
 namespace CoinControl
@@ -48,13 +49,13 @@ namespace CoinControl
                 emailUser.Text = $"{user.Email}";
                 balanceText.Text = user.Balance.ToString("₱#,##0.00");
 
-                util.Text = $"{countOccurences("Utilities")-1}";
-                transpo.Text = $"{countOccurences("Transportation")-1}";
-                food.Text = $"{countOccurences("Food")}";
-                rent.Text = $"{countOccurences("Rent")}";
-                entertainment.Text = $"{countOccurences("Entertainment")}";
-                health.Text = $"{countOccurences("Health")}";
-                misc.Text = $"{countOccurences("Miscellaneous")}";
+                util.Text = $"{countOccurences(loggedInUserId, "Utilities")}";
+                transpo.Text = $"{countOccurences(loggedInUserId, "Transportation")}";
+                food.Text = $"{countOccurences(loggedInUserId, "Food")}";
+                rent.Text = $"{countOccurences(loggedInUserId, "Rent")}";
+                entertainment.Text = $"{countOccurences(loggedInUserId, "Entertainment")}";
+                health.Text = $"{countOccurences(loggedInUserId, "Health")}";
+                misc.Text = $"{countOccurences(loggedInUserId, "Miscellaneous")}";
             }
 
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
@@ -82,13 +83,14 @@ namespace CoinControl
             else { }
         }
 
-        public int countOccurences(string item)
+        public int countOccurences(int userId, string item)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand("CountOccurrencesByCategory", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
+                command.Parameters.AddWithValue("@User_ID", userId);
                 command.Parameters.AddWithValue("@CategoryName", item);
                 command.Parameters.Add("@Count", SqlDbType.Int).Direction = ParameterDirection.Output;
 
