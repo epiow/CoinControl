@@ -19,6 +19,9 @@ using System.Data.Entity.Migrations.Design;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data;
 using Microsoft.VisualBasic.ApplicationServices;
+using System.Windows.Threading;
+using System.Xml.Linq;
+using System.Threading;
 
 
 namespace CoinControl
@@ -39,15 +42,16 @@ namespace CoinControl
             var budgetInfo = _context.Budgeting.Where(income => income.User_ID == loggedInUserId);
             reminderCount = budgetInfo.Count(); ;
         }
-
+        
         public void LoadInformation()
         {
             var user = _context.User.FirstOrDefault(u => u.User_ID == loggedInUserId);
+            var balance = GetBalance(loggedInUserId);
             if (user != null)
             {
                 userName.Text = $"{user.Name}";
                 emailUser.Text = $"{user.Email}";
-                balanceText.Text = user.Balance.ToString("₱#,##0.00");
+                balanceText.Text = balance.ToString("₱#,##0.00");
 
                 util.Text = $"{countOccurences(loggedInUserId, "Utilities")}";
                 transpo.Text = $"{countOccurences(loggedInUserId, "Transportation")}";
@@ -81,6 +85,38 @@ namespace CoinControl
                 equalProfit.Opacity = 0;
             }
             else { }
+        }
+
+        private decimal GetBalance(long userId)
+        {
+            decimal balance = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand("ReadBalanceByID", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserID", userId);
+                        command.Parameters.Add("@Balance", SqlDbType.Money).Direction = ParameterDirection.Output;
+
+                        command.ExecuteNonQuery();
+
+                        // Retrieve the balance from the output parameter
+                        balance = Convert.ToDecimal(command.Parameters["@Balance"].Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while fetching balance: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            return balance;
         }
 
         public int countOccurences(int userId, string item)
@@ -165,7 +201,7 @@ namespace CoinControl
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Close();
+                this.Close();
             }
         }
         private void addBalance_Click(object sender, RoutedEventArgs e)

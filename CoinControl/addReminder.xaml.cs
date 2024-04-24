@@ -27,7 +27,6 @@ namespace CoinControl
 
         private void saveReminder(object sender, RoutedEventArgs e)
         {
-
             ComboBoxItem chosenCategory = (ComboBoxItem)selectedCategory.SelectedItem;
             string expenseCategory = chosenCategory.Content.ToString();
 
@@ -36,7 +35,7 @@ namespace CoinControl
             DateTime transactionDate = DateTime.Now;
             DateTime due_Date = (DateTime)datePicked.SelectedDate;
 
-            if(due_Date <= transactionDate.AddDays(1)) {
+            if(due_Date <= transactionDate.AddDays(0)) {
                 MessageBox.Show("Please select a due date that is after the current date.");
                 return;
                 //addReminder reminder = new addReminder();
