@@ -11,6 +11,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="fonts\Montserrat-Regular.ttf" />
+    <None Remove="img\addBalance.png" />
     <None Remove="img\balanceIcon.png" />
     <None Remove="img\blackExitButton.png" />
     <None Remove="img\blueBack.png" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fonts\Montserrat-Regular.ttf" />
+    <Resource Include="img\addBalance.png" />
     <Resource Include="img\balanceIcon.png" />
     <Resource Include="img\blackExitButton.png" />
     <Resource Include="img\blueBack.png" />
