@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="addToBalance" Height="450" Width="800">
+        Title="addToBalance" 
+        Height="443" 
+        Width="400" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" 
+        AllowsTransparency="True">
+
     <Grid>
-        
+        <Label Content="Amount to Add:" 
+               Margin="10,73,211,322" 
+               Height="32.04" 
+               FontFamily="pack://application:,,,/fonts/#Montserrat" RenderTransformOrigin="0.508,1.281"/>
+        <TextBox x:Name="AmountTextBox" 
+                 Margin="21,110,21,285" 
+                 Height="32.04" 
+                 FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+        <Button Click="Confirm_Btn" 
+                Background="Green" 
+                Margin="255,335,10,10" 
+                Height="39.04">
+            <TextBlock Text="Confirm" 
+                       Foreground="White" 
+                       Margin="10,0" 
+                       FontWeight="Bold"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+        </Button>
     </Grid>
 </Window>

@@ -5,16 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="AddExpenseWindow" Height="443" Width="400" WindowStartupLocation="CenterScreen">
+        Title="AddExpenseWindow" 
+        Height="443" 
+        Width="400" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" 
+        AllowsTransparency="True">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
-        <Label Content="Description:" Margin="10,19,287,333" />
-        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" />
+        <Label Content="Description:" Margin="10,19,287,333" 
+               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" 
+                 FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-        <Label Content="Amount:" Margin="10,83,211,270" />
-        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" />
+        <Label Content="Amount:" Margin="10,83,211,270"
+               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" 
+                 FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
         <Label Content="Category:" Margin="10,166,270,192" />
-        <ComboBox Margin="20,197,22,159" Name="selectedCategory">
+        <ComboBox Margin="20,197,22,159" 
+                  Name="selectedCategory"
+                  FontFamily="pack://application:,,,/fonts/#Montserrat">
             <ComboBoxItem Content="Utilities"></ComboBoxItem>
             <ComboBoxItem Content="Transportation"></ComboBoxItem>
             <ComboBoxItem Content="Food"></ComboBoxItem>
@@ -24,15 +35,28 @@
             <ComboBoxItem Content="Miscellaneous"></ComboBoxItem>
         </ComboBox>
 
-        <ComboBox Margin="22,273,22,83" x:Name="selectedPayment" RenderTransformOrigin="0.5,0.5" Height="28.04">
+        <ComboBox Margin="22,273,22,83" 
+                  x:Name="selectedPayment" 
+                  RenderTransformOrigin="0.5,0.5" 
+                  Height="28.04"
+                  FontFamily="pack://application:,,,/fonts/#Montserrat">
             <ComboBoxItem Content="Cash"/>
             <ComboBoxItem Content="Credit Card"/>
             <ComboBoxItem Content="Debit Card"/>
             <ComboBoxItem Content="E-Wallet"/>
         </ComboBox>
-        <Button Click="Confirm_Btn" Background="Green" Margin="255,335,10,10">
-            <TextBlock Text="Add Transaction" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+        
+        <Label Content="Payment Method:" 
+               Margin="10,240,247,116" 
+               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+
+        <Button Click="Confirm_Btn" 
+                Background="Green" Margin="255,335,10,10">
+            <TextBlock Text="Add Transaction" 
+                       Foreground="White" 
+                       Margin="10,0" 
+                       FontWeight="Bold"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
         </Button>
-        <Label Content="Payment Method:" Margin="10,240,247,116" />
     </Grid>
 </Window>
