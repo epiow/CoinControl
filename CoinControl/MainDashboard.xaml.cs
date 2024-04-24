@@ -17,15 +17,18 @@ using CoinControl;
 using System.Printing;
 using System.Data.Entity.Migrations.Design;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Data;
 
 
 namespace CoinControl
 {
     public partial class MainDashboard : Window
     {
+        public string connectionString = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True;";
         private readonly DatabaseContext _context = new DatabaseContext();
         int loggedInUserId = AuthenticationManager.LoggedInUserId;
         public int reminderCount;
+
         public MainDashboard()
         {
             InitializeComponent();
@@ -44,19 +47,59 @@ namespace CoinControl
                 userName.Text = $"{user.Name}";
                 emailUser.Text = $"{user.Email}";
                 balanceText.Text = user.Balance.ToString("₱#,##0.00");
+
+                util.Text = $"{countOccurences("Utilities")-1}";
+                transpo.Text = $"{countOccurences("Transportation")-1}";
+                food.Text = $"{countOccurences("Food")}";
+                rent.Text = $"{countOccurences("Rent")}";
+                entertainment.Text = $"{countOccurences("Entertainment")}";
+                health.Text = $"{countOccurences("Health")}";
+                misc.Text = $"{countOccurences("Miscellaneous")}";
             }
 
             var allIncomes = _context.Income.Where(income => income.User_ID == loggedInUserId).ToList();
             decimal totalIncome = allIncomes.Sum(income => income.Amount);
-            incomeText.Text = totalIncome.ToString("0.00");
+            incomeText.Text = totalIncome.ToString("₱#,##0.00");
 
             var allExpenses = _context.Expense.Where(expense => expense.User_ID == loggedInUserId).ToList();
             decimal totalExpenses = allExpenses.Sum(expense => expense.Amount);
-            expenseText.Text = totalExpenses.ToString("0.00");
+            expenseText.Text = totalExpenses.ToString("₱#,##0.00");
 
             decimal profit = totalIncome - totalExpenses;
+            profitText.Text = profit.ToString("₱#,##0.00");
 
-            profitText.Text = profit.ToString("0.00");
+            if (profit > 0)
+            {
+
+            }
+        }
+
+        public int countOccurences(string item)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand("CountOccurrencesByCategory", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@CategoryName", item);
+                command.Parameters.Add("@Count", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    // Get the count from the output parameter
+                    int count = Convert.ToInt32(command.Parameters["@Count"].Value);
+
+                    // Set the count to the Text property of util TextBox
+                    return count;
+                }
+                catch (Exception ex)
+                {
+                    return 0;
+                }
+            }
         }
 
         public void LoadReminders()

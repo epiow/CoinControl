@@ -321,6 +321,7 @@
             <!--Main Functionality-->
 
             <!--Right Dashboard-->
+            <!--Your Balance-->
             <TextBlock HorizontalAlignment="Left" 
                        Margin="370,71,0,0" 
                        TextWrapping="Wrap" 
@@ -379,39 +380,404 @@
                        Width="42"/>
             </Button>
 
+            <!--Category List-->
             <TextBlock HorizontalAlignment="Left" 
                        Margin="370,227,0,0" 
                        TextWrapping="Wrap" 
                        VerticalAlignment="Top" 
                        FontSize="15" 
                        RenderTransformOrigin="0.911,0.808"
-                       Text="Recent Activity"
+                       Text="Expenses Made"
                        FontFamily="pack://application:,,,/fonts/#Montserrat"
                        Height="36" 
                        Width="162" 
                        FontWeight="Bold"/>
 
-            <TextBlock HorizontalAlignment="Left" 
-                       Margin="143,129,0,0" 
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       TextWrapping="Wrap" 
+            <Rectangle HorizontalAlignment="Left" 
+                       Height="1" 
+                       Margin="370,252,0,0" 
+                       Stroke="Black" 
                        VerticalAlignment="Top" 
-                       FontSize="14" 
-                       RenderTransformOrigin="0.911,0.808"
-                       Text="Total Income"/>
-            <TextBlock x:Name="incomeText" HorizontalAlignment="Left" Margin="89,76,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
-            <TextBlock HorizontalAlignment="Left" 
-                           Margin="10,138,0,0" 
-                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       Width="190" 
+                       RenderTransformOrigin="0.5,0.5" 
+                       Opacity="0.1">
+            </Rectangle>
+
+            <Grid Margin="370,258,0,269">
+                <TextBlock HorizontalAlignment="Left" 
+                   Margin="64,13,0,0" 
+                   TextWrapping="Wrap" 
+                   VerticalAlignment="Top" 
+                   FontSize="12" 
+                   RenderTransformOrigin="0.911,0.808"
+                   Text="Utilities"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Height="15" 
+                   Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\utilities.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="util"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
                            TextWrapping="Wrap" 
                            VerticalAlignment="Top" 
-                           FontSize="14" 
+                           FontSize="12" 
                            RenderTransformOrigin="0.911,0.808"
-                           Text="Total Expenses"/>
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
 
-            <TextBlock x:Name="expenseText" HorizontalAlignment="Left" Margin="-26,73,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <Grid Margin="370,302,0,224" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Transportation"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\transportation.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="transpo"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <Grid Margin="370,346,0,179" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Food"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\food.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="food"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <Grid Margin="370,390,0,135" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Rent"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\rent.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="rent"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <Grid Margin="370,434,0,90" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Entertainment"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\entertainment.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="entertainment"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <Grid Margin="370,478,0,45" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Health"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\health.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="health"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <Grid Margin="370,522,0,0" 
+                  Height="53">
+                <TextBlock HorizontalAlignment="Left" 
+                           Margin="64,13,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="Miscellaneous"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="15" 
+                           Width="126" />
+
+                <Border Background="#FF5D5DE0" 
+                        BorderBrush="White" 
+                        BorderThickness="1,1,1,1" 
+                        CornerRadius="10,10,10,10" 
+                        Margin="5,10,146,8" 
+                        RenderTransformOrigin="0.5,0.5">
+                    <Grid Background="Transparent"
+                          Margin="376,72,0,407">
+                        <Image Source="img\misc.png" 
+                               Margin="-374,-71,340,40" 
+                               RenderTransformOrigin="0.5,0.5">
+                        </Image>
+                    </Grid>
+                </Border>
+                <TextBlock x:Name="misc"
+                           HorizontalAlignment="Left" 
+                           Margin="64,28,0,0" 
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top" 
+                           FontSize="12" 
+                           RenderTransformOrigin="0.911,0.808"
+                           Text="0"
+                           FontFamily="pack://application:,,,/fonts/#Montserrat"
+                           Height="14" 
+                           Width="126" />
+            </Grid>
+
+            <!--Business Dashboard-->
+            <TextBlock HorizontalAlignment="Left" 
+                       Margin="-73,68,0,0" 
+                       TextWrapping="Wrap" 
+                       VerticalAlignment="Top" 
+                       FontSize="22" 
+                       RenderTransformOrigin="0.911,0.808"
+                       Text="Business Dashboard"
+                       FontFamily="pack://application:,,,/fonts/#Montserrat"
+                       Height="36" 
+                       Width="270" 
+                       FontWeight="Bold"/>
+
+            <Border Background="#FF5F5EE8" 
+                    BorderBrush="White" 
+                    BorderThickness="1,1,1,1" 
+                    CornerRadius="10,10,10,10" 
+                    Margin="-73,111,455,419">
+
+                <Grid Background="Transparent"
+                      Margin="376,72,0,407">
+
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="-363,-65,0,0" 
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               FontSize="14" 
+                               RenderTransformOrigin="0.911,0.808"
+                               Text="Total Expenses"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="expenseText" 
+                               HorizontalAlignment="Left" 
+                               Margin="-363,-48,0,0" 
+                               TextWrapping="Wrap" 
+                               Text="TextBlock" 
+                               VerticalAlignment="Top" 
+                               Width="108"
+                               Foreground="White"
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                    <Image Source="img\totalExpenses.png" Margin="-278,-72,184,-7">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0,0,100,35"></RectangleGeometry>
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+            </Border>
+
+            <Border Background="#FF5F5EE8" 
+                    BorderBrush="White" 
+                    BorderThickness="1,1,1,1" 
+                    CornerRadius="10,10,10,10" 
+                    Margin="142,111,240,419">
+
+                <Grid Background="Transparent"
+                      Margin="376,72,0,407">
+
+                    <TextBlock HorizontalAlignment="Left" 
+                               Margin="-363,-65,0,0" 
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"
+                               TextWrapping="Wrap" 
+                               VerticalAlignment="Top" 
+                               FontSize="14" 
+                               RenderTransformOrigin="0.911,0.808"
+                               Text="Total Income"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="incomeText" 
+                               HorizontalAlignment="Left" 
+                               Margin="-363,-48,0,0" 
+                               TextWrapping="Wrap" 
+                               Text="TextBlock" 
+                               VerticalAlignment="Top" 
+                               Width="108"
+                               Foreground="White"
+                               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                    <Image Source="img\totalIncome.png" Margin="-278,-72,184,-7">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0,0,100,35"></RectangleGeometry>
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+            </Border>
+
+
+
+
+
+
+
+
+
+
             <TextBlock HorizontalAlignment="Right" 
-                           Margin="0,133,226,0" 
+                           Margin="0,213,427,0" 
                            FontFamily="pack://application:,,,/fonts/#Montserrat"
                            TextWrapping="Wrap" 
                            VerticalAlignment="Top" 
@@ -420,7 +786,7 @@
                            Width="54"
                            Text="Profit"/>
 
-            <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="217,79,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
+            <TextBlock x:Name="profitText" HorizontalAlignment="Left" Margin="34,180,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="108" TextAlignment="Right"/>
             <TextBlock HorizontalAlignment="Left" Margin="-40,307,0,0" FontFamily="Roboto" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" RenderTransformOrigin="0.911,0.808"><Run Language="en-ph" Text="REMINDERS !"/></TextBlock>
 
             <Button Content="+" HorizontalAlignment="Left" 

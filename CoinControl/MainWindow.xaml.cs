@@ -18,7 +18,7 @@ namespace CoinControl
 {
     public partial class LoginWindow : Window
     {
-        public string dataConnector = "Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True";
+        public string dataConnector = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True";
 
         public LoginWindow()
         {

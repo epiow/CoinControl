@@ -19,10 +19,9 @@
             <ComboBoxItem Content="Transportation"></ComboBoxItem>
             <ComboBoxItem Content="Food"></ComboBoxItem>
             <ComboBoxItem Content="Rent"></ComboBoxItem>
-            <ComboBoxItem Content="Shopping"></ComboBoxItem>
             <ComboBoxItem Content="Entertainment"></ComboBoxItem>
             <ComboBoxItem Content="Health"></ComboBoxItem>
-            <ComboBoxItem Content="Miscalleanous"></ComboBoxItem>
+            <ComboBoxItem Content="Miscellaneous"></ComboBoxItem>
         </ComboBox>
 
         <ComboBox Margin="22,273,22,83" x:Name="selectedPayment" RenderTransformOrigin="0.5,0.5" Height="28.04">

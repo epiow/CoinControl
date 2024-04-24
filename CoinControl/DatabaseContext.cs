@@ -9,7 +9,7 @@ namespace CoinControl
     public class DatabaseContext : DbContext
     {
         //change data source here!!!
-        private string ConnectionString = "Data Source=EPIOW\\SQLEXPRESS;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True";
+        public string ConnectionString = "Data Source=LAPTOP-A9L7U7HJ\\SQL2022TRAINING;Initial Catalog=CoinControl;Integrated Security=True;Trust Server Certificate=True";
 
         public DbSet<ExpenseDB> Expense { get; set; }
         public DbSet<IncomeDB> Income { get; set; }
