@@ -47,47 +47,76 @@
                 </Image.Clip>
             </Image>
 
-                <Label Content="Description:" 
+            <Border CornerRadius="8,8,8,8" Margin="-20,0,-20,0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\yellowRegister.png"/>
+                </Border.Background>
+            </Border>
+
+            <Label Content="Description:" 
                        Margin="10,28,211,342" 
                        Height="32.04" 
                        FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       Foreground="White"/>
-                <TextBox x:Name="NoteBox" 
+                       Foreground="White">
+                <Label.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="3" Opacity=".7" Softness="9" />
+                </Label.BitmapEffect>
+            </Label>
+
+            <TextBox x:Name="NoteBox" 
                          Margin="20,46,22,306" 
                          Height="32.04" 
-                         FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                         FontFamily="pack://application:,,,/fonts/#Montserrat"
+                         Foreground="White"/>
 
-                <Label Content="Amount:" 
-                       Margin="10,83,211,270" 
+            <Label Content="Amount:" 
+                       Margin="10,100,211,271" 
                        Height="32.04"
                        Foreground="White"
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-                <TextBox x:Name="AmountTextBox" 
+                       FontFamily="pack://application:,,,/fonts/#Montserrat">
+                <Label.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="3" Opacity=".7" Softness="9" />
+                </Label.BitmapEffect>
+            </Label>
+
+            <TextBox x:Name="AmountTextBox" 
                          Margin="22,114,20,238" 
                          Height="32.04" 
-                         FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                         FontFamily="pack://application:,,,/fonts/#Montserrat"
+                         Foreground="White"/>
 
-                <Label Content="Source:" 
+            <Label Content="Source:" 
                        Margin="10,166,270,192" 
-                       Height="26.04" 
+                       Height="32.04" 
                        FontFamily="pack://application:,,,/fonts/#Montserrat"
-                       Foreground="White"/>
-                <ComboBox Margin="20,197,22,159" 
+                       Foreground="White">
+
+                <Label.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="3" Opacity=".7" Softness="9" />
+                </Label.BitmapEffect>
+            </Label>
+            <ComboBox Margin="20,196,22,0" 
                           Name="selectedIncome" 
-                          Height="32.04" 
-                          FontFamily="pack://application:,,,/fonts/#Montserrat">
-                    <ComboBoxItem Content="Salary"
-                          FontFamily="pack://application:,,,/fonts/#Montserrat"></ComboBoxItem>
-                    <ComboBoxItem Content="Freelancing"
-                          FontFamily="pack://application:,,,/fonts/#Montserrat"></ComboBoxItem>
-                    <ComboBoxItem Content="Investments"
-                          FontFamily="pack://application:,,,/fonts/#Montserrat"></ComboBoxItem>
-                    <ComboBoxItem Content="Gifts/Inhertiances"
-                          FontFamily="pack://application:,,,/fonts/#Montserrat"></ComboBoxItem>
-                    <ComboBoxItem Content="Business Profit"
-                          FontFamily="pack://application:,,,/fonts/#Montserrat"></ComboBoxItem>
-                </ComboBox>
-                <Button x:Name="confirm"
+                          Height="32" 
+                          FontFamily="pack://application:,,,/fonts/#Montserrat"
+                          Foreground="White" VerticalAlignment="Top">
+                <ComboBoxItem Content="Salary"
+                                  FontFamily="pack://application:,,,/fonts/#Montserrat"
+                                  Foreground="Black"></ComboBoxItem>
+                <ComboBoxItem Content="Freelancing"
+                          FontFamily="pack://application:,,,/fonts/#Montserrat"
+                                  Foreground="Black"></ComboBoxItem>
+                <ComboBoxItem Content="Investments"
+                          FontFamily="pack://application:,,,/fonts/#Montserrat"
+                                  Foreground="Black"></ComboBoxItem>
+                <ComboBoxItem Content="Gifts/Inhertiances"
+                          FontFamily="pack://application:,,,/fonts/#Montserrat"
+                                  Foreground="Black"></ComboBoxItem>
+                <ComboBoxItem Content="Business Profit"
+                          FontFamily="pack://application:,,,/fonts/#Montserrat"
+                                  Foreground="Black"></ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="confirm"
                         FontFamily="pack://application:,,,/fonts/#Montserrat"
                         Content="Add Transaction" 
                         HorizontalAlignment="Center" 
@@ -99,14 +128,14 @@
                         Height="38"
                         Foreground="White"
                         BorderBrush="#ffffff">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
-                <Button x:Name="exit" 
+            <Button x:Name="exit" 
                         Click="exitButton" 
                         Margin="294,-16,0,0" 
                         BorderThickness="0"  
@@ -115,8 +144,8 @@
                         Height="54" 
                         VerticalAlignment="Top" 
                         Width="56">
-                    <Image Source="img\exitButton.png" Height="37" Width="39"/>
-                </Button>
-            </Grid>
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
+            </Button>
+        </Grid>
     </Border>
 </Window>

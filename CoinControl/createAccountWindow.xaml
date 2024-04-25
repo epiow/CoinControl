@@ -145,8 +145,7 @@
                        Foreground="White"/>
                 <Image Source="img\emailIcon.png" Margin="82,182,282,364"/>
 
-                <PasswordBox Template="{StaticResource passwordbox}"
-                             x:Name="passText" 
+                <PasswordBox x:Name="passText" 
                              PasswordChanged="passTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat" 
                              BorderThickness="2" 
@@ -175,8 +174,7 @@
                        Foreground="White"/>
                 <Image Source="img\passwordIcon.png" Margin="84,254,284,290"/>
 
-                <PasswordBox Template="{StaticResource passwordbox}"
-                             x:Name="confirmPassText" 
+                <PasswordBox x:Name="confirmPassText" 
                              PasswordChanged="confirmPassTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat"
                              BorderThickness="2" 

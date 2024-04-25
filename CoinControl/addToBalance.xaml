@@ -10,26 +10,102 @@
         Width="400" 
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" 
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        Background="Transparent">
 
-    <Grid>
-        <Label Content="Amount to Add:" 
-               Margin="10,73,211,322" 
-               Height="32.04" 
-               FontFamily="pack://application:,,,/fonts/#Montserrat" RenderTransformOrigin="0.508,1.281"/>
-        <TextBox x:Name="AmountTextBox" 
-                 Margin="21,110,21,285" 
-                 Height="32.04" 
-                 FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-        <Button Click="Confirm_Btn" 
-                Background="Green" 
-                Margin="255,335,10,10" 
-                Height="39.04">
-            <TextBlock Text="Confirm" 
-                       Foreground="White" 
-                       Margin="10,0" 
-                       FontWeight="Bold"
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-        </Button>
-    </Grid>
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="8,8,8,8" BorderThickness="20" >
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
+        <Grid Margin="0,20,0,-20">
+
+            <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,0,0">
+                <Image.Clip>
+                    <RectangleGeometry Rect="20,10,430,960"/>
+                </Image.Clip>
+            </Image>
+
+            <Border CornerRadius="8,8,8,8" Margin="-20,0,-20,0">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="img\yellowRegister.png"/>
+                </Border.Background>
+            </Border>
+
+            <Label Content="Amount to Add:" 
+                   Margin="10,73,211,298" 
+                   Height="32.04" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                   RenderTransformOrigin="0.508,1.281"
+                   Foreground="White">
+                <Label.BitmapEffect>
+                    <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="3" Opacity=".7" Softness="9" />
+                </Label.BitmapEffect>
+            </Label>
+            <TextBox x:Name="AmountTextBox" 
+                     Margin="21,110,21,261" 
+                     Height="32.04" 
+                     FontFamily="pack://application:,,,/fonts/#Montserrat"
+                     Padding="6 6 0 0"
+                     Foreground="White">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            
+            <Button x:Name="confirm"
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
+                    Content="Add to Balance" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,329,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="268"
+                    Click="Confirm_Btn" 
+                    Background="#FF657FAC" 
+                    Height="38"
+                    Foreground="White"
+                    BorderBrush="#ffffff">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="exit" 
+                    Click="exitButton" 
+                    Margin="294,-16,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="54" 
+                    VerticalAlignment="Top" 
+                    Width="56">
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
+            </Button>
+        </Grid>
+    </Border>
 </Window>
