@@ -196,6 +196,43 @@ namespace CoinControl
             loginWindow.Show();
             Close();
         }
+
+        private void deactivateUser(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to deactivate your account?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                int userID = AuthenticationManager.LoggedInUserId;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        SqlCommand command = new SqlCommand("DeactivateUser", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.AddWithValue("@UserID", userID);
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+
+                        LoginWindow loginWindow = new LoginWindow();
+                        loginWindow.Show();
+                        Close();
+                    }
+                    catch (SqlException ex)
+                    {
+                        // Handle SQL exception
+                        MessageBox.Show("An error occurred while deactivating the user: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle other exceptions
+                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }  
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close this window?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);

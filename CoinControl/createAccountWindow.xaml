@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoinControl"
         mc:Ignorable="d"
-        Title="Register" Height="620" Width="460" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+        Title="Register" 
+        Height="620" 
+        Width="460" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None" 
+        AllowsTransparency="True" 
+        Background="Transparent">
 
     <Window.Resources>
         <ControlTemplate x:Key="passwordbox" TargetType="{x:Type PasswordBox}">
@@ -140,8 +145,7 @@
                        Foreground="White"/>
                 <Image Source="img\emailIcon.png" Margin="82,182,282,364"/>
 
-                <PasswordBox Template="{StaticResource passwordbox}"
-                             x:Name="passText" 
+                <PasswordBox x:Name="passText" 
                              PasswordChanged="passTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat" 
                              BorderThickness="2" 
@@ -170,8 +174,7 @@
                        Foreground="White"/>
                 <Image Source="img\passwordIcon.png" Margin="84,254,284,290"/>
 
-                <PasswordBox Template="{StaticResource passwordbox}"
-                             x:Name="confirmPassText" 
+                <PasswordBox x:Name="confirmPassText" 
                              PasswordChanged="confirmPassTextChanged" 
                              FontFamily="pack://application:,,,/fonts/#Montserrat"
                              BorderThickness="2" 
@@ -267,7 +270,18 @@
                     </Style>
                 </Button.Resources>
             </Button>
-
+            
+            <Button x:Name="exit" 
+                    Click="exitButton" 
+                    Margin="373,-30,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="54" 
+                    VerticalAlignment="Top" 
+                    Width="56">
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
+            </Button>
         </Grid>
     </Border>
 </Window>

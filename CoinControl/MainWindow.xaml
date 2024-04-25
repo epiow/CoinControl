@@ -102,17 +102,17 @@
 
             <Grid>
                 <TextBox x:Name="txtEmail"
-                     TextChanged="txtEmail_TextChanged" 
-                     RenderTransformOrigin="0.5,0.5"
-                     Width="268" 
-                     Height="49"
-                     Margin="76,241,76,290" 
-                     VerticalContentAlignment="Center" 
-                     Padding="55,0,0,0"
-                     Background="#FF839BC4" 
-                     BorderBrush="White"
-                     Foreground="White"
-                     FontFamily="pack://application:,,,/fonts/#Montserrat">
+                         TextChanged="txtEmail_TextChanged" 
+                         RenderTransformOrigin="0.5,0.5"
+                         Width="268" 
+                         Height="49"
+                         Margin="76,241,76,290" 
+                         VerticalContentAlignment="Center" 
+                         Padding="55,0,0,0"
+                         Background="#FF839BC4" 
+                         BorderBrush="White"
+                         Foreground="White"
+                         FontFamily="pack://application:,,,/fonts/#Montserrat">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
@@ -120,19 +120,18 @@
                     </TextBox.Resources>
                 </TextBox>
 
-                <PasswordBox Template="{StaticResource passwordbox}"
-                             x:Name="txtPassword" 
-                             PasswordChanged="PassChanged" 
-                             RenderTransformOrigin="0.5,0.5"
-                             Width="268" 
-                             Height="49"
-                             Margin="0,94,0,0" 
-                             VerticalContentAlignment="Center" 
-                             Padding="55,0,0,0"
-                             Background="#FF839BC4" 
-                             BorderBrush="White"
-                             Foreground="White"
-                             FontFamily="pack://application:,,,/fonts/#Montserrat">
+                <PasswordBox x:Name="txtPassword" 
+                         PasswordChanged="PassChanged" 
+                         RenderTransformOrigin="0.5,0.5"
+                         Width="268" 
+                         Height="49"
+                         Margin="0,94,0,0" 
+                         VerticalContentAlignment="Center" 
+                         Padding="55,0,0,0"
+                         Background="#FF839BC4" 
+                         BorderBrush="White"
+                         Foreground="White"
+                         FontFamily="pack://application:,,,/fonts/#Montserrat">
                     <PasswordBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="23"/>
@@ -168,14 +167,14 @@
 
             <Button Content="LOGIN" 
         Click="btnLogin_Click" 
-        Margin="10,429,228,115" 
+        Margin="10,423,0,0" 
         RenderTransformOrigin="0.5,0.5"
         FontFamily="pack://application:,,,/fonts/#Montserrat"
         Background="#FF657FAC"
         Foreground="White" 
         BorderBrush="White"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top" Height="48">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="Width" Value="182"/>
@@ -206,16 +205,16 @@
             </Button>
 
             <Button Content="SIGN UP" 
-        Click="createAcc_Click" 
-        Margin="228,429,10,115" 
-        FontFamily="pack://application:,,,/fonts/#Montserrat"
-        Background="#FF657FAC"
-        Foreground="White" 
-        BorderBrush="White" 
-        Width="182" 
-        Height="36"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
+                    Click="createAcc_Click" 
+                    Margin="228,429,10,115" 
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
+                    Background="#FF657FAC"
+                    Foreground="White" 
+                    BorderBrush="White" 
+                    Width="182" 
+                    Height="36"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>
@@ -253,7 +252,7 @@
                     HorizontalAlignment="Left" 
                     Height="54" 
                     VerticalAlignment="Top" 
-                    Width="56"> 
+                    Width="56">
                 <Image Source="img\exitButton.png" Height="37" Width="39"/>
             </Button>
         </Grid>

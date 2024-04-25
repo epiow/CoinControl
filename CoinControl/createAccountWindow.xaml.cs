@@ -119,9 +119,9 @@ namespace CoinControl
             }
 
             int balance;
-            if (!int.TryParse(balanceText.Text, out balance))
+            if (!int.TryParse(balanceText.Text, out balance) || balance < 0) 
             {
-                MessageBox.Show("Please enter a valid balance.");
+                MessageBox.Show("Please enter a valid non-negative balance.");
                 return;
             }
 
@@ -156,6 +156,11 @@ namespace CoinControl
             // This is a simple regex pattern to check for basic email format
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
+        }
+
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

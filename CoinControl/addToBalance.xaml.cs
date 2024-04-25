@@ -29,7 +29,19 @@ namespace CoinControl
         private void Confirm_Btn(object sender, RoutedEventArgs e)
         {
             long currentUserId = AuthenticationManager.LoggedInUserId;
-            decimal amountToAdd = decimal.Parse(AmountTextBox.Text);
+            string amountText = AmountTextBox.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(amountText) || !decimal.TryParse(amountText, out decimal amountToAdd))
+            {
+                MessageBox.Show("Please enter a valid amount to add.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (amountToAdd <= 0)
+            {
+                MessageBox.Show("Please enter a positive amount to add.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             AddBalance(currentUserId, amountToAdd);
 
@@ -67,6 +79,11 @@ namespace CoinControl
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
