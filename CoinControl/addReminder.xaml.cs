@@ -28,9 +28,28 @@ namespace CoinControl
         private void saveReminder(object sender, RoutedEventArgs e)
         {
             ComboBoxItem chosenCategory = (ComboBoxItem)selectedCategory.SelectedItem;
-            string expenseCategory = chosenCategory.Content.ToString();
+            string expenseCategory = chosenCategory?.Content?.ToString();
 
-            decimal amount = decimal.Parse(AmountTextBox.Text);
+            if (string.IsNullOrWhiteSpace(expenseCategory) || string.IsNullOrWhiteSpace(AmountTextBox.Text) || !datePicked.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Please enter all details before saving the reminder.", "Incomplete Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string amountText = AmountTextBox.Text;
+            decimal amount;
+
+            if (!decimal.TryParse(amountText, out amount))
+            {
+                MessageBox.Show("Please enter a valid decimal amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            
+            if (amount < 0)
+            {
+                MessageBox.Show("Please enter a non-negative amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             DateTime transactionDate = DateTime.Now;
             DateTime due_Date = (DateTime)datePicked.SelectedDate;
@@ -38,12 +57,8 @@ namespace CoinControl
             if(due_Date <= transactionDate.AddDays(0)) {
                 MessageBox.Show("Please select a due date that is after the current date.");
                 return;
-                //addReminder reminder = new addReminder();
-                //reminder.Show();
-
-                //this.Close();
             }
-            // Create an instance of DatabaseContext
+
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 BudgetingDB budgeted = new BudgetingDB
@@ -69,6 +84,11 @@ namespace CoinControl
             }
 
             AmountTextBox.Clear();
+        }
+
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

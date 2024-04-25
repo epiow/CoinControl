@@ -28,15 +28,37 @@ namespace CoinControl
 
         private void Confirm_Btn(object sender, RoutedEventArgs e)
         {
-            // Get the values from the input fields
-            decimal amount = decimal.Parse(AmountTextBox.Text);
+            decimal amount;
             DateTime transactionDate = DateTime.Now;
             string note = NoteBox.Text;
 
-            ComboBoxItem IncomeSelection = (ComboBoxItem)selectedIncome.SelectedItem;
-            string incomeName = IncomeSelection.Content.ToString();
+            if (string.IsNullOrWhiteSpace(AmountTextBox.Text) && string.IsNullOrWhiteSpace(note))
+            {
+                MessageBox.Show("Please enter the necessary details.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-            // Create an instance of DatabaseContext
+            if (!decimal.TryParse(AmountTextBox.Text, out amount))
+            {
+                MessageBox.Show("Please enter a valid decimal amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (amount < 0)
+            {
+                MessageBox.Show("Please enter a non-negative amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            ComboBoxItem IncomeSelection = (ComboBoxItem)selectedIncome.SelectedItem;
+            string incomeName = IncomeSelection?.Content?.ToString();
+
+            if (string.IsNullOrWhiteSpace(incomeName))
+            {
+                MessageBox.Show("Please select an income source.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             using (DatabaseContext dbContext = new DatabaseContext())
             {
 
@@ -68,6 +90,11 @@ namespace CoinControl
 
             AmountTextBox.Clear();
             NoteBox.Clear();
+        }
+
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

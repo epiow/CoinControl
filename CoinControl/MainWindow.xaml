@@ -206,16 +206,16 @@
             </Button>
 
             <Button Content="SIGN UP" 
-        Click="createAcc_Click" 
-        Margin="228,429,10,115" 
-        FontFamily="pack://application:,,,/fonts/#Montserrat"
-        Background="#FF657FAC"
-        Foreground="White" 
-        BorderBrush="White" 
-        Width="182" 
-        Height="36"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center">
+                    Click="createAcc_Click" 
+                    Margin="228,429,10,115" 
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
+                    Background="#FF657FAC"
+                    Foreground="White" 
+                    BorderBrush="White" 
+                    Width="182" 
+                    Height="36"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="20"/>

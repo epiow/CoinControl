@@ -10,53 +10,119 @@
         Width="400" 
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" 
-        AllowsTransparency="True">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
-        <Label Content="Description:" Margin="10,19,287,333" 
-               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-        <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" 
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="8,8,8,8" BorderThickness="20" >
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
+        <Grid Margin="0,20,0,-20">
+
+            <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,0,0">
+                <Image.Clip>
+                    <RectangleGeometry Rect="20,10,430,960"/>
+                </Image.Clip>
+            </Image>
+
+            <Label Content="Description:"
+                   Margin="10,19,237,333" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+            <TextBox x:Name="NoteBox" Margin="20,46,22,306" Height="32.04" 
                  FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-        <Label Content="Amount:" Margin="10,83,211,270"
-               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-        <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" 
+            <Label Content="Amount:" 
+                   Margin="10,93,211,260"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+            <TextBox x:Name="AmountTextBox" Margin="22,114,20,238" Height="32.04" 
                  FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-        <Label Content="Category:" Margin="10,166,270,192" />
-        <ComboBox Margin="20,197,22,159" 
+            <Label Content="Category:" 
+                   Margin="10,166,270,192" 
+                   Foreground="White"
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+            <ComboBox Margin="22,196,20,175" 
                   Name="selectedCategory"
-                  FontFamily="pack://application:,,,/fonts/#Montserrat">
-            <ComboBoxItem Content="Utilities"></ComboBoxItem>
-            <ComboBoxItem Content="Transportation"></ComboBoxItem>
-            <ComboBoxItem Content="Food"></ComboBoxItem>
-            <ComboBoxItem Content="Rent"></ComboBoxItem>
-            <ComboBoxItem Content="Entertainment"></ComboBoxItem>
-            <ComboBoxItem Content="Health"></ComboBoxItem>
-            <ComboBoxItem Content="Miscellaneous"></ComboBoxItem>
-        </ComboBox>
+                  FontFamily="pack://application:,,,/fonts/#Montserrat" Height="32.04">
+                <ComboBoxItem Content="Utilities"></ComboBoxItem>
+                <ComboBoxItem Content="Transportation"></ComboBoxItem>
+                <ComboBoxItem Content="Food"></ComboBoxItem>
+                <ComboBoxItem Content="Rent"></ComboBoxItem>
+                <ComboBoxItem Content="Entertainment"></ComboBoxItem>
+                <ComboBoxItem Content="Health"></ComboBoxItem>
+                <ComboBoxItem Content="Miscellaneous"></ComboBoxItem>
+            </ComboBox>
 
-        <ComboBox Margin="22,273,22,83" 
+            <ComboBox Margin="23,267,21,104" 
                   x:Name="selectedPayment" 
                   RenderTransformOrigin="0.5,0.5" 
-                  Height="28.04"
+                  Height="32.04"
                   FontFamily="pack://application:,,,/fonts/#Montserrat">
-            <ComboBoxItem Content="Cash"/>
-            <ComboBoxItem Content="Credit Card"/>
-            <ComboBoxItem Content="Debit Card"/>
-            <ComboBoxItem Content="E-Wallet"/>
-        </ComboBox>
-        
-        <Label Content="Payment Method:" 
-               Margin="10,240,247,116" 
-               FontFamily="pack://application:,,,/fonts/#Montserrat"/>
+                <ComboBoxItem Content="Cash"/>
+                <ComboBoxItem Content="Credit Card"/>
+                <ComboBoxItem Content="Debit Card"/>
+                <ComboBoxItem Content="E-Wallet"/>
+            </ComboBox>
 
-        <Button Click="Confirm_Btn" 
-                Background="Green" Margin="255,335,10,10">
-            <TextBlock Text="Add Transaction" 
-                       Foreground="White" 
-                       Margin="10,0" 
-                       FontWeight="Bold"
-                       FontFamily="pack://application:,,,/fonts/#Montserrat"/>
-        </Button>
-    </Grid>
+            <Label Content="Payment Method:" 
+                   Margin="10,236,211,121" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+
+            <Button x:Name="confirm"
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
+                    Content="Add Transaction" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,329,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="268"
+                    Click="Confirm_Btn" 
+                    Background="#FF657FAC" 
+                    Height="38"
+                    Foreground="White"
+                    BorderBrush="#ffffff">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="exit" 
+                Click="exitButton" 
+                Margin="294,-16,0,0" 
+                BorderThickness="0"  
+                Style="{StaticResource MyButton}" 
+                HorizontalAlignment="Left" 
+                Height="54" 
+                VerticalAlignment="Top" 
+                Width="56">
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
+            </Button>
+        </Grid>
+    </Border>
 </Window>

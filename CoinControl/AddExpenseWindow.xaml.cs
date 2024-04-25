@@ -32,17 +32,49 @@ namespace CoinControl
         private void Confirm_Btn(object sender, RoutedEventArgs e)
         {
             // Get the values from the input fields
-            decimal amount = decimal.Parse(AmountTextBox.Text);
-            DateTime transactionDate = DateTime.Now;
-            string note = NoteBox.Text;
+            string amountText = AmountTextBox.Text.Trim();
+            string note = NoteBox.Text.Trim();
 
-            ComboBoxItem CategorySelection= (ComboBoxItem)selectedCategory.SelectedItem;
-            string categoryName = CategorySelection.Content.ToString();
+            // Check if all input fields are empty
+            if (string.IsNullOrWhiteSpace(amountText) || string.IsNullOrWhiteSpace(note) || selectedCategory.SelectedItem == null || selectedPayment.SelectedItem == null)
+            {
+                MessageBox.Show("Please enter the necessary details.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            decimal amount;
+            if (!decimal.TryParse(amountText, out amount))
+            {
+                MessageBox.Show("Please enter a valid decimal amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (amount < 0)
+            {
+                MessageBox.Show("Please enter a non-negative amount.", "Invalid Amount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            ComboBoxItem CategorySelection = (ComboBoxItem)selectedCategory.SelectedItem;
+            string categoryName = CategorySelection?.Content?.ToString();
+
+            if (string.IsNullOrWhiteSpace(categoryName))
+            {
+                MessageBox.Show("Please select a category.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             ComboBoxItem PaymentSelection = (ComboBoxItem)selectedPayment.SelectedItem;
-            string paymentMethod = PaymentSelection.Content.ToString();
+            string paymentMethod = PaymentSelection?.Content?.ToString();
 
-            // Create an instance of DatabaseContext
+            if (string.IsNullOrWhiteSpace(paymentMethod))
+            {
+                MessageBox.Show("Please select a payment method.", "Missing Information", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DateTime transactionDate = DateTime.Now;
+
             using (DatabaseContext dbContext = new DatabaseContext())
             {
                 
@@ -72,10 +104,11 @@ namespace CoinControl
                 Expenses expensesWindow = Application.Current.Windows.OfType<Expenses>().FirstOrDefault();
                 expensesWindow?.LoadExpenses(); 
             }
-
-            AmountTextBox.Clear();
-            NoteBox.Clear();
         }
 
+        private void exitButton(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

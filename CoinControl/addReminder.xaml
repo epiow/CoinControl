@@ -10,12 +10,52 @@
         Width="400" 
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" 
-        AllowsTransparency="True">
-    <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="400">
+        AllowsTransparency="True"
+        Background="Transparent">
 
-            <Label Content="Category:" Margin="10,10,270,348" />
-            <ComboBox Margin="21,36,21,320" Name="selectedCategory">
+    <Window.Resources>
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border CornerRadius="8,8,8,8" BorderThickness="20" >
+        <Border.BorderBrush>
+            <ImageBrush Stretch="Fill" ImageSource="img\blueBack.png"/>
+        </Border.BorderBrush>
+
+        <Grid Margin="0,20,0,-20">
+
+            <Image Source="img\blueBack.png" Stretch="Fill" Margin="-21,-30,0,0">
+                <Image.Clip>
+                    <RectangleGeometry Rect="20,10,430,960"/>
+                </Image.Clip>
+            </Image>
+
+            <Label Content="Category:" 
+                   Margin="10,22,270,353" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+            
+            <ComboBox Margin="21,55,21,314" 
+                      Name="selectedCategory" 
+                      Height="32.04"
+                      FontFamily="pack://application:,,,/fonts/#Montserrat">
                 <ComboBoxItem Content="Utilities"></ComboBoxItem>
                 <ComboBoxItem Content="Transportation"></ComboBoxItem>
                 <ComboBoxItem Content="Food"></ComboBoxItem>
@@ -25,16 +65,52 @@
                 <ComboBoxItem Content="Miscellanous"></ComboBoxItem>
             </ComboBox>
 
-            <Label Content="Amount:" Margin="10,69,211,284" />
-            <TextBox x:Name="AmountTextBox" Margin="22,100,20,252" Height="32.04" />
+            <Label Content="Amount:" 
+                   Margin="10,105,211,264" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+            <TextBox x:Name="AmountTextBox" Margin="21,144,21,227" Height="32.04" 
+                     FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-            <Label Content="Date To Pay:" Margin="10,148,247,208" />
-            <DatePicker Name="datePicked" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Center"/>
+            <Label Content="Date To Pay:" Margin="10,186,247,186" 
+                   FontFamily="pack://application:,,,/fonts/#Montserrat"
+                   Foreground="White"/>
+            <DatePicker Name="datePicked" 
+                        HorizontalAlignment="Left" 
+                        Margin="21,222,0,0" 
+                        VerticalAlignment="Top"
+                        FontFamily="pack://application:,,,/fonts/#Montserrat"/>
 
-            <Button Click="saveReminder" Background="Green" Margin="255,335,10,10">
-                <TextBlock Text="Save" Foreground="White" Margin="10,0" FontWeight="Bold"/>
+            <Button x:Name="saveRemind"
+                    FontFamily="pack://application:,,,/fonts/#Montserrat"
+                    Content="Add Reminder" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,329,0,0" 
+                    VerticalAlignment="Top" 
+                    Width="268"
+                    Click="saveReminder" 
+                    Background="#FF657FAC" 
+                    Height="38"
+                    Foreground="White"
+                    BorderBrush="#ffffff">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
             </Button>
 
+            <Button x:Name="exit" 
+                    Click="exitButton" 
+                    Margin="294,-16,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource MyButton}" 
+                    HorizontalAlignment="Left" 
+                    Height="54" 
+                    VerticalAlignment="Top" 
+                    Width="56">
+                <Image Source="img\exitButton.png" Height="37" Width="39"/>
+            </Button>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
