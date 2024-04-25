@@ -17,6 +17,7 @@
     <None Remove="img\blueBack.png" />
     <None Remove="img\coinControl.png" />
     <None Remove="img\darkblueRegister.png" />
+    <None Remove="img\deactivateUser.png" />
     <None Remove="img\dirtyWhiteBack.png" />
     <None Remove="img\downProfit.png" />
     <None Remove="img\emailIcon.png" />
@@ -72,6 +73,7 @@
     <Resource Include="img\blueBack.png" />
     <Resource Include="img\coinControl.png" />
     <Resource Include="img\darkblueRegister.png" />
+    <Resource Include="img\deactivateUser.png" />
     <Resource Include="img\dirtyWhiteBack.png" />
     <Resource Include="img\downProfit.png" />
     <Resource Include="img\emailIcon.png" />

@@ -304,6 +304,36 @@
                 </StackPanel>
             </Button>
 
+            <Button Margin="-214,540,0,0" 
+                    BorderThickness="0"  
+                    Style="{StaticResource SomeButtonStyle}" 
+                    Click="deactivateUser" 
+                    HorizontalAlignment="Left" 
+                    Height="22" 
+                    VerticalAlignment="Top" 
+                    Width="99"
+                    RenderTransformOrigin="0.49,0.209"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal" 
+                            Height="64" 
+                            Width="244">
+                    <Image Source="img\deactivateUser.png" 
+                           Width="33" 
+                           Height="35" 
+                           RenderTransformOrigin="0.546,0.174" 
+                           VerticalAlignment="Top" 
+                           Opacity="0.5"/>
+                    <Label Padding="0" 
+                           Content="Deactivate" 
+                           Height="60" 
+                           FontFamily="pack://application:,,,/fonts/#Montserrat" 
+                           Width="62" 
+                           Opacity="1.0" 
+                           Foreground="#FFFE0000" 
+                           FontWeight="Bold" FontSize="11"/>
+                </StackPanel>
+            </Button>
+
             <Rectangle HorizontalAlignment="Left" 
                        Height="605" 
                        Margin="-99,0,0,0" 

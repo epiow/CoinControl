@@ -119,9 +119,9 @@ namespace CoinControl
             }
 
             int balance;
-            if (!int.TryParse(balanceText.Text, out balance))
+            if (!int.TryParse(balanceText.Text, out balance) || balance < 0) 
             {
-                MessageBox.Show("Please enter a valid balance.");
+                MessageBox.Show("Please enter a valid non-negative balance.");
                 return;
             }
 
