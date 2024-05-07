@@ -71,8 +71,6 @@ namespace CoinControl
             expenseText.Text = totalExpenses.ToString("₱#,##0.00");
 
             decimal profit = totalIncome - totalExpenses;
-            profit = Math.Abs(profit);
-            profitText.Text = profit.ToString("₱#,##0.00");
 
             if (profit > 0)
             {
@@ -85,6 +83,9 @@ namespace CoinControl
                 equalProfit.Opacity = 0;
             }
             else { }
+
+            profit = Math.Abs(profit);
+            profitText.Text = profit.ToString("₱#,##0.00");
         }
 
         private decimal GetBalance(long userId)
