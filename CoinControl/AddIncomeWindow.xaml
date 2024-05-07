@@ -109,7 +109,7 @@
                 <ComboBoxItem Content="Investments"
                           FontFamily="pack://application:,,,/fonts/#Montserrat"
                                   Foreground="Black"></ComboBoxItem>
-                <ComboBoxItem Content="Gifts/Inhertiances"
+                <ComboBoxItem Content="Gifts/Inheritances"
                           FontFamily="pack://application:,,,/fonts/#Montserrat"
                                   Foreground="Black"></ComboBoxItem>
                 <ComboBoxItem Content="Business Profit"
